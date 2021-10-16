@@ -1,0 +1,49 @@
+@import "rootColor";
+@import "font";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100vw;
+  min-height: 100vh;
+  background: $background;
+  color: #15202b;
+  transition: 0.3s ease-in-out;
+
+  &.dark-mode {
+    background: $darkGray1;
+    color: #e8e8e8;
+  }
+}
+
+.fadeInOutBottom-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fadeInOutBottom-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fadeInOutBottom-enter-active,
+.fadeInOutBottom-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slideLeft-enter {
+  transform: translateX(250px);
+}
+
+.slideLeft-leave-to {
+  transform: translateX(250px);
+}
+
+.slideLeft-enter-active,
+.slideLeft-leave-active {
+  transition: 0.2s ease-in-out;
+}

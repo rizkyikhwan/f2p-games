@@ -1,15 +1,17 @@
 <template>
-  <div class="home">
+  <div class="games">
     <div class="container">
-      Ini Home
+      Ini Games
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Home",
-  components: {
-  },
-};
+
+}
 </script>
+
+<style>
+
+</style>

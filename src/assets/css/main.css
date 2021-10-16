@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira:wght@100;200;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#app {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f3f5f8;
+  color: #15202b;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+#app.dark-mode {
+  background: #2a2e33;
+  color: #e8e8e8;
+}
+
+.fadeInOutBottom-enter {
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+
+.fadeInOutBottom-leave-to {
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+
+.fadeInOutBottom-enter-active,
+.fadeInOutBottom-leave-active {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.slideLeft-enter {
+  -webkit-transform: translateX(250px);
+          transform: translateX(250px);
+}
+
+.slideLeft-leave-to {
+  -webkit-transform: translateX(250px);
+          transform: translateX(250px);
+}
+
+.slideLeft-enter-active,
+.slideLeft-leave-active {
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
