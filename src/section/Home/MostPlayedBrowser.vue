@@ -1,0 +1,148 @@
+<template>
+  <section id="most-played" class="d-flex align-items-center mt-4">
+    <div class="container">
+      <h3 class="title">Top 10 Most Played on Browser</h3>
+      <div class="line" :class="{ 'dark-mode': darkMode }"></div>
+      <div class="row">
+        <swiper :options="swiperOption" class="swiper">
+          <swiper-slide
+            v-for="mostPlay in mostPlayed"
+            :key="mostPlay.id"
+            class="col-6 col-md-3 px-1"
+          >
+            <GameCard :game="mostPlay" :darkMode="darkMode" />
+          </swiper-slide>
+        </swiper>
+      </div>
+      <Loading v-if="loading" />
+    </div>
+  </section>
+</template>
+
+<script>
+import axios from "axios";
+import GameCard from "@/components/GameCard.vue";
+import Loading from "@/components/Loading.vue";
+import { API_URL } from "@/composable/getMostPlayedBrowser.js";
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import "swiper/swiper-bundle.min.css";
+
+export default {
+  data() {
+    return {
+      mostPlayed: [],
+      swiperOption: {
+        slidesPerView: 4,
+        breakpoints: {
+          320: {
+            slidesPerView: 2,
+          },
+          576: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 4,
+          },
+          992: {
+            slidesPerView: 4,
+          },
+        },
+      },
+      loading: null,
+    };
+  },
+  props: ["darkMode"],
+  components: {
+    GameCard,
+    Swiper,
+    SwiperSlide,
+    Loading,
+  },
+  methods: {
+    async getMostPlayed() {
+      this.loading = true;
+      await axios
+        .request(API_URL)
+        .then((response) => {
+          const mostlyPlay = response.data.slice(0, 10);
+          this.mostPlayed = mostlyPlay;
+        })
+        .catch((error) => console.error(error));
+      this.loading = false;
+    },
+  },
+  mounted() {
+    this.getMostPlayed();
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import "./src/assets/sass/_rootColor.scss";
+@import "./src/assets/sass/_font.scss";
+
+#most-played {
+  // min-height: 75vh;
+
+  .title {
+    font-family: "Saira", sans-serif;
+    text-transform: uppercase;
+    font-size: 24px;
+  }
+
+  .line {
+    max-width: 250px;
+    width: 50%;
+    height: 5px;
+    border-radius: 5rem;
+    background: $navyBlue;
+    transition: 0.2s ease-in-out;
+
+    &.dark-mode {
+      filter: drop-shadow(0 0 2px $navyBlue);
+    }
+  }
+
+  .swiper {
+    padding: 5px 14px 25px;
+
+    .swiper-button-prev {
+      color: $fontLight;
+      left: 0;
+      filter: drop-shadow(0 0 2px);
+      transition: 0.2s ease-in-out;
+
+      &.dark-mode {
+        color: $navyBlue;
+      }
+    }
+
+    .swiper-button-next {
+      color: $fontLight;
+      right: 0;
+      filter: drop-shadow(0 0 2px);
+      transition: 0.2s ease-in-out;
+
+      &.dark-mode {
+        color: $navyBlue;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #most-played {
+    // min-height: 50vh;
+
+    .title {
+      font-size: 20px;
+    }
+  }
+}
+
+// @media (max-width: 576px) {
+//   #most-played {
+//     min-height: 60vh;
+//   }
+// }
+</style>

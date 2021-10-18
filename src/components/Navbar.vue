@@ -1,11 +1,12 @@
 <template>
   <nav
-    class="navbar d-flex align-items-center justify-content-between shadow py-3"
+    class="navbar d-flex align-items-center justify-content-between shadow py-3 fixed-top"
     :class="{ 'dark-mode': darkMode }"
   >
     <div class="container">
       <div>
-        <img src="../assets/logo/logo.png" style="width: 30px" />
+        <img v-if="!darkMode" src="../assets/logo/logo-light.png" class="logo" />
+        <img v-else src="../assets/logo/logo-dark.png" class="logo" />
       </div>
 
       <!-- Desktop -->
@@ -34,18 +35,20 @@
         <span class="bar"  :class="{'dark-mode': darkMode}"></span>
       </div>
       <transition name="slideLeft">
-        <div class="mobile-nav" v-show="mobileNav" :class="{'dark-mode': darkMode}">
+        <ul class="mobile-nav" v-show="mobileNav" :class="{'dark-mode': darkMode}">
           <font-awesome-icon @click="toggleMobileNav" class="icon-close" :class="{'dark-mode': darkMode}" :icon="{prefix: 'fas', iconName: 'times'}"></font-awesome-icon>
-          <router-link :to="{ name: 'Home' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Home</router-link>
+          <router-link :to="{ name: 'Home' }" class="nav-link mt-3" :class="{ 'dark-mode': darkMode }">Home</router-link>
           <router-link :to="{ name: 'Games' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Games</router-link>
           <router-link :to="{ name: 'About' }" class="nav-link" :class="{ 'dark-mode': darkMode }">About</router-link>
           <button class="d-flex align-items-center icon-wrap" :class="{ 'dark-mode': darkMode }" @click="$emit('darkMode')" style="margin: 0 auto">
             <font-awesome-icon class="icon sun" v-if="!darkMode" :icon="{ prefix: 'fas', iconName: 'sun' }"></font-awesome-icon>
             <font-awesome-icon class="icon moon" v-else :icon="{ prefix: 'fas', iconName: 'moon' }"></font-awesome-icon>
           </button>
-        </div>
+        </ul>
       </transition>
-      <div class="overlay" v-show="mobileNav" @click="toggleMobileNav"></div>
+      <transition name="overlay">
+        <div class="overlay" v-show="mobileNav" @click="toggleMobileNav"></div>
+      </transition>
     </div>
   </nav>
 </template>
@@ -100,13 +103,18 @@ export default {
   transition: 0.3s ease-in-out;
 
   &.dark-mode {
-    background-color: $darkGray2;
+    background-color: $backgroundDark2;
   }
 }
 
 .nav-link {
   color: $navyBlue;
   opacity: 0.5;
+}
+
+.logo {
+  width: 100px;
+  pointer-events: none;
 }
 
 .icon-wrap {
@@ -176,7 +184,7 @@ export default {
   }
 
   &.dark-mode {
-    background-color: $darkGray2;
+    background-color: $backgroundDark;
 
     .icon-close {
       color: $light;
@@ -192,7 +200,7 @@ export default {
     border-radius: 25px;
     width: 25px;
     height: 3px;
-    margin: 5px 0;
+    margin: 5px 0 5px auto;
     background: $navyBlue;
     filter: drop-shadow(0 0px 1px $navyBlue);
 
@@ -217,7 +225,8 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba($color: $darkGray1, $alpha: .5);
+  filter: saturate(50%);
+  background-color: rgba($color: $backgroundDark, $alpha: .5);
   backdrop-filter: blur(2px);
   z-index: 99;
 }

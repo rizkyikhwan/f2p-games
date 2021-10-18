@@ -2,7 +2,7 @@
   <div id="app" :class="{'dark-mode' : darkMode}">
     <Navbar @darkMode="toggleDarkMode" :darkMode="darkMode" />
     <transition name="fadeInOutBottom" mode="out-in">
-      <router-view />
+      <router-view :darkMode="darkMode" />
     </transition>
   </div>
 </template>

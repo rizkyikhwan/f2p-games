@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Saira:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -7,10 +8,10 @@
 }
 
 #app {
-  width: 100vw;
   min-height: 100vh;
   background: #f3f5f8;
-  color: #15202b;
+  overflow: hidden;
+  color: #002246;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
@@ -22,20 +23,30 @@
 
 .fadeInOutBottom-enter {
   opacity: 0;
-  -webkit-transform: translateY(10px);
-          transform: translateY(10px);
 }
 
 .fadeInOutBottom-leave-to {
   opacity: 0;
-  -webkit-transform: translateY(10px);
-          transform: translateY(10px);
 }
 
 .fadeInOutBottom-enter-active,
 .fadeInOutBottom-leave-active {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+.overlay-enter {
+  opacity: 0;
+}
+
+.overlay-leave-to {
+  opacity: 0;
+}
+
+.overlay-enter-active,
+.overlay-leave-active {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .slideLeft-enter {

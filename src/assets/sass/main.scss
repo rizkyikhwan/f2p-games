@@ -8,31 +8,42 @@
 }
 
 #app {
-  width: 100vw;
   min-height: 100vh;
-  background: $background;
-  color: #15202b;
+  background: $backgroundLight;
+  overflow: hidden;
+  color: $fontLight;
   transition: 0.3s ease-in-out;
 
   &.dark-mode {
-    background: $darkGray1;
-    color: #e8e8e8;
+    background: $backgroundDark;
+    color: $fontDark;
   }
 }
 
 .fadeInOutBottom-enter {
   opacity: 0;
-  transform: translateY(10px);
 }
 
 .fadeInOutBottom-leave-to {
   opacity: 0;
-  transform: translateY(10px);
 }
 
 .fadeInOutBottom-enter-active,
 .fadeInOutBottom-leave-active {
   transition: all 0.3s ease;
+}
+
+.overlay-enter {
+  opacity: 0;
+}
+
+.overlay-leave-to {
+  opacity: 0;
+}
+
+.overlay-enter-active,
+.overlay-leave-active {
+  transition: all 0.2s ease-in-out;
 }
 
 .slideLeft-enter {
