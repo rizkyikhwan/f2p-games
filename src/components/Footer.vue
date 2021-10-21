@@ -1,8 +1,8 @@
 <template>
   <div class="footer" :class="{ 'dark-mode': darkMode }">
     <div class="container d-flex flex-column align-items-center">
-      <img v-if="!darkMode" src="../assets/logo/logo-light.png" class="logo" />
-      <img v-else src="../assets/logo/logo-dark.png" class="logo" />
+      <img v-if="!darkMode" src="../assets/logo/logo-light.png" />
+      <img v-else src="../assets/logo/logo-dark.png" />
       <span>© 2021 Rizky Ikhwan</span>
       <div class="pt-3">
         <a
@@ -72,7 +72,7 @@ export default {
     background: $backgroundDarkDeep;
   }
 
-  .logo {
+  img {
     max-width: 250px;
     padding: 10px 0 25px;
     pointer-events: none;
@@ -84,7 +84,23 @@ export default {
     font-size: 14px;
   }
 
-  @keyframes pulse {
+  .link {
+    color: $fontLight;
+    transition: 0.2s ease-in-out;
+
+    .icon {
+      margin: 0 1rem;
+      animation: pulse 1.5s ease-in-out;
+    }
+
+    &.dark-mode {
+      color: $fontDark;
+      filter: drop-shadow(0 0 2px $navyBlue);
+    }
+  }
+}
+
+@keyframes pulse {
     0% {
       filter: drop-shadow(0 0 2px $navyBlue);
     }
@@ -96,18 +112,4 @@ export default {
     }
   }
 
-  .link {
-    color: $fontLight;
-    transition: 0.2s ease-in-out;
-
-    .icon {
-      margin: 0 1rem;
-    }
-
-    &.dark-mode {
-      color: $fontDark;
-      filter: drop-shadow(0 0 2px);
-    }
-  }
-}
 </style>
