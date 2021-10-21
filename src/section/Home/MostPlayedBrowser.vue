@@ -23,7 +23,7 @@
 import axios from "axios";
 import GameCard from "@/components/GameCard.vue";
 import Loading from "@/components/Loading.vue";
-import { API_URL } from "@/composable/getMostPlayedBrowser.js";
+import { API_MostPlayedBrowser } from "@/composable/getDataGames.js";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/swiper-bundle.min.css";
 
@@ -62,7 +62,7 @@ export default {
     async getMostPlayed() {
       this.loading = true;
       await axios
-        .request(API_URL)
+        .request(API_MostPlayedBrowser)
         .then((response) => {
           const mostlyPlay = response.data.slice(0, 10);
           this.mostPlayed = mostlyPlay;

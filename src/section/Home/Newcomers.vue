@@ -57,8 +57,7 @@ import GameCard from "@/components/GameCard.vue";
 import GameCardNewcomers from "@/components/GameCardNewcomers.vue";
 import GameCardMostPlay from "@/components/GameCardMostPlay.vue";
 import Loading from "@/components/Loading.vue";
-import { API_URL } from "@/composable/getNewcomers.js";
-import { API_mostPlayed } from "@/composable/getMostPlayed.js";
+import { API_Newcomers, API_MostPlayed } from "@/composable/getDataGames.js";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/swiper-bundle.min.css";
 import axios from "axios";
@@ -115,7 +114,7 @@ export default {
     async getNewcomers() {
       this.loading = true;
       await axios
-        .request(API_URL)
+        .request(API_Newcomers)
         .then((response) => {
           const newcomers = response.data.slice(0, 9);
           this.newcomers = newcomers;
@@ -126,7 +125,7 @@ export default {
     async getMostPlayed() {
       this.loading = true;
       await axios
-        .request(API_mostPlayed)
+        .request(API_MostPlayed)
         .then((response) => {
           const mostPlay = response.data.slice(0, 3);
           this.mostPlayed = mostPlay;
