@@ -10,7 +10,7 @@
       </div>
 
       <!-- Desktop -->
-      <div class="d-flex flex-row" v-if="!mobile">
+      <div class="d-flex" v-if="!mobile">
         <router-link :to="{ name: 'Home' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Home</router-link>
         <router-link :to="{ name: 'Games' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Games</router-link>
         <router-link :to="{ name: 'About' }" class="nav-link" :class="{ 'dark-mode': darkMode }">About</router-link>
@@ -114,6 +114,7 @@ export default {
 
 .logo {
   width: 100px;
+  filter: drop-shadow(0 0 2px $navyBlue);
   pointer-events: none;
 }
 

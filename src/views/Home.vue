@@ -18,9 +18,9 @@ export default {
   props: ['darkMode'],
   components: {
     Hero,
+    Newcomers,
     MostPlayedPc,
     MostPlayedBrowser,
-    Newcomers
   },
 };
 </script>

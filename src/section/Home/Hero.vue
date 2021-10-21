@@ -3,9 +3,8 @@
     <div class="container">
       <div class="row mt-3">
         <div class="col-md-6 order-1 mb-5">
-          <div class="d-flex h-100">
-            <div class="justify-content-center align-self-center">
-              <div class="line"></div>
+          <div class="d-flex">
+            <div class="justify-content-center align-self-center parallax-text">
               <h1 class="title">Free games to play</h1>
               <p class="lead mb-4">
                 Cari dan temukan game <span>Free-to-play</span> terbaik kalian di <span>PC</span> dan <span>Browser</span> !
@@ -31,6 +30,14 @@
 <script>
 export default {
   props: ["darkMode"],
+  created() {
+    window.addEventListener('scroll', () => {
+      const parallaxText = document.querySelector(".parallax-text");
+      let scroll = window.pageYOffset;
+
+      parallaxText.style.transform = 'translateY(' + scroll * -.3 + 'px)';
+    })
+  }
 };
 </script>
 
@@ -107,8 +114,8 @@ export default {
 
   .lead {
     max-width: 23em;
+    font-weight: 400;
   }
-
 }
 
 @media (max-width: 992px) {

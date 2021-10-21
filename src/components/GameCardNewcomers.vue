@@ -1,22 +1,15 @@
 <template>
-  <div class="game-card mt-5">
+  <div class="game-card mt-3">
     <div class="card" :class="{'dark-mode': darkMode}">
       <img
         :src="`${game.thumbnail}`"
         class="card-img-top"
         :alt="`${game.title}`"
       />
-      <div class="card-body">
-        <p class="title">{{ game.title }}</p>
-        <p class="card-text">
-          {{ game.short_description }}
-        </p>
-        <span class="text-muted card-publisher">{{ game.publisher }}</span>
-      </div>
-      <div class="card-footer" :class="{'dark-mode': darkMode}">
-        <span>{{ game.genre }}</span>
+      <div class="card-body d-flex align-items-center" :class="{'dark-mode': darkMode}">
+        <span class="title">{{ game.title }}</span>
         <span v-if="this.game.platform === `PC (Windows)`">
-          <font-awesome-icon :icon="{prefix: 'fab', iconName: 'windows'}" class="icon-social"></font-awesome-icon>
+          <font-awesome-icon :icon="{prefix: 'fab', iconName: 'windows'}"></font-awesome-icon>
         </span>
         <span v-else>
           <font-awesome-icon :icon="{prefix: 'fas', iconName: 'window-maximize'}"></font-awesome-icon>
@@ -56,41 +49,28 @@ export default {
     filter: saturate(25%);
     transition: 0.2s ease-in-out;
   }
-    .card-body {
-      padding: 15px 10px;
 
-      .title {
-        font-family: "Saira", sans-serif;
-        font-size: 18px;
-        font-weight: 600;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-    
-      .card-text {
-        font-size: 14px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin-bottom: 0;
-      }
-    
-      .card-publisher {
-        font-size: 12px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-    }
-
-  .card-footer {
+  .card-body {
+    font-family: "Saira", sans-serif;
     display: flex;
     justify-content: space-between;
-    padding: 5px 15px;
+    padding: 5px 10px;
+    background: $light;
     color: $fontLight;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.2s ease-in-out;
+
+    .title {
+      font-weight: 600;
+      max-width: 175px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
     &.dark-mode {
+      background: $bgCard;
       color: $fontDark;
     }
   }
@@ -104,7 +84,7 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 .card {
   .card-img-top {
       filter: saturate(100%);
@@ -112,13 +92,8 @@ export default {
 
     .card-body {
       .title {
-        font-size: 17px;
-      }
-    }
-
-    .card-footer {
-      span {
-        font-size: 14px;
+        font-size: 12px;
+        max-width: 100px;
       }
     }
   }

@@ -1,7 +1,10 @@
 <template>
-  <section id="most-played" class="d-flex align-items-center mt-5">
+  <section id="most-played" class="d-flex align-items-center mt-5 mb-5" :class="{ 'dark-mode':darkMode }">
     <div class="container">
-      <h3 class="title">Top 10 Most Played on PC</h3>
+      <div class="angle" :class="{ 'dark-mode':darkMode }"></div>
+      <h3 class="title" :class="{ 'dark-mode': darkMode }">
+        Top 10 Most Played on PC
+      </h3>
       <div class="line" :class="{ 'dark-mode': darkMode }"></div>
       <div class="row">
         <swiper :options="swiperOption" class="swiper">
@@ -15,6 +18,7 @@
         </swiper>
       </div>
       <Loading v-if="loading" />
+      <div class="angle" :class="{ 'dark-mode':darkMode }"></div>
     </div>
   </section>
 </template>
@@ -82,45 +86,51 @@ export default {
 @import "./src/assets/sass/_font.scss";
 
 #most-played {
-  // min-height: 75vh;
+  background: $grayLight;
+  transition: background 0.2s ease-in-out;
 
+  .angle {
+    width: 170rem;
+    height: 75px;
+    background: $backgroundLight;
+    transform: translateX(-50%) translateY(-70%) rotate(2deg);
+    transition: 0.2s ease-in-out;
+
+    &:last-child {
+      transform: translateX(-50%) translateY(35%) rotate(2deg);
+    }
+    
+    &.dark-mode {
+      background: $backgroundDark;
+    }
+  }
   .title {
     font-family: "Saira", sans-serif;
     text-transform: uppercase;
     font-size: 24px;
-  }
-
-  .line {
-    max-width: 250px;
-    width: 50%;
-    height: 5px;
-    border-radius: 5rem;
-    background: $navyBlue;
-    transition: 0.2s ease-in-out;
+    z-index: 1;
 
     &.dark-mode {
-      filter: drop-shadow(0 0 2px $navyBlue);
+      color: $fontDark;
     }
+  }
+
+  &.dark-mode {
+    background: $backgroundDarkDeep;
   }
 
   .swiper {
     padding: 5px 14px 25px;
+    z-index: 0;
   }
 }
 
 @media (max-width: 768px) {
   #most-played {
-    // min-height: 50vh;
 
     .title {
       font-size: 20px;
     }
   }
 }
-
-// @media (max-width: 576px) {
-//   #most-played {
-//     min-height: 60vh;
-//   }
-// }
 </style>

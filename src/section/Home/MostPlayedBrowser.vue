@@ -1,5 +1,5 @@
 <template>
-  <section id="most-played" class="d-flex align-items-center mt-4">
+  <section id="most-played" class="d-flex align-items-center mt-4 mb-5">
     <div class="container">
       <h3 class="title">Top 10 Most Played on Browser</h3>
       <div class="line" :class="{ 'dark-mode': darkMode }"></div>
@@ -105,28 +105,7 @@ export default {
 
   .swiper {
     padding: 5px 14px 25px;
-
-    .swiper-button-prev {
-      color: $fontLight;
-      left: 0;
-      filter: drop-shadow(0 0 2px);
-      transition: 0.2s ease-in-out;
-
-      &.dark-mode {
-        color: $navyBlue;
-      }
-    }
-
-    .swiper-button-next {
-      color: $fontLight;
-      right: 0;
-      filter: drop-shadow(0 0 2px);
-      transition: 0.2s ease-in-out;
-
-      &.dark-mode {
-        color: $navyBlue;
-      }
-    }
+    z-index: 0;
   }
 }
 

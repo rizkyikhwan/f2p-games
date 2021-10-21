@@ -5,6 +5,26 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $gray;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $navyBlue;
+  border-radius: 25px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+
+  &:hover {
+    background-color: $lightBlue1;
+  }
 }
 
 #app {
@@ -12,24 +32,58 @@
   background: $backgroundLight;
   overflow: hidden;
   color: $fontLight;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 
   &.dark-mode {
     background: $backgroundDark;
     color: $fontDark;
   }
+
+  .line {
+    max-width: 250px;
+    width: 50%;
+    height: 5px;
+    border-radius: 5rem;
+    background: $navyBlue;
+    z-index: 1;
+    filter: drop-shadow(0 0 2px $navyBlue);
+    transition: 0.2s ease-in-out;
+
+    &.dark-mode {
+      filter: drop-shadow(0 0 2px $navyBlue);
+    }
+  }
 }
 
-.fadeInOutBottom-enter {
+.swiper {
+  padding: 5px 14px 25px;
+  z-index: 0;
+}
+
+@keyframes show-up {
+  0% {
+    transform: translateY(100px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.fadeInOutTop-enter {
   opacity: 0;
+  transform: translateY(-25px);
 }
 
-.fadeInOutBottom-leave-to {
+.fadeInOutTop-leave-to {
   opacity: 0;
+  transform: translateY(-25px);
 }
 
-.fadeInOutBottom-enter-active,
-.fadeInOutBottom-leave-active {
+.fadeInOutTop-enter-active,
+.fadeInOutTop-leave-active {
   transition: all 0.3s ease;
 }
 
@@ -57,4 +111,14 @@
 .slideLeft-enter-active,
 .slideLeft-leave-active {
   transition: 0.2s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
 }
