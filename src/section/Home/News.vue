@@ -7,27 +7,18 @@
         :class="{ 'dark-mode': darkMode }"
       ></div>
       <div class="container">
-        <div class="row">
-          <div v-for="news in lastNews" :key="news.id" class="col-md-3 px-2">
-            <div class="game-card mt-3">
-              <div class="card">
-                <img
-                  :src="`${news.thumbnail}`"
-                  class="rounded"
-                  :alt="`${news.title}`"
-                />
-                <div class="d-flex align-items-center">
-                  <div class="card-body">
-                    <p class="card-title">{{ news.title }}</p>
-                    <p class="description small text-muted">
-                      {{ news.short_description }}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="row d-flex justify-content-between">
+          <div class="wrap mb-4 col-lg-6 row" v-for="news in lastNews" :key="news.id">
+          <div class="wrap-img col-sm-4 px-1 d-flex justify-content-start">
+            <img :src="`${news.thumbnail}`" class="img-fluid rounded shadow">
+          </div>
+          <div class="wrap-body col-sm px-1">
+            <p class="title-body mt-2">{{ news.title }}</p>
+            <p class="small text-muted description">{{ news.short_description }}</p>
           </div>
         </div>
+        </div>
+        
       </div>
     </div>
   </section>
@@ -74,32 +65,37 @@ export default {
     font-size: 24px;
   }
 
-  .game-card {
-    .card {
-      background: transparent;
-      border: 0;
+  .wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
-      .card-body {
-        padding: 15px 0;
+    .wrap-img {
+      display: flex;
+      align-items: center;
 
-        .card-title {
-          font-weight: 500;
-          max-width: 225px;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
+      .img-fluid {
+        min-width: 140px;
+      }
+    }
 
-        .description {
-          max-width: 200px;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
+    .wrap-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .description {
+        max-width: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
+
 }
+
 
 @media (max-width: 992px) {
   #news {
