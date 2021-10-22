@@ -82,8 +82,6 @@ export default {
 @import "./src/assets/sass/_font.scss";
 
 #most-played {
-  // min-height: 75vh;
-
   .title {
     font-family: "Saira", sans-serif;
     text-transform: uppercase;
@@ -111,17 +109,9 @@ export default {
 
 @media (max-width: 768px) {
   #most-played {
-    // min-height: 50vh;
-
     .title {
       font-size: 20px;
     }
   }
 }
-
-// @media (max-width: 576px) {
-//   #most-played {
-//     min-height: 60vh;
-//   }
-// }
 </style>

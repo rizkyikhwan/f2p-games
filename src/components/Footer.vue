@@ -3,6 +3,7 @@
     <div class="container d-flex flex-column align-items-center">
       <img v-if="!darkMode" src="../assets/logo/logo-light.png" />
       <img v-else src="../assets/logo/logo-dark.png" />
+      <router-link :to="{name: 'About'}" class="nav-link" :class="{'dark-mode': darkMode}">About</router-link>
       <span>© 2021 Rizky Ikhwan</span>
       <div class="pt-3">
         <a
@@ -78,6 +79,18 @@ export default {
     pointer-events: none;
     animation: pulse 2s infinite;
     filter: drop-shadow(0 0 2px $navyBlue);
+  }
+
+  .nav-link {
+    text-align: center;
+    padding: 5px 0 15px;
+    color: $fontLight;
+    text-decoration: none;
+
+    &.dark-mode {
+      color: $fontDark;
+      filter: drop-shadow(0 0 2px);
+    }
   }
 
   span {
