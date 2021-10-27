@@ -16,7 +16,20 @@
               :key="newcomer.id"
               class="col-6 col-md-4 px-1"
             >
-              <GameCardNewcomers :game="newcomer" :darkMode="darkMode" />
+              <router-link
+                class="specific-game"
+                :class="{ 'dark-mode': darkMode }"
+                :to="{
+                  name: 'GameDetail',
+                  params: {
+                    id: newcomer.id,
+                    meta: newcomer.title,
+                    title: convertToSlug(newcomer.title),
+                  },
+                }"
+              >
+                <GameCardNewcomers :game="newcomer" :darkMode="darkMode" />
+              </router-link>
             </div>
           </div>
           <Loading v-if="loading" />
@@ -25,7 +38,20 @@
           <h2 class="title">Most Played</h2>
           <div class="line mb-5" :class="{ 'dark-mode': darkMode }"></div>
           <div v-for="mostPlay in mostPlayed" :key="mostPlay.id">
-            <GameCardMostPlay :game="mostPlay" :darkMode="darkMode" />
+            <router-link
+              class="specific-game"
+              :class="{ 'dark-mode': darkMode }"
+              :to="{
+                name: 'GameDetail',
+                params: {
+                  id: mostPlay.id,
+                  meta: mostPlay.title,
+                  title: convertToSlug(mostPlay.title),
+                },
+              }"
+            >
+              <GameCardMostPlay :game="mostPlay" :darkMode="darkMode" />
+            </router-link>
           </div>
           <Loading v-if="loading" />
         </div>
@@ -42,7 +68,20 @@
               :key="newcomer.id"
               class="col-6 col-md-3 px-1"
             >
-              <GameCard :game="newcomer" :darkMode="darkMode" />
+              <router-link
+                class="specific-game"
+                :class="{ 'dark-mode': darkMode }"
+                :to="{
+                  name: 'GameDetail',
+                  params: {
+                    id: newcomer.id,
+                    meta: newcomer.title,
+                    title: convertToSlug(newcomer.title),
+                  },
+                }"
+              >
+                <GameCard :game="newcomer" :darkMode="darkMode" />
+              </router-link>
             </swiper-slide>
           </swiper>
           <Loading v-if="loading" />
@@ -132,7 +171,12 @@ export default {
         })
         .catch((error) => console.log(error));
       this.loading = false;
-    }
+    },
+    convertToSlug(Text) {
+      return Text.toLowerCase()
+        .replace(/ /g, "-")
+        .replace(/[^\w-]+/g, "");
+    },
   },
   mounted() {
     this.getNewcomers();
@@ -143,8 +187,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
-
 #newcomers {
   margin-bottom: 100px;
 
@@ -157,48 +199,6 @@ export default {
   .swiper {
     padding: 5px 14px 25px;
     z-index: 0;
-
-    .swiper-button-prev {
-      color: $fontLight;
-      background: rgba($color: $light, $alpha: 0.2);
-      border-radius: 50%;
-      padding: 15px;
-      width: 33px;
-      height: 32px;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      transition: 0.2s ease-in-out;
-
-      &::after {
-        filter: drop-shadow(0 0 2px);
-        font-size: 20px;
-      }
-
-      &.dark-mode {
-        color: $navyBlue;
-      }
-    }
-
-    .swiper-button-next {
-      color: $fontLight;
-      background: rgba($color: $light, $alpha: 0.2);
-      border-radius: 50%;
-      padding: 15px;
-      width: 33px;
-      height: 32px;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      transition: 0.2s ease-in-out;
-
-      &::after {
-        filter: drop-shadow(0 0 2px);
-        font-size: 20px;
-      }
-
-      &.dark-mode {
-        color: $navyBlue;
-      }
-    }
   }
 }
 </style>

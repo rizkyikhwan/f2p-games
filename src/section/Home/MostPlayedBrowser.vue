@@ -10,7 +10,16 @@
             :key="mostPlay.id"
             class="col-6 col-md-3 px-1"
           >
-            <GameCard :game="mostPlay" :darkMode="darkMode" />
+            <router-link
+              class="specific-game"
+              :class="{ 'dark-mode': darkMode }"
+              :to="{
+                name: 'GameDetail',
+                params: { id: mostPlay.id, title: mostPlay.title },
+              }"
+            >
+              <GameCard :game="mostPlay" :darkMode="darkMode" />
+            </router-link>
           </swiper-slide>
         </swiper>
       </div>

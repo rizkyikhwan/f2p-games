@@ -60,9 +60,53 @@
           filter: drop-shadow(0 0 2px #2196f3);
 }
 
+.button {
+  font-family: "Saira", sans-serif;
+  color: #002246;
+  border: none;
+  background: linear-gradient(45deg, #102192, #0062cc 50%);
+  border-radius: 4px;
+  padding: 14px 40px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  -webkit-box-shadow: 2px 2px #263bc4, 3px 3px #263bc4, 4px 4px #263bc4;
+          box-shadow: 2px 2px #263bc4, 3px 3px #263bc4, 4px 4px #263bc4;
+  -webkit-filter: drop-shadow(0 0px 2px #0069d9);
+          filter: drop-shadow(0 0px 2px #0069d9);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.button.dark-mode {
+  background: linear-gradient(45deg, #0062cc, #102192 50%);
+  color: #e8e8e8;
+}
+
 .swiper {
   padding: 5px 14px 25px;
   z-index: 0;
+}
+
+.specific-game {
+  color: #002246;
+}
+
+.specific-game:hover {
+  color: #002246;
+  text-decoration: none;
+}
+
+.specific-game.dark-mode {
+  color: #e8e8e8;
+}
+
+.specific-game.dark-mode:hover {
+  color: #e8e8e8;
+  text-decoration: none;
 }
 
 @-webkit-keyframes show-up {

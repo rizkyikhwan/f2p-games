@@ -65,7 +65,7 @@ export default {
 
 .footer {
   font-family: "Montserrat", sans-serif;
-  background: $grayLight;
+  background: $grayVeryLight;
   padding: 25px 0;
   transition: background 0.2s ease-in-out;
 

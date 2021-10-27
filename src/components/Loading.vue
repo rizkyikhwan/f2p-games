@@ -18,13 +18,13 @@ export default {
   padding: 30px;
   border: 3px solid transparent;
   border-radius: 50%;
-  border-top-color: $lightBlue1;
-  border-bottom-color: $lightBlue1;
+  border-left-color: $lightBlue1;
+  border-right-color: $lightBlue1;
   filter: drop-shadow(0 0 2px $lightBlue1);
-  animation: loading 1s ease infinite;
+  animation: loading 1.5s ease-in-out infinite;
 }
 
 @keyframes loading {
-  to{transform: rotateZ(360deg);}
+  to{transform: rotateZ(720deg);}
 }
 </style>

@@ -104,12 +104,11 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 .card {
   .card-img-top {
       filter: saturate(100%);
     }
-
     .card-body {
       .title {
         font-size: 17px;

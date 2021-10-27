@@ -2,23 +2,28 @@
   <section id="news">
     <div class="container">
       <h2 class="title">Last News</h2>
-      <div
-        class="line mb-3"
-        :class="{ 'dark-mode': darkMode }"
-      ></div>
+      <div class="line mb-5" :class="{ 'dark-mode': darkMode }"></div>
       <div class="container">
         <div class="row d-flex justify-content-between">
-          <div class="wrap mb-4 col-lg-6 row" v-for="news in lastNews" :key="news.id">
-          <div class="wrap-img col-sm-4 px-1 d-flex justify-content-start">
-            <img :src="`${news.thumbnail}`" class="img-fluid rounded shadow">
-          </div>
-          <div class="wrap-body col-sm px-1">
-            <p class="title-body mt-2">{{ news.title }}</p>
-            <p class="small text-muted description">{{ news.short_description }}</p>
+          <div
+            class="wrap mb-4 col-lg-6 row"
+            v-for="news in lastNews"
+            :key="news.id"
+          >
+            <div class="wrap-img col-sm-4 px-1 d-flex justify-content-start">
+              <img
+                :src="`${news.thumbnail}`"
+                class="img-fluid rounded shadow"
+              />
+            </div>
+            <div class="wrap-body col-sm px-1">
+              <p class="title-body mt-2">{{ news.title }}</p>
+              <p class="small text-muted description">
+                {{ news.short_description }}
+              </p>
+            </div>
           </div>
         </div>
-        </div>
-        
       </div>
     </div>
   </section>
@@ -34,7 +39,7 @@ export default {
       lastNews: [],
     };
   },
-  props: ['darkMode'],
+  props: ["darkMode"],
   methods: {
     getLastNews() {
       axios
@@ -93,9 +98,7 @@ export default {
       }
     }
   }
-
 }
-
 
 @media (max-width: 992px) {
   #news {

@@ -1,7 +1,11 @@
 <template>
-  <section id="most-played" class="d-flex align-items-center mt-5 mb-5" :class="{ 'dark-mode':darkMode }">
+  <section
+    id="most-played"
+    class="d-flex align-items-center mt-5 mb-5"
+    :class="{ 'dark-mode': darkMode }"
+  >
     <div class="container">
-      <div class="angle" :class="{ 'dark-mode':darkMode }"></div>
+      <div class="angle" :class="{ 'dark-mode': darkMode }"></div>
       <h3 class="title" :class="{ 'dark-mode': darkMode }">
         Top 10 Most Played on PC
       </h3>
@@ -13,12 +17,21 @@
             :key="mostPlay.id"
             class="col-6 col-md-3 px-1"
           >
-            <GameCard :game="mostPlay" :darkMode="darkMode" />
+            <router-link
+              class="specific-game"
+              :class="{ 'dark-mode': darkMode }"
+              :to="{
+                name: 'GameDetail',
+                params: { id: mostPlay.id, title: mostPlay.title },
+              }"
+            >
+              <GameCard :game="mostPlay" :darkMode="darkMode" />
+            </router-link>
           </swiper-slide>
         </swiper>
       </div>
       <Loading v-if="loading" />
-      <div class="angle" :class="{ 'dark-mode':darkMode }"></div>
+      <div class="angle" :class="{ 'dark-mode': darkMode }"></div>
     </div>
   </section>
 </template>
@@ -86,11 +99,11 @@ export default {
 @import "./src/assets/sass/_font.scss";
 
 #most-played {
-  background: $grayLight;
+  background: $grayVeryLight;
   transition: background 0.2s ease-in-out;
 
   .angle {
-    width: 170rem;
+    width: 250rem;
     height: 75px;
     background: $backgroundLight;
     transform: translateX(-50%) translateY(-70%) rotate(2deg);
@@ -99,7 +112,7 @@ export default {
     &:last-child {
       transform: translateX(-50%) translateY(35%) rotate(2deg);
     }
-    
+
     &.dark-mode {
       background: $backgroundDark;
     }
@@ -127,7 +140,6 @@ export default {
 
 @media (max-width: 768px) {
   #most-played {
-
     .title {
       font-size: 20px;
     }

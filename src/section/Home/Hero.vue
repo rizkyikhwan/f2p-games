@@ -4,7 +4,7 @@
       <div class="row mt-3">
         <div class="col-md-6 order-1 mb-5">
           <div class="d-flex">
-            <div class="justify-content-center align-self-center parallax-text">
+            <div class="justify-content-center align-self-center">
               <h1 class="title">Free games to play</h1>
               <p class="lead mb-4">
                 Cari dan temukan game <span>Free-to-play</span> terbaik kalian di <span>PC</span> dan <span>Browser</span> !
@@ -30,14 +30,6 @@
 <script>
 export default {
   props: ["darkMode"],
-  created() {
-    window.addEventListener('scroll', () => {
-      const parallaxText = document.querySelector(".parallax-text");
-      let scroll = window.pageYOffset;
-
-      parallaxText.style.transform = 'translateY(' + scroll * -.3 + 'px)';
-    })
-  }
 };
 </script>
 
@@ -81,7 +73,6 @@ export default {
   .button {
     font-family: "Saira", sans-serif;
     color: $fontLight;
-    border: 2px solid $lightBlue1;
     background: linear-gradient(45deg, $blue2, $lightBlue2 50%);
     border-radius: 4px;
     padding: 14px 40px;
@@ -99,7 +90,7 @@ export default {
     &:hover {
       color: $fontDark;
       box-shadow: none;
-      transform: translateX(-3px);
+      transform: translateY(-3px);
     }
 
     &.dark-mode {

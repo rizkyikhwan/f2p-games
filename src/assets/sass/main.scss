@@ -55,9 +55,49 @@
   }
 }
 
+.button {
+  font-family: "Saira", sans-serif;
+  color: $fontLight;
+  border: none;
+  background: linear-gradient(45deg, $blue2, $lightBlue2 50%);
+  border-radius: 4px;
+  padding: 14px 40px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow: 2px 2px $blue, 3px 3px $blue, 4px 4px $blue;
+  filter: drop-shadow(0 0px 2px $lightBlue1);
+  transition: all 0.2s ease-in-out;
+
+  &.dark-mode {
+    background: linear-gradient(45deg, $lightBlue2, $blue2 50%);
+    color: $fontDark;
+  }
+}
 .swiper {
   padding: 5px 14px 25px;
   z-index: 0;
+}
+
+.specific-game {
+  color: $fontLight;
+
+  &:hover {
+    color: $fontLight;
+    text-decoration: none;
+  }
+
+  &.dark-mode {
+    color: $fontDark;
+
+    &:hover {
+      color: $fontDark;
+      text-decoration: none;
+    }
+  }
 }
 
 @keyframes show-up {
