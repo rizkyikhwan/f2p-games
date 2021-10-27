@@ -13,7 +13,7 @@
             <button class="button mb-3 rounded shadow-sm" :class="{'dark-mode': darkMode}">
               Play Now
               <font-awesome-icon
-                :icon="{ prefix: 'fas', iconName: 'sign-in-alt' }"
+                :icon="[ 'fas', 'sign-in-alt' ]"
               ></font-awesome-icon>
             </button>
           </a>
@@ -52,12 +52,12 @@
                 {{ gameDetail.platform }}
                 <span v-if="gameDetail.platform === 'Windows'">
                   <font-awesome-icon
-                    :icon="{ prefix: 'fab', iconName: 'windows' }"
+                    :icon="[ 'fab', 'windows' ]"
                   ></font-awesome-icon>
                 </span>
                 <span v-else>
                   <font-awesome-icon
-                    :icon="{ prefix: 'fas', iconName: 'window-maximize' }"
+                    :icon="[ 'fas', 'window-maximize' ]"
                   ></font-awesome-icon>
                 </span>
               </p>

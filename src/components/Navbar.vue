@@ -19,30 +19,30 @@
         <font-awesome-icon
           class="icon sun"
           v-if="!darkMode"
-          :icon="{ prefix: 'fas', iconName: 'sun' }"
+          :icon="[ 'fas', 'sun' ]"
         ></font-awesome-icon>
         <font-awesome-icon
           class="icon moon"
           v-else
-          :icon="{ prefix: 'fas', iconName: 'moon' }"
+          :icon="[ 'fas', 'moon' ]"
         ></font-awesome-icon>
       </button>
 
       <!-- Mobile -->
       <div class="menu-toggle" v-show="mobile" @click="toggleMobileNav">
-        <span class="bar"  :class="{'dark-mode': darkMode}"></span>
-        <span class="bar"  :class="{'dark-mode': darkMode}"></span>
-        <span class="bar"  :class="{'dark-mode': darkMode}"></span>
+        <span class="bar" :class="{'dark-mode': darkMode}"></span>
+        <span class="bar" :class="{'dark-mode': darkMode}"></span>
+        <span class="bar" :class="{'dark-mode': darkMode}"></span>
       </div>
       <transition name="slideLeft">
         <ul class="mobile-nav" v-show="mobileNav" :class="{'dark-mode': darkMode}">
-          <font-awesome-icon @click="toggleMobileNav" class="icon-close" :class="{'dark-mode': darkMode}" :icon="{prefix: 'fas', iconName: 'times'}"></font-awesome-icon>
+          <font-awesome-icon @click="toggleMobileNav" class="icon-close" :class="{'dark-mode': darkMode}" :icon="['fas', 'times']"></font-awesome-icon>
           <router-link :to="{ name: 'Home' }" class="nav-link mt-3" :class="{ 'dark-mode': darkMode }">Home</router-link>
           <router-link :to="{ name: 'Games' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Games</router-link>
           <router-link :to="{ name: 'About' }" class="nav-link" :class="{ 'dark-mode': darkMode }">About</router-link>
           <button class="d-flex align-items-center icon-wrap" :class="{ 'dark-mode': darkMode }" @click="$emit('darkMode')" style="margin: 0 auto">
-            <font-awesome-icon class="icon sun" v-if="!darkMode" :icon="{ prefix: 'fas', iconName: 'sun' }"></font-awesome-icon>
-            <font-awesome-icon class="icon moon" v-else :icon="{ prefix: 'fas', iconName: 'moon' }"></font-awesome-icon>
+            <font-awesome-icon class="icon sun" v-if="!darkMode" :icon="[ 'fas', 'sun' ]"></font-awesome-icon>
+            <font-awesome-icon class="icon moon" v-else :icon="[ 'fas', 'moon' ]"></font-awesome-icon>
           </button>
         </ul>
       </transition>

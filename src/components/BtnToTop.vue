@@ -2,7 +2,7 @@
 <transition name="fade">
   <div v-if="scrollY" @click="scrollToTop">
     <button class="btn-to-top shadow-sm" :class="{'dark-mode': darkMode}">
-      <font-awesome-icon class="icon" :icon="{prefix: 'fas', iconName: 'angle-up'}"></font-awesome-icon>
+      <font-awesome-icon class="icon" :icon="['fas', 'angle-up']"></font-awesome-icon>
     </button>
   </div>
 </transition>

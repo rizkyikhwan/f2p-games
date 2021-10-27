@@ -16,10 +16,10 @@
         >
           <font-awesome-icon
             class="h4 icon"
-            :icon="{
-              prefix: `${icon.prefix}`,
-              iconName: `${icon.iconName}`,
-            }"
+            :icon="[
+              `${icon.prefix}`,
+              `${icon.iconName}`,
+            ]"
           ></font-awesome-icon>
         </a>
       </div>

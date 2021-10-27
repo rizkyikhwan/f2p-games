@@ -9,12 +9,12 @@
           :class="{ 'dark-mode': darkMode }"
         >
           <font-awesome-icon
-            :icon="{ prefix: 'fab', iconName: 'windows' }"
+            :icon="[ 'fab', 'windows' ]"
           ></font-awesome-icon>
         </p>
         <p class="icon" v-else :class="{ 'dark-mode': darkMode }">
           <font-awesome-icon
-            :icon="{ prefix: 'fas', iconName: 'window-maximize' }"
+            :icon="[ 'fas', 'window-maximize' ]"
           ></font-awesome-icon>
         </p>
         <p class="platform" :class="{ 'dark-mode': darkMode }">
@@ -31,12 +31,12 @@
           <span class="title">{{ game.title }}</span>
           <span v-if="this.game.platform === `PC (Windows)`">
             <font-awesome-icon
-              :icon="{ prefix: 'fab', iconName: 'windows' }"
+              :icon="[ 'fab', 'windows' ]"
             ></font-awesome-icon>
           </span>
           <span v-else>
             <font-awesome-icon
-              :icon="{ prefix: 'fas', iconName: 'window-maximize' }"
+              :icon="[ 'fas', 'window-maximize' ]"
             ></font-awesome-icon>
           </span>
         </div>

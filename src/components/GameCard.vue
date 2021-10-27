@@ -16,10 +16,10 @@
       <div class="card-footer" :class="{'dark-mode': darkMode}">
         <span>{{ game.genre }}</span>
         <span v-if="this.game.platform === `PC (Windows)`">
-          <font-awesome-icon :icon="{prefix: 'fab', iconName: 'windows'}" class="icon-social"></font-awesome-icon>
+          <font-awesome-icon :icon="['fab', 'windows']" class="icon-social"></font-awesome-icon>
         </span>
         <span v-else>
-          <font-awesome-icon :icon="{prefix: 'fas', iconName: 'window-maximize'}"></font-awesome-icon>
+          <font-awesome-icon :icon="['fas', 'window-maximize']"></font-awesome-icon>
         </span>
       </div>
     </div>

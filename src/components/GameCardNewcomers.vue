@@ -9,10 +9,10 @@
       <div class="card-body d-flex align-items-center" :class="{'dark-mode': darkMode}">
         <span class="title">{{ game.title }}</span>
         <span v-if="this.game.platform === `PC (Windows)`">
-          <font-awesome-icon :icon="{prefix: 'fab', iconName: 'windows'}"></font-awesome-icon>
+          <font-awesome-icon :icon="['fab', 'windows']"></font-awesome-icon>
         </span>
         <span v-else>
-          <font-awesome-icon :icon="{prefix: 'fas', iconName: 'window-maximize'}"></font-awesome-icon>
+          <font-awesome-icon :icon="['fas', 'window-maximize']"></font-awesome-icon>
         </span>
       </div>
     </div>

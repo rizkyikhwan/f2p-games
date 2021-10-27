@@ -32,4 +32,10 @@ const API_MostPlayedBrowser = {
   headers: Headers
 };
 
-export { API_Newcomers, API_MostPlayed, API_MostPlayedPC, API_MostPlayedBrowser };
+const API_SearchGames = {
+  method: 'GET',
+  url: URL,
+  headers: Headers
+};
+
+export { API_Newcomers, API_MostPlayed, API_MostPlayedPC, API_MostPlayedBrowser, API_SearchGames };
