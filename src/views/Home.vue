@@ -4,7 +4,7 @@
     <Newcomers :darkMode="darkMode" />
     <MostPlayedPc :darkMode="darkMode" />
     <MostPlayedBrowser :darkMode="darkMode" />
-    <News :darkMode="darkMode" />
+    <LastNews :darkMode="darkMode" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import Hero from "@/section/Home/Hero.vue";
 import Newcomers from "@/section/Home/Newcomers.vue";
 import MostPlayedPc from "@/section/Home/MostPlayedPc.vue";
 import MostPlayedBrowser from "@/section/Home/MostPlayedBrowser.vue";
-import News from "@/section/Home/News.vue";
+import LastNews from "@/section/Home/LastNews.vue";
 
 export default {
   name: "Home",
@@ -23,7 +23,7 @@ export default {
     Newcomers,
     MostPlayedPc,
     MostPlayedBrowser,
-    News
+    LastNews
   },
 };
 </script>

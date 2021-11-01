@@ -7,8 +7,9 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSun, faMoon, faTimes, faWindowMaximize, faAngleUp, faSignInAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faWindows, faGithub, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import "./assets/css/main.css"
 import infiniteScroll from 'vue-infinite-scroll';
+import "./assets/css/main.css";
+
 
 library.add( faSun, faMoon, faTimes, faWindows, faWindowMaximize, faAngleUp, faGithub, faLinkedin, faInstagram, faSignInAlt, faSearch );
 

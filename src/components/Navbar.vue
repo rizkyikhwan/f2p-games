@@ -13,7 +13,7 @@
       <div class="d-flex" v-if="!mobile">
         <router-link :to="{ name: 'Home' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Home</router-link>
         <router-link :to="{ name: 'Games' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Games</router-link>
-        <router-link :to="{ name: 'About' }" class="nav-link" :class="{ 'dark-mode': darkMode }">About</router-link>
+        <router-link :to="{ name: 'News' }" class="nav-link" :class="{ 'dark-mode': darkMode }">News</router-link>
       </div>
       <button class="d-flex align-items-center icon-wrap" @click="$emit('darkMode')" v-if="!mobile">
         <font-awesome-icon
@@ -39,7 +39,7 @@
           <font-awesome-icon @click="toggleMobileNav" class="icon-close" :class="{'dark-mode': darkMode}" :icon="['fas', 'times']"></font-awesome-icon>
           <router-link :to="{ name: 'Home' }" class="nav-link mt-3" :class="{ 'dark-mode': darkMode }">Home</router-link>
           <router-link :to="{ name: 'Games' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Games</router-link>
-          <router-link :to="{ name: 'About' }" class="nav-link" :class="{ 'dark-mode': darkMode }">About</router-link>
+          <router-link :to="{ name: 'News' }" class="nav-link" :class="{ 'dark-mode': darkMode }">News</router-link>
           <button class="d-flex align-items-center icon-wrap" :class="{ 'dark-mode': darkMode }" @click="$emit('darkMode')" style="margin: 0 auto">
             <font-awesome-icon class="icon sun" v-if="!darkMode" :icon="[ 'fas', 'sun' ]"></font-awesome-icon>
             <font-awesome-icon class="icon moon" v-else :icon="[ 'fas', 'moon' ]"></font-awesome-icon>

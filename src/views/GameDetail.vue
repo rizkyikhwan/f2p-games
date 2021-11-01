@@ -10,10 +10,13 @@
             class="img-fluid rounded shadow mb-3"
           />
           <a :href="`${gameDetail.game_url}`" target="_blank">
-            <button class="button mb-3 rounded shadow-sm" :class="{'dark-mode': darkMode}">
+            <button
+              class="button mb-3 rounded shadow-sm"
+              :class="{ 'dark-mode': darkMode }"
+            >
               Play Now
               <font-awesome-icon
-                :icon="[ 'fas', 'sign-in-alt' ]"
+                :icon="['fas', 'sign-in-alt']"
               ></font-awesome-icon>
             </button>
           </a>
@@ -52,12 +55,12 @@
                 {{ gameDetail.platform }}
                 <span v-if="gameDetail.platform === 'Windows'">
                   <font-awesome-icon
-                    :icon="[ 'fab', 'windows' ]"
+                    :icon="['fab', 'windows']"
                   ></font-awesome-icon>
                 </span>
                 <span v-else>
                   <font-awesome-icon
-                    :icon="[ 'fas', 'window-maximize' ]"
+                    :icon="['fas', 'window-maximize']"
                   ></font-awesome-icon>
                 </span>
               </p>
@@ -127,12 +130,14 @@ import Loading from "@/components/Loading.vue";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import {URL_gameSpecific, Headers } from "@/composable/getDataGames.js";
 import "swiper/swiper-bundle.min.css";
 
 export default {
   data() {
     return {
       gameDetail: [],
+      mostPlayed: [],
       swiperOption: {
         slidesPerView: 2,
         breakpoints: {
@@ -164,12 +169,9 @@ export default {
     async specifiGame() {
       const API_specificGame = {
         method: "GET",
-        url: "https://free-to-play-games-database.p.rapidapi.com/api/game",
+        url: URL_gameSpecific,
         params: { id: this.$route.params.id },
-        headers: {
-          "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
-          "x-rapidapi-key": `${process.env.VUE_APP_API_KEY}`,
-        },
+        headers: Headers,
       };
       this.loading = true;
       await axios

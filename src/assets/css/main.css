@@ -9,6 +9,11 @@
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  height: 98%;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -153,6 +158,19 @@
 
 .fadeInOutTop-enter-active,
 .fadeInOutTop-leave-active {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.fadeInBottom-enter,
+.fadeInBottom-leave-to {
+  opacity: 0;
+  -webkit-transform: translateY(25px);
+          transform: translateY(25px);
+}
+
+.fadeInBottom-enter-active,
+.fadeInBottom-leave-active {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }

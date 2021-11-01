@@ -40,22 +40,23 @@ export default {
 #hero {
   font-family: "Roboto", sans-serif;
   min-height: 90vh;
-  border: 0;
+  border-bottom: 5px solid $backgroundLight;
   background-image: linear-gradient(
       rgba($color: $backgroundLight, $alpha: 0.5),
       rgba($color: $backgroundLight, $alpha: 1)
     ),
-    url(../../assets/images/hero/hero-image.jpg);
+    url(../../assets/images/hero/hero-image2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
   &.dark-mode {
+    border-bottom: 5px solid $backgroundDark;
     background-image: linear-gradient(
         rgba($color: $backgroundDark, $alpha: 0.75),
         rgba($color: $backgroundDark, $alpha: 1)
       ),
-      url(../../assets/images/hero/hero-image.jpg);
+      url(../../assets/images/hero/hero-image2.jpg);
   }
 
   .title {

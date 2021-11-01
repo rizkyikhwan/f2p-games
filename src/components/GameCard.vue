@@ -11,7 +11,7 @@
         <p class="card-text">
           {{ game.short_description }}
         </p>
-        <span class="text-muted card-publisher">{{ game.publisher }}</span>
+        <p class="text-muted card-publisher">{{ game.publisher }}</p>
       </div>
       <div class="card-footer" :class="{'dark-mode': darkMode}">
         <span>{{ game.genre }}</span>
@@ -78,6 +78,7 @@ export default {
     
       .card-publisher {
         font-size: 12px;
+        margin: 5px 0 0 0;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

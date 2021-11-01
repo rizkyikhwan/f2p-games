@@ -6,33 +6,37 @@
     </h4>
     <input
       type="text"
-      placeholder="Search Game..."
+      placeholder="Search Games..."
       class="search shadow rounded"
       :class="{ 'dark-mode': darkMode }"
       v-model="search"
     />
-    <div class="row d-flex justify-content-center">
-      <div
-        v-for="game in searchGames"
-        :key="game.id"
-        class="col-md-3 col-6 px-2"
-      >
-        <router-link
-          class="specific-game"
-          :class="{ 'dark-mode': darkMode }"
-          :to="{
-            name: 'GameDetail',
-            params: {
-              id: game.id,
-              meta: game.title,
-              title: convertToSlug(game.title),
-            },
-          }"
+    <transition name="fadeInBottom" mode="out-in">
+      <div class="row d-flex justify-content-center" v-if="search">
+        <div
+          v-for="game in searchGames"
+          :key="game.id"
+          class="col-md-3 col-6 px-2"
         >
-          <GameCard :game="game" :darkMode="darkMode" v-if="search" />
-        </router-link>
+          <router-link
+            class="specific-game"
+            :class="{ 'dark-mode': darkMode }"
+            :to="{
+              name: 'GameDetail',
+              params: {
+                id: game.id,
+                meta: game.title,
+                title: convertToSlug(game.title),
+              },
+            }"
+          >
+            <GameCard :game="game" :darkMode="darkMode" />
+          </router-link>
+        </div>
       </div>
-    </div>
+      <p v-else class="text-muted text-center mt-4">Search results will appear here</p>
+    </transition>
+    <!-- <p v-if="searchGames.length == 0" class="text-muted text-center mt-4">Sorry, your games is not found!</p> -->
   </div>
 </template>
 
@@ -40,7 +44,7 @@
 import GameCard from "@/components/GameCard.vue";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { API_SearchGames } from "@/composable/getDataGames.js";
+import { API_AllGames } from "@/composable/getDataGames.js";
 
 export default {
   data() {
@@ -57,7 +61,7 @@ export default {
   methods: {
     async getGames() {
       await axios
-        .request(API_SearchGames)
+        .request(API_AllGames)
         .then((response) => (this.resultGames = response.data))
         .catch((error) => console.log(error));
     },
@@ -107,5 +111,11 @@ export default {
     background: $backgroundDarkDeep;
     color: $gray;
   }
+}
+
+.text-search {
+  color: $gray;
+  text-align: center;
+  margin-top: 15px;
 }
 </style>

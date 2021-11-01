@@ -22,7 +22,7 @@
               :class="{ 'dark-mode': darkMode }"
               :to="{
                 name: 'GameDetail',
-                params: { id: mostPlay.id, title: mostPlay.title },
+                params: { id: mostPlay.id, meta: mostPlay.title, title: convertToSlug(mostPlay.title) },
               }"
             >
               <GameCard :game="mostPlay" :darkMode="darkMode" />
@@ -86,6 +86,11 @@ export default {
         })
         .catch((error) => console.error(error));
       this.loading = false;
+    },
+    convertToSlug(Text) {
+      return Text.toLowerCase()
+        .replace(/ /g, "-")
+        .replace(/[^\w-]+/g, "");
     },
   },
   mounted() {

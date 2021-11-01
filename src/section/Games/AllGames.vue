@@ -6,7 +6,10 @@
       style="margin-bottom: -25px"
       :class="{ 'dark-mode': darkMode }"
     ></div>
-    <div
+    <transition-group
+      name="fadeInBottom"
+      tag="div"
+      v-infinite-scroll="getGames"
       infinite-scroll-disabled="busy"
       infinite-scroll-distance="limit"
       class="row"
@@ -27,26 +30,14 @@
           <GameCard :game="game" :darkMode="darkMode" />
         </router-link>
       </div>
-    </div>
-    <div class="d-flex justify-content-center mt-5">
-      <button
-        v-if="!loading"
-        @click="getGames"
-        class="button"
-        :class="{ 'dark-mode': darkMode }"
-      >
-        Load More
-      </button>
-      <Loading v-if="loading" class="loading" />
-    </div>
+    </transition-group>
   </section>
 </template>
 
 <script>
 import axios from "axios";
 import GameCard from "@/components/GameCard.vue";
-import Loading from "@/components/Loading.vue";
-import { API_MostPlayed } from "@/composable/getDataGames.js";
+import { URL, Headers } from "@/composable/getDataGames.js";
 
 export default {
   data() {
@@ -54,37 +45,44 @@ export default {
       games: [],
       limit: 24,
       busy: false,
-      loading: null,
     };
   },
   props: ["darkMode"],
   components: {
     GameCard,
-    Loading,
   },
   methods: {
     async getGames() {
-      this.loading = true;
+      const API_AllGames = {
+        method: "GET",
+        url: URL,
+        headers: Headers,
+      };
       this.busy = true;
       await setTimeout(() => {
         axios
-          .request(API_MostPlayed)
+          .request(API_AllGames)
           .then((response) => {
             const append = response.data.slice(
               this.games.length,
               this.games.length + this.limit
             );
-            this.games = this.games.concat(append);
+            this.games.push(...append);
             this.busy = false;
-            this.loading = false;
           })
           .catch((error) => console.log(error));
-      }, 1500);
+      }, 250);
     },
     convertToSlug(Text) {
       return Text.toLowerCase()
         .replace(/ /g, "-")
         .replace(/[^\w-]+/g, "");
+    },
+    handlerScrollToBottom(ivVisible) {
+      if (!ivVisible) {
+        return;
+      }
+      console.log("abc");
     },
   },
   mounted() {

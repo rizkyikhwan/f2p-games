@@ -138,6 +138,9 @@ export default {
 
 @media (max-width: 576px) {
   #news {
+    // .wrap {
+    //   flex-wrap: wrap;
+    // }
     .game-card {
       .card {
         .card-body {
@@ -150,6 +153,14 @@ export default {
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: 356px) {
+  #news {
+    .wrap {
+      flex-wrap: wrap;
     }
   }
 }

@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .games {
-  min-height: 75vh;
+  min-height: 100vh;
   margin-top: 100px;
 }
 </style>
