@@ -1,11 +1,33 @@
 <template>
   <section id="all-games">
-    <h4 class="title">All Free Games</h4>
-    <div
-      class="line"
-      style="margin-bottom: -25px"
-      :class="{ 'dark-mode': darkMode }"
-    ></div>
+    <div class="row">
+      <div class="col-sm-6">
+        <h4 class="title">All Free Games</h4>
+        <div
+          class="line"
+          style="max-width: 100"
+          :class="{ 'dark-mode': darkMode }"
+        ></div>
+      </div>
+      <div class="btn-wrap col-sm-6">
+        <button
+          class="btn-category mr-3 px-3"
+          :class="{ 'dark-mode': darkMode }"
+        >
+          All
+        </button>
+        <button
+          class="btn-category mr-3 px-3"
+          :class="{ 'dark-mode': darkMode }"
+        >
+          PC
+        </button>
+        <button class="btn-category px-3" :class="{ 'dark-mode': darkMode }">
+          Browser
+        </button>
+      </div>
+    </div>
+
     <transition-group
       name="fadeInBottom"
       tag="div"
@@ -78,12 +100,6 @@ export default {
         .replace(/ /g, "-")
         .replace(/[^\w-]+/g, "");
     },
-    handlerScrollToBottom(ivVisible) {
-      if (!ivVisible) {
-        return;
-      }
-      console.log("abc");
-    },
   },
   mounted() {
     this.getGames();
@@ -125,5 +141,40 @@ export default {
 
 .loading {
   margin: 0;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .btn-category {
+    font-family: "Saira", sans-serif;
+    border: 2px solid $navyBlue;
+    filter: drop-shadow(0 0 2px $navyBlue);
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: 0.3s ease-in-out;
+
+    &.dark-mode {
+      color: $fontDark;
+      filter: drop-shadow(0 0 2px $navyBlue);
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .btn-wrap {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-bottom: -10px;
+  }
 }
 </style>
