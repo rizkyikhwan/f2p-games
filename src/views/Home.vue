@@ -1,11 +1,11 @@
 <template>
-  <div class="home">
+  <main class="home">
     <Hero :darkMode="darkMode" />
     <Newcomers :darkMode="darkMode" />
     <MostPlayedPc :darkMode="darkMode" />
     <MostPlayedBrowser :darkMode="darkMode" />
     <LastNews :darkMode="darkMode" />
-  </div>
+  </main>
 </template>
 
 <script>

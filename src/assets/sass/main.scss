@@ -82,6 +82,7 @@ body {
     color: $fontDark;
   }
 }
+
 .swiper {
   padding: 5px 14px 25px;
   z-index: 0;
@@ -111,6 +112,18 @@ body {
   }
   50% {
     transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes clicked {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7.5px);
   }
   100% {
     transform: translateY(0);

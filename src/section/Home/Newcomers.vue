@@ -34,7 +34,7 @@
           </div>
           <Loading v-if="loading" />
         </div>
-        <div class="col-md-4 order-md-2 mb-5">
+        <div class="col-md-4 order-md-2 mb-4">
           <h2 class="title">Most Played</h2>
           <div class="line mb-5" :class="{ 'dark-mode': darkMode }"></div>
           <div v-for="mostPlay in mostPlayed" :key="mostPlay.id">
@@ -60,7 +60,7 @@
       <!-- Mobile -->
       <div v-if="mobile">
         <h2 class="title mt-5">Newcomers</h2>
-        <div class="line" :class="{ 'dark-mode': darkMode }"></div>
+        <div class="line mb-4" :class="{ 'dark-mode': darkMode }"></div>
         <div class="row">
           <swiper :options="swiperOption" ref="swiper" class="swiper">
             <swiper-slide
@@ -96,7 +96,7 @@ import GameCard from "@/components/GameCard.vue";
 import GameCardNewcomers from "@/components/GameCardNewcomers.vue";
 import GameCardMostPlay from "@/components/GameCardMostPlay.vue";
 import Loading from "@/components/Loading.vue";
-import { API_Newcomers, API_MostPlayed } from "@/composable/getDataGames.js";
+import { API_Newcomers, API_MostPlayed } from "@/api/getDataGames.js";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/swiper-bundle.min.css";
 import axios from "axios";

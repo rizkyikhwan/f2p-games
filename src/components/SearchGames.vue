@@ -7,7 +7,7 @@
     <input
       type="text"
       placeholder="Search Games..."
-      class="search shadow rounded"
+      class="search shadow rounded mb-4"
       :class="{ 'dark-mode': darkMode }"
       v-model="search"
     />
@@ -34,36 +34,44 @@
           </router-link>
         </div>
       </div>
-      <p v-else class="text-muted text-center mt-4">Search results will appear here</p>
+      <p v-else class="d-flex align-items-center justify-content-center text-muted mt-2">Search results will appear here</p>
     </transition>
-    <!-- <p v-if="searchGames.length == 0" class="text-muted text-center mt-4">Sorry, your games is not found!</p> -->
+    <p v-if="!searchGames.length" class="d-flex align-items-center justify-content-center text-muted mt-2">{{ error }}</p>
   </div>
 </template>
 
 <script>
 import GameCard from "@/components/GameCard.vue";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { API_AllGames } from "@/composable/getDataGames.js";
+import { API_AllGames } from "@/api/getDataGames.js";
 
 export default {
   data() {
     return {
       resultGames: [],
       search: "",
+      error: ""
     };
   },
   props: ["darkMode"],
   components: {
     GameCard,
-    FontAwesomeIcon,
   },
   methods: {
     async getGames() {
-      await axios
+      try {
+        const res = await axios
         .request(API_AllGames)
         .then((response) => (this.resultGames = response.data))
         .catch((error) => console.log(error));
+
+        if (!res.exists) {
+          throw new Error("Sorry, games not found!")
+        }
+      }
+      catch (err) {
+        this.error = err.message;
+      }
     },
     convertToSlug(Text) {
       return Text.toLowerCase()
@@ -86,6 +94,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/sass/_rootColor.scss";
+
+#searchGames {
+  min-height: 10vh;
+}
 
 .title {
   font-family: "Saira", sans-serif;

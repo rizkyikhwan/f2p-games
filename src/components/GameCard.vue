@@ -1,5 +1,5 @@
 <template>
-  <div class="game-card mt-5">
+  <div class="game-card mb-5">
     <div class="card" :class="{'dark-mode': darkMode}">
       <img
         :src="`${game.thumbnail}`"
@@ -27,13 +27,9 @@
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   props: ["game", "darkMode"],
-  components: {
-    FontAwesomeIcon
-  }
 };
 </script>
 

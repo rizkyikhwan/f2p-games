@@ -1,5 +1,5 @@
 <template>
-  <section id="all-games">
+  <section id="pc-games">
     <transition-group
       name="fadeInBottom"
       tag="div"
@@ -50,6 +50,7 @@ export default {
       const API_AllGames = {
         method: "GET",
         url: URL,
+        params: { platform: "pc", "sort-by": "popularity" },
         headers: Headers,
       };
       this.busy = true;

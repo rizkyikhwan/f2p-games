@@ -1,5 +1,5 @@
 <template>
-  <div class="not_found">
+  <main class="not_found">
     <div class="container">
       <div class="wrap">
       <div class="not__found">
@@ -10,7 +10,7 @@
       </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

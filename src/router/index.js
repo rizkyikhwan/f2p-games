@@ -29,6 +29,14 @@ const routes = [
     }
   },
   {
+    path: "/games/filter",
+    name: "GameFilter",
+    component: () => import('../views/AdvancedFilter.vue'),
+    meta: {
+      title: "Advanced Game Filter"
+    }
+  },
+  {
     path: "/game/:id/:title",
     name: "GameDetail",
     component: () => import('../views/GameDetail.vue'),

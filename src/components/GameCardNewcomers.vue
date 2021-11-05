@@ -20,13 +20,9 @@
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   props: ["game", "darkMode"],
-  components: {
-    FontAwesomeIcon
-  }
 };
 </script>
 

@@ -144,6 +144,36 @@ body {
   }
 }
 
+@-webkit-keyframes clicked {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(7.5px);
+            transform: translateY(7.5px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes clicked {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(7.5px);
+            transform: translateY(7.5px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
 .fadeInOutTop-enter {
   opacity: 0;
   -webkit-transform: translateY(-25px);

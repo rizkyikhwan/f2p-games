@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   data() {
@@ -53,9 +52,6 @@ export default {
     };
   },
   props: ["darkMode"],
-  components: {
-    FontAwesomeIcon,
-  },
 };
 </script>
 

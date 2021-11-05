@@ -1,15 +1,14 @@
 <template>
   <section
     id="most-played"
-    class="d-flex align-items-center mt-5 mb-5"
+    class="d-flex align-items-center mb-5"
     :class="{ 'dark-mode': darkMode }"
   >
     <div class="container">
-      <div class="angle" :class="{ 'dark-mode': darkMode }"></div>
       <h3 class="title" :class="{ 'dark-mode': darkMode }">
         Top 10 Most Played on PC
       </h3>
-      <div class="line" :class="{ 'dark-mode': darkMode }"></div>
+      <div class="line mb-4" :class="{ 'dark-mode': darkMode }"></div>
       <div class="row">
         <swiper :options="swiperOption" class="swiper">
           <swiper-slide
@@ -22,7 +21,11 @@
               :class="{ 'dark-mode': darkMode }"
               :to="{
                 name: 'GameDetail',
-                params: { id: mostPlay.id, meta: mostPlay.title, title: convertToSlug(mostPlay.title) },
+                params: {
+                  id: mostPlay.id,
+                  meta: mostPlay.title,
+                  title: convertToSlug(mostPlay.title),
+                },
               }"
             >
               <GameCard :game="mostPlay" :darkMode="darkMode" />
@@ -31,7 +34,6 @@
         </swiper>
       </div>
       <Loading v-if="loading" />
-      <div class="angle" :class="{ 'dark-mode': darkMode }"></div>
     </div>
   </section>
 </template>
@@ -40,7 +42,7 @@
 import axios from "axios";
 import GameCard from "@/components/GameCard.vue";
 import Loading from "@/components/Loading.vue";
-import { API_MostPlayedPC } from "@/composable/getDataGames.js";
+import { API_MostPlayedPC } from "@/api/getDataGames.js";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/swiper-bundle.min.css";
 
@@ -106,6 +108,8 @@ export default {
 #most-played {
   background: $grayVeryLight;
   transition: background 0.2s ease-in-out;
+  padding: 50px 0;
+  clip-path: polygon(0 0, 100% 7.5%, 100% 100%, 0 92.5%);
 
   .angle {
     width: 250rem;
@@ -145,6 +149,8 @@ export default {
 
 @media (max-width: 768px) {
   #most-played {
+    clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+
     .title {
       font-size: 20px;
     }

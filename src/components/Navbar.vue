@@ -54,8 +54,6 @@
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
 export default {
   data() {
     return {
@@ -65,9 +63,6 @@ export default {
     };
   },
   props: ["darkMode"],
-  components: {
-    FontAwesomeIcon,
-  },
   created() {
     window.addEventListener("resize", this.checkScreen);
     this.checkScreen();
@@ -210,7 +205,7 @@ export default {
     }
     
     &:last-child {
-      width: 10px;
+      width: 12.5px;
     }
 
     &.dark-mode {

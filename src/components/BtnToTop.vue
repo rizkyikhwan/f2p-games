@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 export default {
   data() {
@@ -18,9 +17,6 @@ export default {
     }
   },
   props: ['darkMode'],
-  components: {
-    FontAwesomeIcon
-  },
   created() {
     window.addEventListener("scroll", this.scrollScreen);
   },
@@ -68,19 +64,6 @@ export default {
 
   &:focus {
     animation: clicked .2s ease;
-    
-
-    @keyframes clicked {
-      0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(5px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
   }
 }
 

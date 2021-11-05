@@ -2,7 +2,7 @@
   <section id="news">
     <div class="container">
       <h2 class="title">Last News</h2>
-      <div class="line mb-5" :class="{ 'dark-mode': darkMode }"></div>
+      <div class="line mb-4" :class="{ 'dark-mode': darkMode }"></div>
       <div class="container">
         <div class="row d-flex justify-content-between">
           <div
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { API_News } from "@/composable/getDataNews.js";
+import { API_News } from "@/api/getDataNews.js";
 import axios from "axios";
 
 export default {

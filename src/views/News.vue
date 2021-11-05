@@ -1,5 +1,5 @@
 <template>
-  <div class="news">
+  <main class="news">
     <div class="container">
       <h2 class="title">Last News</h2>
       <div class="line mb-5" :class="{ 'dark-mode': darkMode }"></div>
@@ -26,12 +26,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 import axios from "axios";
-import { API_News } from "@/composable/getDataNews.js";
+import { API_News } from "@/api/getDataNews.js";
 
 export default {
   data() {

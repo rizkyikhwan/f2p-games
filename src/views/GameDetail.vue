@@ -1,5 +1,5 @@
 <template>
-  <div class="game-detail" :class="{ 'dark-mode': darkMode }">
+  <main class="game-detail" :class="{ 'dark-mode': darkMode }">
     <Loading v-if="loading" />
     <div class="container" v-else>
       <div class="row">
@@ -122,15 +122,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 import Loading from "@/components/Loading.vue";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import {URL_gameSpecific, Headers } from "@/composable/getDataGames.js";
+import {URL_gameSpecific, Headers } from "@/api/getDataGames.js";
 import "swiper/swiper-bundle.min.css";
 
 export default {
@@ -160,7 +159,6 @@ export default {
   },
   props: ["dark-mode"],
   components: {
-    FontAwesomeIcon,
     Swiper,
     SwiperSlide,
     Loading,
