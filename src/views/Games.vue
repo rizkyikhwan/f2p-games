@@ -5,11 +5,7 @@
       <div class="row mb-4">
         <div class="col-sm-6">
           <h4 class="title">All Free Games</h4>
-          <div
-            class="line"
-            style="max-width: 100"
-            :class="{ 'dark-mode': darkMode }"
-          ></div>
+          <Divider />
         </div>
         <div id="btn-wrap" class="btn-wrap col-sm-6">
           <button
@@ -41,6 +37,7 @@
 
 <script>
 import SearchGames from "@/components/SearchGames.vue";
+import Divider from "@/components/Divider.vue";
 import AllGames from "@/section/Games/AllGames.vue";
 import PCGames from "@/section/Games/PCGames.vue";
 import BrowserGames from "@/section/Games/BrowserGames.vue";
@@ -56,6 +53,7 @@ export default {
   props: ["darkMode"],
   components: {
     SearchGames,
+    Divider,
     AllGames,
     PCGames,
     BrowserGames,

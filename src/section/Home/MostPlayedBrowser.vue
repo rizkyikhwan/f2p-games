@@ -2,7 +2,7 @@
   <section id="most-played" class="d-flex align-items-center mt-4 mb-5">
     <div class="container">
       <h3 class="title">Top 10 Most Played on Browser</h3>
-      <div class="line mb-4" :class="{ 'dark-mode': darkMode }"></div>
+      <Divider />
       <div class="row">
         <swiper :options="swiperOption" class="swiper">
           <swiper-slide
@@ -30,6 +30,7 @@
 
 <script>
 import axios from "axios";
+import Divider from "@/components/Divider.vue";
 import GameCard from "@/components/GameCard.vue";
 import Loading from "@/components/Loading.vue";
 import { API_MostPlayedBrowser } from "@/api/getDataGames.js";
@@ -62,6 +63,7 @@ export default {
   },
   props: ["darkMode"],
   components: {
+    Divider,
     GameCard,
     Swiper,
     SwiperSlide,
@@ -100,19 +102,6 @@ export default {
     font-family: "Saira", sans-serif;
     text-transform: uppercase;
     font-size: 24px;
-  }
-
-  .line {
-    max-width: 250px;
-    width: 50%;
-    height: 5px;
-    border-radius: 5rem;
-    background: $navyBlue;
-    transition: 0.2s ease-in-out;
-
-    &.dark-mode {
-      filter: drop-shadow(0 0 2px $navyBlue);
-    }
   }
 
   .swiper {

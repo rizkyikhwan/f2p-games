@@ -8,7 +8,7 @@
       <h3 class="title" :class="{ 'dark-mode': darkMode }">
         Top 10 Most Played on PC
       </h3>
-      <div class="line mb-4" :class="{ 'dark-mode': darkMode }"></div>
+      <Divider />
       <div class="row">
         <swiper :options="swiperOption" class="swiper">
           <swiper-slide
@@ -40,6 +40,7 @@
 
 <script>
 import axios from "axios";
+import Divider from "@/components/Divider.vue";
 import GameCard from "@/components/GameCard.vue";
 import Loading from "@/components/Loading.vue";
 import { API_MostPlayedPC } from "@/api/getDataGames.js";
@@ -72,6 +73,7 @@ export default {
   },
   props: ["darkMode"],
   components: {
+    Divider,
     GameCard,
     Swiper,
     SwiperSlide,

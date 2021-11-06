@@ -1,4 +1,5 @@
 const URL = 'https://free-to-play-games-database.p.rapidapi.com/api/games';
+const URL_filter = 'https://free-to-play-games-database.p.rapidapi.com/api/filter';
 const URL_gameSpecific = 'https://free-to-play-games-database.p.rapidapi.com/api/game';
 const Headers = {
   'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
@@ -39,4 +40,4 @@ const API_AllGames = {
   headers: Headers
 };
 
-export { API_Newcomers, API_MostPlayed, API_MostPlayedPC, API_MostPlayedBrowser, API_AllGames, URL, URL_gameSpecific, Headers };
+export { API_Newcomers, API_MostPlayed, API_MostPlayedPC, API_MostPlayedBrowser, API_AllGames, URL, URL_filter, URL_gameSpecific, Headers };

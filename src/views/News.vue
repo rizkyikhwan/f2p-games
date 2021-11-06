@@ -2,7 +2,7 @@
   <main class="news">
     <div class="container">
       <h2 class="title">Last News</h2>
-      <div class="line mb-5" :class="{ 'dark-mode': darkMode }"></div>
+      <Divider />
       <div class="container">
         <div class="row d-flex justify-content-between">
           <div
@@ -31,6 +31,7 @@
 
 <script>
 import axios from "axios";
+import Divider from "@/components/Divider.vue";
 import { API_News } from "@/api/getDataNews.js";
 
 export default {
@@ -38,6 +39,9 @@ export default {
     return {
       lastNews: {}
     }
+  },
+  components: {
+    Divider
   },
   props: ['darkMode'],
   methods: {

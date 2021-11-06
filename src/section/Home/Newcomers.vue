@@ -5,11 +5,7 @@
       <div class="row d-flex justify-content-center">
         <div class="col-md-8 order-1" v-if="!mobile">
           <h2 class="title">Newcomers</h2>
-          <div
-            class="line"
-            style="margin-bottom: 2em"
-            :class="{ 'dark-mode': darkMode }"
-          ></div>
+          <Divider />
           <div class="row">
             <div
               v-for="newcomer in newcomers"
@@ -36,7 +32,7 @@
         </div>
         <div class="col-md-4 order-md-2 mb-4">
           <h2 class="title">Most Played</h2>
-          <div class="line mb-5" :class="{ 'dark-mode': darkMode }"></div>
+          <div class="line" style="margin-bottom: 32px"></div>
           <div v-for="mostPlay in mostPlayed" :key="mostPlay.id">
             <router-link
               class="specific-game"
@@ -60,7 +56,7 @@
       <!-- Mobile -->
       <div v-if="mobile">
         <h2 class="title mt-5">Newcomers</h2>
-        <div class="line mb-4" :class="{ 'dark-mode': darkMode }"></div>
+        <Divider />
         <div class="row">
           <swiper :options="swiperOption" ref="swiper" class="swiper">
             <swiper-slide
@@ -92,6 +88,7 @@
 </template>
 
 <script>
+import Divider from "@/components/Divider.vue";
 import GameCard from "@/components/GameCard.vue";
 import GameCardNewcomers from "@/components/GameCardNewcomers.vue";
 import GameCardMostPlay from "@/components/GameCardMostPlay.vue";
@@ -130,6 +127,7 @@ export default {
   },
   props: ["darkMode"],
   components: {
+    Divider,
     GameCard,
     GameCardNewcomers,
     GameCardMostPlay,

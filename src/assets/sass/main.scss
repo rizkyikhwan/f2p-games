@@ -53,10 +53,6 @@ body {
     z-index: 1;
     filter: drop-shadow(0 0 2px $navyBlue);
     transition: 0.2s ease-in-out;
-
-    &.dark-mode {
-      filter: drop-shadow(0 0 2px $navyBlue);
-    }
   }
 }
 
@@ -102,6 +98,150 @@ body {
     &:hover {
       color: $fontDark;
       text-decoration: none;
+    }
+  }
+}
+
+hr {
+  border-top: 2.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+// Advanced Filter
+// Platform
+@for $i from 1 through 3 {
+  .platform-#{$i} {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+}
+
+@for $i from 1 through 3 {
+  #platform-#{$i}:checked:checked ~ .platform-#{$i} {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $fontDark;
+    background: $navyBlue;
+    box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.25);
+    transition: 0.2s ease-in-out;
+
+    &.dark-mode {
+      background: $backgroundDarkDeep;
+    }
+  }
+}
+
+// Gpraphics
+@for $i from 1 through 2 {
+  .graphic-#{$i} {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+}
+
+@for $i from 1 through 2 {
+  #graphic-#{$i}:checked:checked ~ .graphic-#{$i} {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $fontDark;
+    background: $navyBlue;
+    box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.25);
+    transition: 0.2s ease-in-out;
+
+    &.dark-mode {
+      background: $backgroundDarkDeep;
+    }
+  }
+}
+
+// Combat
+@for $i from 1 through 2 {
+  .combat-#{$i} {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+}
+
+@for $i from 1 through 2 {
+  #combat-#{$i}:checked:checked ~ .combat-#{$i} {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $fontDark;
+    background: $navyBlue;
+    box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.25);
+    transition: 0.2s ease-in-out;
+
+    &.dark-mode {
+      background: $backgroundDarkDeep;
+    }
+  }
+}
+
+// Gameplay
+@for $i from 1 through 2 {
+  .gameplay-#{$i} {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+}
+
+@for $i from 1 through 2 {
+  #gameplay-#{$i}:checked:checked ~ .gameplay-#{$i} {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $fontDark;
+    background: $navyBlue;
+    box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.25);
+    transition: 0.2s ease-in-out;
+
+    &.dark-mode {
+      background: $backgroundDarkDeep;
+    }
+  }
+}
+
+// Setting
+@for $i from 1 through 5 {
+  .setting-#{$i} {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+}
+
+@for $i from 1 through 5 {
+  #setting-#{$i}:checked:checked ~ .setting-#{$i} {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $fontDark;
+    background: $navyBlue;
+    box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.25);
+    transition: 0.2s ease-in-out;
+
+    &.dark-mode {
+      background: $backgroundDarkDeep;
+    }
+  }
+}
+
+// Tags
+@for $i from 1 through 21 {
+  .tag-#{$i} {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+}
+
+@for $i from 1 through 21 {
+  #tag-#{$i}:checked:checked ~ .tag-#{$i} {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: $fontDark;
+    background: $navyBlue;
+    box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.25);
+    transition: 0.2s ease-in-out;
+
+    &.dark-mode {
+      background: $backgroundDarkDeep;
     }
   }
 }
