@@ -21,11 +21,19 @@
             PC
           </button>
           <button
-            class="btn-category px-3"
+            class="btn-category mr-3 px-3"
             @click="buttonBrowser"
           >
             Browser
           </button>
+          <router-link :to="{name: 'GameFilter'}">
+            <button
+            class="btn-category px-3"
+          >
+            Filters
+          </button>
+          </router-link>
+          
         </div>
       </div>
       <AllGames v-if="all" :darkMode="darkMode" />
@@ -117,10 +125,6 @@ export default {
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       transition: .2s ease-in-out;
-
-      // &.dark-mode {
-      //   color: $fontDark;
-      // }
     }
 
     .btn-active {
@@ -134,8 +138,8 @@ export default {
     .btn-wrap {
       display: flex;
       justify-content: flex-start;
-      margin-top: 20px;
-      margin-bottom: -10px;
+      flex-wrap: wrap;
+      margin: 7.5px 0;
     }
   }
 }

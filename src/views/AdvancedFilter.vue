@@ -472,6 +472,10 @@ export default {
       height: 230px;
       overflow: auto;
       scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
     }
   }
 }

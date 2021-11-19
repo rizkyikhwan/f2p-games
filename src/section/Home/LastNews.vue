@@ -9,6 +9,7 @@
             class="wrap mb-4 col-lg-6 row"
             v-for="news in lastNews"
             :key="news.id"
+            @click="openDetail(news)"
           >
             <div class="wrap-img col-sm-4 px-1 d-flex justify-content-start">
               <img
@@ -54,6 +55,10 @@ export default {
         })
         .catch((error) => console.log(error));
     },
+    openDetail(data) {
+      this.$store.commit('setNews', data)
+      this.$router.push({name: 'NewsDetail'})
+    }
   },
   mounted() {
     this.getLastNews();
@@ -78,6 +83,7 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    cursor: pointer;
 
     .wrap-img {
       display: flex;

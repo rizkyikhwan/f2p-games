@@ -60,6 +60,14 @@ const routes = [
       title: "About",
     }
   },
+  {
+    path: "/detail-news",
+    name: "NewsDetail",
+    component: () => import('../views/NewsDetail.vue'),
+    meta: {
+      title: "News Detail",
+    }
+  },
 ];
 
 const router = new VueRouter({

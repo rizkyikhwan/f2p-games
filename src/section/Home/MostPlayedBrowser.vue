@@ -21,6 +21,8 @@
               <GameCard :game="mostPlay" :darkMode="darkMode" />
             </router-link>
           </swiper-slide>
+          <div class="swiper-button-prev" slot="button-prev" :class="{'dark-mode': darkMode}"></div>
+          <div class="swiper-button-next" slot="button-next" :class="{'dark-mode': darkMode}"></div>
         </swiper>
       </div>
       <Loading v-if="loading" />
@@ -35,7 +37,6 @@ import GameCard from "@/components/GameCard.vue";
 import Loading from "@/components/Loading.vue";
 import { API_MostPlayedBrowser } from "@/api/getDataGames.js";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import "swiper/swiper-bundle.min.css";
 
 export default {
   data() {
@@ -56,6 +57,10 @@ export default {
           992: {
             slidesPerView: 4,
           },
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         },
       },
       loading: null,
@@ -107,6 +112,33 @@ export default {
   .swiper {
     padding: 5px 14px 25px;
     z-index: 0;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      background: rgba(41, 41, 41, 0.1);
+      backdrop-filter: blur( 2px );
+      -webkit-backdrop-filter: blur( 2px );
+      box-shadow: 0px 5px 10px -3px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      padding: 25px;
+      transition: 0.3s ease-in-out;
+
+      &::after {
+        font-size: 1.25rem;
+        color: $navyBlue;
+        font-weight: 800;
+        filter: drop-shadow(0 0 2px $navyBlue);
+      }
+
+      &.dark-mode {
+        background: rgba( 255, 255, 255, 0.1 );
+      }
+    }
+
+    .swiper-button-next.swiper-button-disabled,
+    .swiper-button-prev.swiper-button-disabled {
+      opacity: 0;
+    }
   }
 }
 
