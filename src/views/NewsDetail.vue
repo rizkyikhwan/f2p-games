@@ -2,7 +2,8 @@
 <main class="detail-news">
   <div class="container mt-5">
     <h5>{{ news.title }}</h5>
-    <p v-html="news.article_content"></p>
+    <img :src="news.main_image" :alt="news.title" class="img-fluid">
+    <div class="content" v-html="news.article_content"></div>
   </div>
 </main>
 </template>

@@ -53,19 +53,16 @@ export default {
         headers: Headers,
       };
       this.busy = true;
-      await axios
-        .request(API_AllGames)
-        .then((response) => {
-          setTimeout(() => {
-            const append = response.data.slice(
-              this.games.length,
-              this.games.length + this.limit
-            );
-            this.games.push(...append);
-            this.busy = false;
-          }, 250);
-        })
-        .catch((error) => console.log(error));
+      try {
+        const response = await axios.request(API_AllGames);
+        const data = response.data.slice(this.games.length, this.games.length + this.limit);
+        setTimeout(() => {
+          this.games.push(...data);
+          this.busy = false;
+        }, 250);
+      } catch (error) {
+        console.log(error);
+      }
     },
     convertToSlug(Text) {
       return Text.toLowerCase()

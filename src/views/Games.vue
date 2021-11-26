@@ -2,7 +2,7 @@
   <main class="games mb-5">
     <div class="container">
       <SearchGames :darkMode="darkMode" />
-      <div class="row mb-4">
+      <div class="row">
         <div class="col-sm-6">
           <h4 class="title">All Free Games</h4>
           <Divider />

@@ -172,15 +172,16 @@ export default {
         headers: Headers,
       };
       this.loading = true;
-      await axios
-        .request(API_specificGame)
-        .then((response) =>
-          setTimeout(() => {
-            this.gameDetail = response.data;
-            this.loading = false;
-          }, 1500)
-        )
-        .catch((error) => console.log(error));
+      try {
+        const response = await axios.request(API_specificGame);
+        const data = response.data;
+        setTimeout(() => {
+          this.gameDetail = data;
+          this.loading = false;
+        }, 1500)
+      } catch (error) {
+        console.log(error);
+      }
     },
     showImg(e) {
       const previewImg = document.querySelector("#preview-ss-overlay");

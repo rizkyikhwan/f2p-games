@@ -7,7 +7,7 @@
             <div class="justify-content-center align-self-center">
               <h1 class="title">Free games to play</h1>
               <p class="lead mb-4">
-                Cari dan temukan game <span>Free-to-play</span> terbaik kalian di <span>PC</span> dan <span>Browser</span> !
+                Search and find your best <span>Free-to-play</span> games on <span>PC</span> and <span>Browser</span> !
               </p>
               <div class="row justify-content-center">
                 <div class="col">

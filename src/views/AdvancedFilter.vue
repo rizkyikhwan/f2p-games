@@ -380,13 +380,12 @@ export default {
         headers: Headers,
       };
       try {
-        const res = await axios
-          .request(API_games)
-          .then((response) => (this.filteredGames = response.data))
-          .catch((error) => console.log(error));
+        const response = await axios.request(API_games)
+        const data = response.data;
+        this.filteredGames = data;
 
-        if (!res.exists) {
-          throw new Error("Sorry, games not found!");
+        if (!response.exists) {
+          throw new Error("Sorry, games not found :(");
         }
       } catch (err) {
         this.error = err.message;

@@ -150,24 +150,24 @@ export default {
     },
     async getNewcomers() {
       this.loading = true;
-      await axios
-        .request(API_Newcomers)
-        .then((response) => {
-          const newcomers = response.data.slice(0, 9);
-          this.newcomers = newcomers;
-        })
-        .catch((error) => console.log(error));
+      try {
+        const response = await axios.request(API_Newcomers);
+        const data = response.data.slice(0, 9);
+        this.newcomers = data;
+      } catch (error) {
+        console.log(error);
+      }
       this.loading = false;
     },
     async getMostPlayed() {
       this.loading = true;
-      await axios
-        .request(API_MostPlayed)
-        .then((response) => {
-          const mostPlay = response.data.slice(0, 3);
-          this.mostPlayed = mostPlay;
-        })
-        .catch((error) => console.log(error));
+      try {
+        const response = await axios.request(API_MostPlayed);
+        const data = response.data.slice(0, 3);
+        this.mostPlayed = data;
+      } catch (error) {
+        console.log(error);
+      }
       this.loading = false;
     },
     convertToSlug(Text) {

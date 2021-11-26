@@ -4,38 +4,47 @@
     class="d-flex align-items-center mb-5"
     :class="{ 'dark-mode': darkMode }"
   >
-    <div class="container">
-      <h3 class="title" :class="{ 'dark-mode': darkMode }">
-        Top 10 Most Played on PC
-      </h3>
-      <Divider />
-      <div class="row">
-        <swiper :options="swiperOption" class="swiper">
-          <swiper-slide
-            v-for="mostPlay in mostPlayed"
-            :key="mostPlay.id"
-            class="col-6 col-md-3 px-1"
-          >
-            <router-link
-              class="specific-game"
-              :class="{ 'dark-mode': darkMode }"
-              :to="{
-                name: 'GameDetail',
-                params: {
-                  id: mostPlay.id,
-                  meta: mostPlay.title,
-                  title: convertToSlug(mostPlay.title),
-                },
-              }"
-            >
-              <GameCard :game="mostPlay" :darkMode="darkMode" />
-            </router-link>
-          </swiper-slide>
-          <div class="swiper-button-prev" slot="button-prev" :class="{'dark-mode': darkMode}"></div>
-          <div class="swiper-button-next" slot="button-next" :class="{'dark-mode': darkMode}"></div>
-        </swiper>
+    <div class="container my-3">
+      <div class="wrapper" :class="{ 'dark-mode': darkMode }">
+        <div class="row">
+          <div class="col-md-4 d-flex flex-column justify-content-center">
+            <h3 class="title" :class="{ 'dark-mode': darkMode }">
+              Top 10 Most Played on PC
+            </h3>
+            <Divider />
+            <p>With the best PC Games will give you an unforgettable experience</p>
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <swiper :options="swiperOption" class="swiper">
+                <swiper-slide
+                  v-for="mostPlay in mostPlayed"
+                  :key="mostPlay.id"
+                  class="col-12 col-md-4 px-1"
+                >
+                  <router-link
+                    class="specific-game"
+                    :class="{ 'dark-mode': darkMode }"
+                    :to="{
+                      name: 'GameDetail',
+                      params: {
+                        id: mostPlay.id,
+                        meta: mostPlay.title,
+                        title: convertToSlug(mostPlay.title),
+                      },
+                    }"
+                  >
+                    <GameCard :game="mostPlay" :darkMode="darkMode" />
+                  </router-link>
+                </swiper-slide>
+                <div class="swiper-button-prev" slot="button-prev" :class="{'dark-mode': darkMode}"></div>
+                <div class="swiper-button-next" slot="button-next" :class="{'dark-mode': darkMode}"></div>
+              </swiper>
+            </div>
+            <Loading v-if="loading" />
+          </div>
+        </div>
       </div>
-      <Loading v-if="loading" />
     </div>
   </section>
 </template>
@@ -53,19 +62,19 @@ export default {
     return {
       mostPlayed: [],
       swiperOption: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         breakpoints: {
           320: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
           576: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
           992: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
         },
         navigation: {
@@ -87,13 +96,13 @@ export default {
   methods: {
     async getMostPlayed() {
       this.loading = true;
-      await axios
-        .request(API_MostPlayedPC)
-        .then((response) => {
-          const mostlyPlay = response.data.slice(0, 10);
-          this.mostPlayed = mostlyPlay;
-        })
-        .catch((error) => console.error(error));
+      try {
+        const response = await axios.request(API_MostPlayedPC);
+        const data = response.data.slice(0, 10);
+        this.mostPlayed = data;
+      } catch (error) {
+        console.log(error);
+      }
       this.loading = false;
     },
     convertToSlug(Text) {
@@ -118,21 +127,28 @@ export default {
   padding: 50px 0;
   clip-path: polygon(0 0, 100% 7.5%, 100% 100%, 0 92.5%);
 
-  .angle {
-    width: 250rem;
-    height: 75px;
-    background: $backgroundLight;
-    transform: translateX(-50%) translateY(-70%) rotate(2deg);
-    transition: 0.2s ease-in-out;
-
-    &:last-child {
-      transform: translateX(-50%) translateY(35%) rotate(2deg);
-    }
+  .wrapper {
+    background: linear-gradient(
+      rgba($color: $grayVeryLight, $alpha: 0.5),
+      rgba($color: $grayVeryLight, $alpha: 1) 90%
+    ),url(../../assets/images/bg-pc.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    padding: 15px 25px 0;
 
     &.dark-mode {
-      background: $backgroundDark;
+      background: linear-gradient(
+        rgba($color: $backgroundDarkDeep, $alpha: 0.75),
+        rgba($color: $backgroundDarkDeep, $alpha: 1) 90%
+      ),url(../../assets/images/bg-pc.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
   }
+
   .title {
     font-family: "Saira", sans-serif;
     text-transform: uppercase;
@@ -187,6 +203,11 @@ export default {
 
     .title {
       font-size: 20px;
+    }
+
+    .swiper .swiper-button-next,.swiper-button-prev {
+      visibility: hidden;
+      opacity: 0;
     }
   }
 }

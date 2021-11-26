@@ -60,13 +60,12 @@ export default {
   methods: {
     async getGames() {
       try {
-        const res = await axios
-        .request(API_AllGames)
-        .then((response) => (this.resultGames = response.data))
-        .catch((error) => console.log(error));
+        const response = await axios.request(API_AllGames)
+        const data = response.data;
+        this.resultGames = data;
 
-        if (!res.exists) {
-          throw new Error("Sorry, games not found!")
+        if (!response.exists) {
+          throw new Error("Sorry, games not found :(")
         }
       }
       catch (err) {

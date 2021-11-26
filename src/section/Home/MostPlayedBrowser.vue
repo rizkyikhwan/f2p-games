@@ -1,31 +1,40 @@
 <template>
   <section id="most-played" class="d-flex align-items-center mt-4 mb-5">
-    <div class="container">
-      <h3 class="title">Top 10 Most Played on Browser</h3>
-      <Divider />
-      <div class="row">
-        <swiper :options="swiperOption" class="swiper">
-          <swiper-slide
-            v-for="mostPlay in mostPlayed"
-            :key="mostPlay.id"
-            class="col-6 col-md-3 px-1"
-          >
-            <router-link
-              class="specific-game"
-              :class="{ 'dark-mode': darkMode }"
-              :to="{
-                name: 'GameDetail',
-                params: { id: mostPlay.id, meta: mostPlay.title, title: convertToSlug(mostPlay.title) },
-              }"
-            >
-              <GameCard :game="mostPlay" :darkMode="darkMode" />
-            </router-link>
-          </swiper-slide>
-          <div class="swiper-button-prev" slot="button-prev" :class="{'dark-mode': darkMode}"></div>
-          <div class="swiper-button-next" slot="button-next" :class="{'dark-mode': darkMode}"></div>
-        </swiper>
+    <div class="container my-3">
+      <div class="wrapper" :class="{ 'dark-mode': darkMode }" >
+        <div class="row">
+          <div class="col-md-4 d-flex flex-column justify-content-center order-md-1 text-md-right">
+            <h3 class="title">Top 10 Most Played on Browser</h3>
+            <Divider class="divider" />
+            <p>The best Browser Games that can be played anytime without worry about game specs</p>
+          </div>
+          <div class="col-md-8 order-0">
+            <div class="row">
+              <swiper :options="swiperOption" class="swiper">
+                <swiper-slide
+                  v-for="mostPlay in mostPlayed"
+                  :key="mostPlay.id"
+                  class="col-12 col-md-4 px-1"
+                >
+                  <router-link
+                    class="specific-game"
+                    :class="{ 'dark-mode': darkMode }"
+                    :to="{
+                      name: 'GameDetail',
+                      params: { id: mostPlay.id, meta: mostPlay.title, title: convertToSlug(mostPlay.title) },
+                    }"
+                  >
+                    <GameCard :game="mostPlay" :darkMode="darkMode" />
+                  </router-link>
+                </swiper-slide>
+                <div class="swiper-button-prev" slot="button-prev" :class="{'dark-mode': darkMode}"></div>
+                <div class="swiper-button-next" slot="button-next" :class="{'dark-mode': darkMode}"></div>
+              </swiper>
+            </div>
+            <Loading v-if="loading" />
+          </div>
+        </div>  
       </div>
-      <Loading v-if="loading" />
     </div>
   </section>
 </template>
@@ -43,19 +52,19 @@ export default {
     return {
       mostPlayed: [],
       swiperOption: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         breakpoints: {
           320: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
           576: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
           992: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
         },
         navigation: {
@@ -77,13 +86,13 @@ export default {
   methods: {
     async getMostPlayed() {
       this.loading = true;
-      await axios
-        .request(API_MostPlayedBrowser)
-        .then((response) => {
-          const mostlyPlay = response.data.slice(0, 10);
-          this.mostPlayed = mostlyPlay;
-        })
-        .catch((error) => console.error(error));
+      try {
+        const response = await axios.request(API_MostPlayedBrowser);
+        const data = response.data.slice(0, 10);
+        this.mostPlayed = data;
+      } catch (error) {
+        console.log(error);
+      }
       this.loading = false;
     },
     convertToSlug(Text) {
@@ -103,6 +112,34 @@ export default {
 @import "./src/assets/sass/_font.scss";
 
 #most-played {
+  .wrapper {
+    background: linear-gradient(
+      rgba($color: $backgroundLight, $alpha: 0.75),
+      rgba($color: $backgroundLight, $alpha: 1) 90%
+    ),url(../../assets/images/bg-browser.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    padding: 15px 25px 0;
+
+    &.dark-mode {
+      background: linear-gradient(
+        rgba($color: $backgroundDark, $alpha: 0.75),
+        rgba($color: $backgroundDark, $alpha: 1) 90%
+      ),url(../../assets/images/bg-browser.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .divider {
+      margin-left: 50%;
+
+      @media (max-width: 767px) {
+        margin: 0;
+      }
+    }
+  }
+
   .title {
     font-family: "Saira", sans-serif;
     text-transform: uppercase;
@@ -144,8 +181,14 @@ export default {
 
 @media (max-width: 768px) {
   #most-played {
+
     .title {
       font-size: 20px;
+    }
+
+    .swiper .swiper-button-next,.swiper-button-prev {
+      visibility: hidden;
+      opacity: 0;
     }
   }
 }

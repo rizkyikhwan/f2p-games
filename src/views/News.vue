@@ -46,9 +46,13 @@ export default {
   props: ['darkMode'],
   methods: {
     async getNews() {
-      await axios.request(API_News)
-        .then(response => this.lastNews = response.data)
-        .catch(error => console.log(error))
+      try {
+        const response = await axios.request(API_News);
+        const data = response.data;
+        this.lastNews = data;
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
   mounted() {

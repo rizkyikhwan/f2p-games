@@ -1,5 +1,5 @@
 <template>
-  <div class="game-card mb-5">
+  <div class="game-card my-4">
     <div class="card" :class="{'dark-mode': darkMode}">
       <img
         :src="`${game.thumbnail}`"

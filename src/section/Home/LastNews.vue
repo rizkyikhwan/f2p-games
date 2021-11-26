@@ -46,14 +46,14 @@ export default {
     Divider
   },
   methods: {
-    getLastNews() {
-      axios
-        .request(API_News)
-        .then((response) => {
-          const lastNews = response.data.slice(0, 4);
-          this.lastNews = lastNews;
-        })
-        .catch((error) => console.log(error));
+    async getLastNews() {
+      try {
+        const response = await axios.request(API_News);
+        const data = response.data.slice(0, 4);
+        this.lastNews = data;
+      } catch (error) {
+        console.log(error);
+      }
     },
     openDetail(data) {
       this.$store.commit('setNews', data)
@@ -83,7 +83,10 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    border-radius: 10px;
     cursor: pointer;
+    padding: 10px 5px;
+    transition: .2s ease;
 
     .wrap-img {
       display: flex;
@@ -106,6 +109,12 @@ export default {
         white-space: nowrap;
         text-overflow: ellipsis;
       }
+    }
+
+    &:hover {
+      background: $backgroundDarkDeep;
+      box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+      color: #fff;
     }
   }
 }
