@@ -32,7 +32,7 @@
         </div>
         <div class="col-md-4 order-md-2 mb-4">
           <h2 class="title">Most Played</h2>
-          <div class="line" style="margin-bottom: 32px"></div>
+          <div class="line" style="margin-bottom: 24px"></div>
           <div v-for="mostPlay in mostPlayed" :key="mostPlay.id">
             <router-link
               class="specific-game"
@@ -94,8 +94,6 @@ import GameCardNewcomers from "@/components/GameCardNewcomers.vue";
 import GameCardMostPlay from "@/components/GameCardMostPlay.vue";
 import Loading from "@/components/Loading.vue";
 import { API_Newcomers, API_MostPlayed } from "@/api/getDataGames.js";
-import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import "swiper/swiper-bundle.min.css";
 import axios from "axios";
 
 export default {
@@ -132,8 +130,6 @@ export default {
     GameCardNewcomers,
     GameCardMostPlay,
     Loading,
-    Swiper,
-    SwiperSlide,
   },
   created() {
     window.addEventListener("resize", this.checkScreen);

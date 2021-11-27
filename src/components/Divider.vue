@@ -1,5 +1,5 @@
 <template>
-  <div class="line mb-3"></div>
+  <div class="line mb-2"></div>
 </template>
 
 <script>
