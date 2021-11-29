@@ -35,7 +35,6 @@ body {
 #app {
   min-height: 100vh;
   background: $backgroundLight;
-  overflow: hidden;
   color: $fontLight;
   transition: 0.2s ease-in-out;
 
@@ -252,18 +251,6 @@ hr {
   }
   50% {
     transform: translateY(-15px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes clicked {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(7.5px);
   }
   100% {
     transform: translateY(0);

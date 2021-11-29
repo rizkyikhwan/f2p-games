@@ -1,18 +1,23 @@
 <template>
   <div class="game-card mt-3">
-    <div class="card" :class="{'dark-mode': darkMode}">
+    <div class="card" :class="{ 'dark-mode': darkMode }">
       <img
         :src="`${game.thumbnail}`"
         class="card-img-top"
         :alt="`${game.title}`"
       />
-      <div class="card-body d-flex align-items-center" :class="{'dark-mode': darkMode}">
+      <div
+        class="card-body d-flex align-items-center"
+        :class="{ 'dark-mode': darkMode }"
+      >
         <span class="title">{{ game.title }}</span>
         <span v-if="this.game.platform === `PC (Windows)`">
           <font-awesome-icon :icon="['fab', 'windows']"></font-awesome-icon>
         </span>
         <span v-else>
-          <font-awesome-icon :icon="['fas', 'window-maximize']"></font-awesome-icon>
+          <font-awesome-icon
+            :icon="['fas', 'window-maximize']"
+          ></font-awesome-icon>
         </span>
       </div>
     </div>
@@ -20,15 +25,14 @@
 </template>
 
 <script>
-
 export default {
   props: ["game", "darkMode"],
 };
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
-@import "./src/assets/sass/_font.scss";
+@import "@/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_font.scss";
 
 .card {
   border: 0;
@@ -37,7 +41,7 @@ export default {
   transition: 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.20);
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.2);
     transform: scale(1.02);
   }
 
@@ -81,8 +85,8 @@ export default {
 }
 
 @media (max-width: 992px) {
-.card {
-  .card-img-top {
+  .card {
+    .card-img-top {
       filter: saturate(100%);
     }
 

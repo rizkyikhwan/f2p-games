@@ -26,7 +26,6 @@
               params: {
                 id: game.id,
                 meta: game.title,
-                title: convertToSlug(game.title),
               },
             }"
           >
@@ -34,9 +33,19 @@
           </router-link>
         </div>
       </div>
-      <p v-else class="d-flex align-items-center justify-content-center text-muted mt-2">Search results will appear here</p>
+      <p
+        v-else
+        class="d-flex align-items-center justify-content-center text-muted mt-2"
+      >
+        Search results will appear here
+      </p>
     </transition>
-    <p v-if="!searchGames.length" class="d-flex align-items-center justify-content-center text-muted mt-2">{{ error }}</p>
+    <p
+      v-if="!searchGames.length"
+      class="d-flex align-items-center justify-content-center text-muted mt-2"
+    >
+      {{ error }}
+    </p>
   </div>
 </template>
 
@@ -50,7 +59,7 @@ export default {
     return {
       resultGames: [],
       search: "",
-      error: ""
+      error: "",
     };
   },
   props: ["darkMode"],
@@ -60,22 +69,16 @@ export default {
   methods: {
     async getGames() {
       try {
-        const response = await axios.request(API_AllGames)
+        const response = await axios.request(API_AllGames);
         const data = response.data;
         this.resultGames = data;
 
         if (!response.exists) {
-          throw new Error("Sorry, games not found :(")
+          throw new Error("Sorry, games not found :(");
         }
-      }
-      catch (err) {
+      } catch (err) {
         this.error = err.message;
       }
-    },
-    convertToSlug(Text) {
-      return Text.toLowerCase()
-        .replace(/ /g, "-")
-        .replace(/[^\w-]+/g, "");
     },
   },
   mounted() {
@@ -92,7 +95,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/sass/_rootColor.scss";
+@import "@/assets/sass/_rootColor.scss";
 
 #searchGames {
   min-height: 10vh;

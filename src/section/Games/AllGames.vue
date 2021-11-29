@@ -1,13 +1,6 @@
 <template>
   <section id="all-games">
-    <transition-group
-      name="fadeInBottom"
-      tag="div"
-      v-infinite-scroll="getGames"
-      infinite-scroll-disabled="busy"
-      infinite-scroll-distance="limit"
-      class="row"
-    >
+    <transition-group name="fadeInBottom" tag="div" class="row">
       <div v-for="game in games" :key="game.id" class="col-md-3 col-6 px-2">
         <router-link
           class="specific-game"
@@ -17,7 +10,6 @@
             params: {
               id: game.id,
               meta: game.title,
-              title: convertToSlug(game.title),
             },
           }"
         >
@@ -25,12 +17,24 @@
         </router-link>
       </div>
     </transition-group>
+    <div class="d-flex justify-content-center my-5">
+      <button
+        v-if="!loading"
+        @click="getGames"
+        class="button"
+        :class="{ 'dark-mode': darkMode }"
+      >
+        Load More
+      </button>
+      <Loading v-if="loading" class="my-n3" />
+    </div>
   </section>
 </template>
 
 <script>
 import axios from "axios";
 import GameCard from "@/components/GameCard.vue";
+import Loading from "@/components/Loading.vue";
 import { URL, Headers } from "@/api/getDataGames.js";
 
 export default {
@@ -38,36 +42,35 @@ export default {
     return {
       games: [],
       limit: 24,
-      busy: false,
+      loading: null,
     };
   },
   props: ["darkMode"],
   components: {
     GameCard,
+    Loading,
   },
   methods: {
     async getGames() {
+      this.loading = true;
       const API_AllGames = {
         method: "GET",
         url: URL,
         headers: Headers,
       };
-      this.busy = true;
       try {
         const response = await axios.request(API_AllGames);
-        const data = response.data.slice(this.games.length, this.games.length + this.limit);
+        const data = response.data.slice(
+          this.games.length,
+          this.games.length + this.limit
+        );
         setTimeout(() => {
           this.games.push(...data);
-          this.busy = false;
+          this.loading = false;
         }, 250);
       } catch (error) {
         console.log(error);
       }
-    },
-    convertToSlug(Text) {
-      return Text.toLowerCase()
-        .replace(/ /g, "-")
-        .replace(/[^\w-]+/g, "");
     },
   },
   mounted() {
@@ -77,4 +80,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/sass/_rootColor.scss";
+
+.button {
+  padding: 5px 20px;
+  color: $fontDark;
+  &:hover {
+    box-shadow: none;
+    transform: translateY(3px);
+  }
+}
 </style>

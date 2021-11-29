@@ -1,5 +1,9 @@
 <template>
-  <section id="most-played" class="d-flex align-items-center mb-5" :class="{ 'dark-mode': darkMode }">
+  <section
+    id="most-played"
+    class="d-flex align-items-center mb-5"
+    :class="{ 'dark-mode': darkMode }"
+  >
     <div class="container">
       <div class="wrapper" :class="{ 'dark-mode': darkMode }">
         <div class="row">
@@ -10,11 +14,22 @@
                   Top 10 Most Played on PC
                 </h3>
                 <Divider />
-                <p>With the best PC Games will give you an unforgettable experience</p>
+                <p>
+                  With the best PC Games will give you an unforgettable
+                  experience
+                </p>
               </div>
               <div class="col-12 d-none d-md-flex">
-                <div id="pc-slide-prev" class="swiper-button-prev" :class="{'dark-mode': darkMode}"></div>
-                <div id="pc-slide-next" class="swiper-button-next ml-2" :class="{'dark-mode': darkMode}"></div>
+                <div
+                  id="pc-slide-prev"
+                  class="swiper-button-prev"
+                  :class="{ 'dark-mode': darkMode }"
+                ></div>
+                <div
+                  id="pc-slide-next"
+                  class="swiper-button-next ml-2"
+                  :class="{ 'dark-mode': darkMode }"
+                ></div>
               </div>
             </div>
           </div>
@@ -34,7 +49,6 @@
                       params: {
                         id: mostPlay.id,
                         meta: mostPlay.title,
-                        title: convertToSlug(mostPlay.title),
                       },
                     }"
                   >
@@ -82,6 +96,10 @@ export default {
           nextEl: "#pc-slide-next",
           prevEl: "#pc-slide-prev",
         },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
       },
       loading: null,
     };
@@ -104,11 +122,6 @@ export default {
       }
       this.loading = false;
     },
-    convertToSlug(Text) {
-      return Text.toLowerCase()
-        .replace(/ /g, "-")
-        .replace(/[^\w-]+/g, "");
-    },
   },
   mounted() {
     this.getMostPlayed();
@@ -117,8 +130,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
-@import "./src/assets/sass/_font.scss";
+@import "@/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_font.scss";
 
 #most-played {
   background: $grayVeryLight;
@@ -128,9 +141,10 @@ export default {
 
   .wrapper {
     background: linear-gradient(
-      rgba($color: $grayVeryLight, $alpha: 0.5),
-      rgba($color: $grayVeryLight, $alpha: 1) 90%
-    ),url(../../assets/images/bg-pc.jpg);
+        rgba($color: $grayVeryLight, $alpha: 0.5),
+        rgba($color: $grayVeryLight, $alpha: 1) 90%
+      ),
+      url(../../assets/images/bg-pc.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -139,9 +153,10 @@ export default {
 
     &.dark-mode {
       background: linear-gradient(
-        rgba($color: $backgroundDarkDeep, $alpha: 0.75),
-        rgba($color: $backgroundDarkDeep, $alpha: 1) 90%
-      ),url(../../assets/images/bg-pc.jpg);
+          rgba($color: $backgroundDarkDeep, $alpha: 0.75),
+          rgba($color: $backgroundDarkDeep, $alpha: 1) 90%
+        ),
+        url(../../assets/images/bg-pc.jpg);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -172,9 +187,9 @@ export default {
   .swiper-button-next {
     position: static;
     background: rgba(41, 41, 41, 0.1);
-    backdrop-filter: blur( 2px );
-    -webkit-backdrop-filter: blur( 2px );
-    box-shadow: 0px 5px 10px -3px rgba(0,0,0,0.2);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0px 5px 10px -3px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 25px;
     transition: 0.3s ease-in-out;
@@ -187,7 +202,7 @@ export default {
     }
 
     &.dark-mode {
-      background: rgba( 255, 255, 255, 0.1 );
+      background: rgba(255, 255, 255, 0.1);
     }
   }
 }

@@ -4,7 +4,7 @@
       <!-- Desktop -->
       <div class="row d-flex justify-content-center">
         <div class="col-md-8 order-1" v-if="!mobile">
-          <h2 class="title">Newcomers</h2>
+          <h2 class="title">Recently Added</h2>
           <Divider />
           <div class="row">
             <div
@@ -20,7 +20,6 @@
                   params: {
                     id: newcomer.id,
                     meta: newcomer.title,
-                    title: convertToSlug(newcomer.title),
                   },
                 }"
               >
@@ -42,11 +41,10 @@
                 params: {
                   id: mostPlay.id,
                   meta: mostPlay.title,
-                  title: convertToSlug(mostPlay.title),
                 },
               }"
             >
-              <GameCardMostPlay :game="mostPlay" :darkMode="darkMode" />
+              <SideGameCard :game="mostPlay" :darkMode="darkMode" />
             </router-link>
           </div>
           <Loading v-if="loading" />
@@ -55,7 +53,7 @@
 
       <!-- Mobile -->
       <div v-if="mobile">
-        <h2 class="title mt-5">Newcomers</h2>
+        <h2 class="title mt-5">Recently Added</h2>
         <Divider />
         <div class="row">
           <swiper :options="swiperOption" ref="swiper" class="swiper">
@@ -72,7 +70,6 @@
                   params: {
                     id: newcomer.id,
                     meta: newcomer.title,
-                    title: convertToSlug(newcomer.title),
                   },
                 }"
               >
@@ -91,7 +88,7 @@
 import Divider from "@/components/Divider.vue";
 import GameCard from "@/components/GameCard.vue";
 import GameCardNewcomers from "@/components/GameCardNewcomers.vue";
-import GameCardMostPlay from "@/components/GameCardMostPlay.vue";
+import SideGameCard from "@/components/SideGameCard.vue";
 import Loading from "@/components/Loading.vue";
 import { API_Newcomers, API_MostPlayed } from "@/api/getDataGames.js";
 import axios from "axios";
@@ -128,7 +125,7 @@ export default {
     Divider,
     GameCard,
     GameCardNewcomers,
-    GameCardMostPlay,
+    SideGameCard,
     Loading,
   },
   created() {
@@ -165,11 +162,6 @@ export default {
         console.log(error);
       }
       this.loading = false;
-    },
-    convertToSlug(Text) {
-      return Text.toLowerCase()
-        .replace(/ /g, "-")
-        .replace(/[^\w-]+/g, "");
     },
   },
   mounted() {

@@ -3,7 +3,12 @@
     <div class="container d-flex flex-column align-items-center">
       <img v-if="!darkMode" src="../assets/logo/logo-light.png" />
       <img v-else src="../assets/logo/logo-dark.png" />
-      <router-link :to="{name: 'About'}" class="nav-link" :class="{'dark-mode': darkMode}">About</router-link>
+      <router-link
+        :to="{ name: 'About' }"
+        class="nav-link"
+        :class="{ 'dark-mode': darkMode }"
+        >About</router-link
+      >
       <span>© 2021 Rizky Ikhwan</span>
       <div class="pt-3">
         <a
@@ -16,10 +21,7 @@
         >
           <font-awesome-icon
             class="h4 icon"
-            :icon="[
-              `${icon.prefix}`,
-              `${icon.iconName}`,
-            ]"
+            :icon="[`${icon.prefix}`, `${icon.iconName}`]"
           ></font-awesome-icon>
         </a>
       </div>
@@ -28,7 +30,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -56,8 +57,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/sass/_rootColor.scss";
-@import "../assets/sass/_font.scss";
+@import "@/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_font.scss";
 
 .footer {
   font-family: "Montserrat", sans-serif;
@@ -110,15 +111,14 @@ export default {
 }
 
 @keyframes pulse {
-    0% {
-      filter: drop-shadow(0 0 2px $navyBlue);
-    }
-    50% {
-      filter: drop-shadow(0 0 6px $navyBlue);
-    }
-    100% {
-      filter: drop-shadow(0 0 2px $navyBlue);
-    }
+  0% {
+    filter: drop-shadow(0 0 2px $navyBlue);
   }
-
+  50% {
+    filter: drop-shadow(0 0 6px $navyBlue);
+  }
+  100% {
+    filter: drop-shadow(0 0 2px $navyBlue);
+  }
+}
 </style>

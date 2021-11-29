@@ -1,5 +1,5 @@
 <template>
-  <main class="games mb-5">
+  <main class="games">
     <div class="container">
       <SearchGames :darkMode="darkMode" />
       <div class="row">
@@ -8,32 +8,16 @@
           <Divider />
         </div>
         <div id="btn-wrap" class="btn-wrap col-sm-6">
-          <button
-            class="btn-category mr-3 px-3 btn-active"
-            @click="buttonAll"
-          >
+          <button class="btn-category mr-3 px-3 btn-active" @click="buttonAll">
             All
           </button>
-          <button
-            class="btn-category mr-3 px-3"
-            @click="buttonPC"
-          >
-            PC
-          </button>
-          <button
-            class="btn-category mr-3 px-3"
-            @click="buttonBrowser"
-          >
+          <button class="btn-category mr-3 px-3" @click="buttonPC">PC</button>
+          <button class="btn-category mr-3 px-3" @click="buttonBrowser">
             Browser
           </button>
-          <router-link :to="{name: 'GameFilter'}">
-            <button
-            class="btn-category px-3"
-          >
-            Filters
-          </button>
+          <router-link :to="{ name: 'GameFilter' }">
+            <button class="btn-category px-3">Filters</button>
           </router-link>
-          
         </div>
       </div>
       <AllGames v-if="all" :darkMode="darkMode" />
@@ -88,22 +72,25 @@ export default {
     const btnCategory = btnWrap.getElementsByClassName("btn-category");
 
     for (let i = 0; i < btnCategory.length; i++) {
-      btnCategory[i].addEventListener("click", function() {
+      btnCategory[i].addEventListener("click", function () {
         const currentActive = document.getElementsByClassName("btn-active");
-        currentActive[0].className = currentActive[0].className.replace(" btn-active", "");
+        currentActive[0].className = currentActive[0].className.replace(
+          " btn-active",
+          ""
+        );
         this.className += " btn-active";
-      })
+      });
     }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/sass/_rootColor.scss";
+@import "@/assets/sass/_rootColor.scss";
 
 .games {
   min-height: 100vh;
-  margin-top: 100px;
+  padding-top: 100px;
 
   .title {
     font-family: "Saira", sans-serif;
@@ -124,7 +111,7 @@ export default {
       background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
-      transition: .2s ease-in-out;
+      transition: 0.2s ease-in-out;
     }
 
     .btn-active {

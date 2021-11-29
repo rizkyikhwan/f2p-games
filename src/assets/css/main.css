@@ -36,7 +36,6 @@ body {
 #app {
   min-height: 100vh;
   background: #f3f5f8;
-  overflow: hidden;
   color: #002246;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
@@ -837,36 +836,6 @@ hr {
   50% {
     -webkit-transform: translateY(-15px);
             transform: translateY(-15px);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-}
-
-@-webkit-keyframes clicked {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  50% {
-    -webkit-transform: translateY(7.5px);
-            transform: translateY(7.5px);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-}
-
-@keyframes clicked {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  50% {
-    -webkit-transform: translateY(7.5px);
-            transform: translateY(7.5px);
   }
   100% {
     -webkit-transform: translateY(0);

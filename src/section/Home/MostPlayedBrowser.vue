@@ -1,18 +1,38 @@
 <template>
   <section id="most-played" class="d-flex align-items-center mt-4 mb-5">
     <div class="container my-3">
-      <div class="wrapper" :class="{ 'dark-mode': darkMode }" >
+      <div class="wrapper" :class="{ 'dark-mode': darkMode }">
         <div class="row">
-          <div class="col-md-4 d-flex flex-column justify-content-center order-md-1 text-md-right">
+          <div
+            class="
+              col-md-4
+              d-flex
+              flex-column
+              justify-content-center
+              order-md-1
+              text-md-right
+            "
+          >
             <div class="row">
               <div class="col-12 my-md-3 mt-3 mb-n3">
                 <h3 class="title">Top 10 Most Played on Browser</h3>
                 <Divider class="divider" />
-                <p>The best Browser Games that can be played anytime without worry about game specs</p>
+                <p>
+                  The best Browser Games that can be played anytime without
+                  worry about game specs
+                </p>
               </div>
               <div class="col-12 d-none d-md-flex justify-content-end">
-                <div id="browser-slide-prev" class="swiper-button-prev mr-2" :class="{'dark-mode': darkMode}"></div>
-                <div id="browser-slide-next" class="swiper-button-next" :class="{'dark-mode': darkMode}"></div>
+                <div
+                  id="browser-slide-prev"
+                  class="swiper-button-prev mr-2"
+                  :class="{ 'dark-mode': darkMode }"
+                ></div>
+                <div
+                  id="browser-slide-next"
+                  class="swiper-button-next"
+                  :class="{ 'dark-mode': darkMode }"
+                ></div>
               </div>
             </div>
           </div>
@@ -29,7 +49,10 @@
                     :class="{ 'dark-mode': darkMode }"
                     :to="{
                       name: 'GameDetail',
-                      params: { id: mostPlay.id, meta: mostPlay.title, title: convertToSlug(mostPlay.title) },
+                      params: {
+                        id: mostPlay.id,
+                        meta: mostPlay.title,
+                      },
                     }"
                   >
                     <GameCard :game="mostPlay" :darkMode="darkMode" />
@@ -39,7 +62,7 @@
             </div>
             <Loading v-if="loading" />
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   </section>
@@ -98,11 +121,6 @@ export default {
       }
       this.loading = false;
     },
-    convertToSlug(Text) {
-      return Text.toLowerCase()
-        .replace(/ /g, "-")
-        .replace(/[^\w-]+/g, "");
-    },
   },
   mounted() {
     this.getMostPlayed();
@@ -111,15 +129,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
-@import "./src/assets/sass/_font.scss";
+@import "@/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_font.scss";
 
 #most-played {
   .wrapper {
     background: linear-gradient(
-      rgba($color: $backgroundLight, $alpha: 0.75),
-      rgba($color: $backgroundLight, $alpha: 1) 90%
-    ),url(../../assets/images/bg-browser.jpg);
+        rgba($color: $backgroundLight, $alpha: 0.75),
+        rgba($color: $backgroundLight, $alpha: 1) 90%
+      ),
+      url(../../assets/images/bg-browser.jpg);
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -127,9 +146,10 @@ export default {
 
     &.dark-mode {
       background: linear-gradient(
-        rgba($color: $backgroundDark, $alpha: 0.75),
-        rgba($color: $backgroundDark, $alpha: 1) 90%
-      ),url(../../assets/images/bg-browser.jpg);
+          rgba($color: $backgroundDark, $alpha: 0.75),
+          rgba($color: $backgroundDark, $alpha: 1) 90%
+        ),
+        url(../../assets/images/bg-browser.jpg);
       background-size: cover;
       background-position: center;
     }
@@ -158,9 +178,9 @@ export default {
   .swiper-button-next {
     position: static;
     background: rgba(41, 41, 41, 0.1);
-    backdrop-filter: blur( 2px );
-    -webkit-backdrop-filter: blur( 2px );
-    box-shadow: 0px 5px 10px -3px rgba(0,0,0,0.2);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0px 5px 10px -3px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 25px;
     transition: 0.3s ease-in-out;
@@ -173,7 +193,7 @@ export default {
     }
 
     &.dark-mode {
-      background: rgba( 255, 255, 255, 0.1 );
+      background: rgba(255, 255, 255, 0.1);
     }
   }
 }

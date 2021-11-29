@@ -96,7 +96,23 @@
               Firefox, Chrome, or Internet Explorer.
             </p>
           </div>
-          <h3 class="title mt-5">Screenshots</h3>
+          <div class="row mt-5 mb-2">
+            <div class="col-md-6">
+              <h3 class="title">Screenshots</h3>
+            </div>
+            <div class="col-md-6 d-none d-md-flex justify-content-end">
+              <div
+                id="screenshot-prev"
+                class="swiper-button-prev"
+                :class="{ 'dark-mode': darkMode }"
+              ></div>
+              <div
+                id="screenshot-next"
+                class="swiper-button-next ml-4"
+                :class="{ 'dark-mode': darkMode }"
+              ></div>
+            </div>
+          </div>
           <swiper :options="swiperOption" class="swiper">
             <swiper-slide
               v-for="screenshot in gameDetail.screenshots"
@@ -129,7 +145,7 @@
 import Loading from "@/components/Loading.vue";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import {URL_gameSpecific, Headers } from "@/api/getDataGames.js";
+import { URL_gameSpecific, Headers } from "@/api/getDataGames.js";
 import "swiper/swiper-bundle.min.css";
 
 export default {
@@ -152,6 +168,10 @@ export default {
           992: {
             slidesPerView: 2,
           },
+        },
+        navigation: {
+          nextEl: "#screenshot-next",
+          prevEl: "#screenshot-prev",
         },
       },
       loading: false,
@@ -178,7 +198,7 @@ export default {
         setTimeout(() => {
           this.gameDetail = data;
           this.loading = false;
-        }, 1500)
+        }, 1500);
       } catch (error) {
         console.log(error);
       }
@@ -206,18 +226,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/sass/_rootColor.scss";
+@import "@/assets/sass/_rootColor.scss";
 
 .game-detail {
   min-height: 100vh;
-  margin-top: 100px;
+  padding-top: 100px;
 
   &.dark-mode {
     color: $grayLight;
   }
 
   .button {
-    // background: $navyBlue;
     border: 0;
     color: $fontDark;
     font-weight: 700;
@@ -282,6 +301,29 @@ export default {
       img {
         width: 60vw;
       }
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: relative;
+    background: rgba(41, 41, 41, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0px 5px 10px -3px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    padding: 0 23px;
+    transition: 0.3s ease-in-out;
+
+    &::after {
+      font-size: 0.75rem;
+      color: $navyBlue;
+      font-weight: 800;
+      filter: drop-shadow(0 0 2px $navyBlue);
+    }
+
+    &.dark-mode {
+      background: rgba(255, 255, 255, 0.1);
     }
   }
 }

@@ -8,13 +8,11 @@
           v-if="this.game.platform === `PC (Windows)`"
           :class="{ 'dark-mode': darkMode }"
         >
-          <font-awesome-icon
-            :icon="[ 'fab', 'windows' ]"
-          ></font-awesome-icon>
+          <font-awesome-icon :icon="['fab', 'windows']"></font-awesome-icon>
         </p>
         <p class="icon" v-else :class="{ 'dark-mode': darkMode }">
           <font-awesome-icon
-            :icon="[ 'fas', 'window-maximize' ]"
+            :icon="['fas', 'window-maximize']"
           ></font-awesome-icon>
         </p>
         <p class="platform" :class="{ 'dark-mode': darkMode }">
@@ -30,13 +28,11 @@
         <div class="card-body" :class="{ 'dark-mode': darkMode }">
           <span class="title">{{ game.title }}</span>
           <span v-if="this.game.platform === `PC (Windows)`">
-            <font-awesome-icon
-              :icon="[ 'fab', 'windows' ]"
-            ></font-awesome-icon>
+            <font-awesome-icon :icon="['fab', 'windows']"></font-awesome-icon>
           </span>
           <span v-else>
             <font-awesome-icon
-              :icon="[ 'fas', 'window-maximize' ]"
+              :icon="['fas', 'window-maximize']"
             ></font-awesome-icon>
           </span>
         </div>
@@ -46,15 +42,14 @@
 </template>
 
 <script>
-
 export default {
   props: ["game", "darkMode"],
 };
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
-@import "./src/assets/sass/_font.scss";
+@import "@/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_font.scss";
 
 .card {
   border: 0;
@@ -153,23 +148,21 @@ export default {
 }
 
 @media (min-width: 992px) {
-  .card {
-    &:hover .overlay-img {
-      visibility: visible;
-      background: linear-gradient(
-        rgba($color: $backgroundLight, $alpha: 0.3),
-        rgba($color: $backgroundLight, $alpha: 1)
-      );
-      backdrop-filter: blur(2px);
-      border-radius: calc(0.25rem - 1px);
-      animation: fade 0.5s ease-in-out;
+  .card:hover .overlay-img {
+    visibility: visible;
+    background: linear-gradient(
+      rgba($color: $backgroundLight, $alpha: 0.3),
+      rgba($color: $backgroundLight, $alpha: 1)
+    );
+    backdrop-filter: blur(2px);
+    border-radius: calc(0.25rem - 1px);
+    animation: fade 0.5s ease-in-out;
 
-      &.dark-mode {
-        background: linear-gradient(
-          rgba($color: $backgroundDark, $alpha: 0.3),
-          rgba($color: $backgroundDark, $alpha: 1)
-        );
-      }
+    &.dark-mode {
+      background: linear-gradient(
+        rgba($color: $backgroundDark, $alpha: 0.3),
+        rgba($color: $backgroundDark, $alpha: 1)
+      );
     }
   }
 
@@ -184,14 +177,12 @@ export default {
 }
 
 @media (max-width: 992px) {
-  .card {
-    .card-img-top {
-      filter: saturate(100%);
-    }
+  .card .card-img-top {
+    filter: saturate(100%);
 
     .card-body {
       font-size: 18px;
-      
+
       .title {
         overflow: hidden;
         white-space: nowrap;
@@ -202,11 +193,9 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .card {
-    .card-img-top {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+  .card .card-img-top {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 </style>

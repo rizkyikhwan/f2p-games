@@ -1,28 +1,12 @@
 <template>
   <main class="news">
     <div class="container">
-      <h2 class="title">Last News</h2>
-      <Divider />
-      <div class="container">
-        <div class="row d-flex justify-content-between">
-          <div
-            class="wrap mb-4 col-lg-12 row"
-            v-for="news in lastNews"
-            :key="news.id"
-          >
-            <div class="wrap-img col-sm-4 px-1 d-flex justify-content-start">
-              <img
-                :src="`${news.thumbnail}`"
-                class="img-fluid rounded shadow"
-              />
-            </div>
-            <div class="wrap-body col-sm px-1">
-              <p class="title-body mt-2">{{ news.title }}</p>
-              <p class="small text-muted description">
-                {{ news.short_description }}
-              </p>
-            </div>
-          </div>
+      <div class="row">
+        <div class="col-md-8">
+          <ListNews :darkMode="darkMode" />
+        </div>
+        <div class="col-md-4 mt-5 d-none d-md-block">
+          <SideList :darkMode="darkMode" />
         </div>
       </div>
     </div>
@@ -30,140 +14,23 @@
 </template>
 
 <script>
-import axios from "axios";
-import Divider from "@/components/Divider.vue";
-import { API_News } from "@/api/getDataNews.js";
+import ListNews from "@/section/News/ListNews.vue";
+import SideList from "@/section/News/SideList.vue";
 
 export default {
   data() {
-    return {
-      lastNews: {}
-    }
+    return {};
   },
+  props: ["darkMode"],
   components: {
-    Divider
+    ListNews,
+    SideList,
   },
-  props: ['darkMode'],
-  methods: {
-    async getNews() {
-      try {
-        const response = await axios.request(API_News);
-        const data = response.data;
-        this.lastNews = data;
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  },
-  mounted() {
-    this.getNews();
-  }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .news {
-  margin-top: 100px;
-  min-height: 100vh;
-
-  .title {
-    font-family: "Saira", sans-serif;
-    text-transform: uppercase;
-    font-size: 24px;
-  }
-
-  .wrap {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-
-    .wrap-img {
-      display: flex;
-      align-items: center;
-
-      .img-fluid {
-        min-width: 140px;
-      }
-    }
-
-    .wrap-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex-wrap: wrap;
-
-      .description {
-        max-width: 200px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-    }
-  }
-}
-
-@media (max-width: 992px) {
-  #news {
-    .game-card {
-      .card {
-        .card-body {
-          .card-title {
-            max-width: 150px;
-          }
-
-          .description {
-            max-width: 150px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  #news {
-    .game-card {
-      .card {
-        .card-body {
-          .card-title {
-            max-width: 350px;
-          }
-
-          .description {
-            max-width: 350px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 576px) {
-  #news {
-    // .wrap {
-    //   flex-wrap: wrap;
-    // }
-    .game-card {
-      .card {
-        .card-body {
-          .card-title {
-            max-width: 300px;
-          }
-
-          .description {
-            max-width: 300px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 356px) {
-  #news {
-    .wrap {
-      flex-wrap: wrap;
-    }
-  }
+  padding-top: 50px;
 }
 </style>

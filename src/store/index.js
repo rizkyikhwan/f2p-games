@@ -1,15 +1,15 @@
-import Vue from "vue"
-import Vuex from "vuex"
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    news: {}
+    news: {},
   },
   mutations: {
     setNews(state, data) {
-      state.news = data
-    }
-  }
-})
+      state.news = data;
+    },
+  },
+});

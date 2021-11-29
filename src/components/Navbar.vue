@@ -1,48 +1,116 @@
 <template>
   <nav
-    class="navbar d-flex align-items-center justify-content-between shadow py-3 fixed-top"
+    class="
+      navbar
+      d-flex
+      align-items-center
+      justify-content-between
+      shadow
+      py-3
+      fixed-top
+    "
     :class="{ 'dark-mode': darkMode }"
   >
     <div class="container">
       <div>
-        <img v-if="!darkMode" src="../assets/logo/logo-light.png" class="logo" />
+        <img
+          v-if="!darkMode"
+          src="../assets/logo/logo-light.png"
+          class="logo"
+        />
         <img v-else src="../assets/logo/logo-dark.png" class="logo" />
       </div>
 
       <!-- Desktop -->
       <div class="d-flex" v-if="!mobile">
-        <router-link :to="{ name: 'Home' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Home</router-link>
-        <router-link :to="{ name: 'Games' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Games</router-link>
-        <router-link :to="{ name: 'News' }" class="nav-link" :class="{ 'dark-mode': darkMode }">News</router-link>
+        <router-link
+          :to="{ name: 'Home' }"
+          class="nav-link"
+          :class="{ 'dark-mode': darkMode }"
+          >Home</router-link
+        >
+        <router-link
+          :to="{ name: 'Games' }"
+          class="nav-link"
+          :class="{ 'dark-mode': darkMode }"
+          >Games</router-link
+        >
+        <router-link
+          :to="{ name: 'News' }"
+          class="nav-link"
+          :class="{ 'dark-mode': darkMode }"
+          >News</router-link
+        >
       </div>
-      <button class="d-flex align-items-center icon-wrap" @click="$emit('darkMode')" v-if="!mobile">
+      <button
+        class="d-flex align-items-center icon-wrap"
+        @click="$emit('darkMode')"
+        v-if="!mobile"
+      >
         <font-awesome-icon
           class="icon sun"
           v-if="!darkMode"
-          :icon="[ 'fas', 'sun' ]"
+          :icon="['fas', 'sun']"
         ></font-awesome-icon>
         <font-awesome-icon
           class="icon moon"
           v-else
-          :icon="[ 'fas', 'moon' ]"
+          :icon="['fas', 'moon']"
         ></font-awesome-icon>
       </button>
 
       <!-- Mobile -->
       <div class="menu-toggle" v-show="mobile" @click="toggleMobileNav">
-        <span class="bar" :class="{'dark-mode': darkMode}"></span>
-        <span class="bar" :class="{'dark-mode': darkMode}"></span>
-        <span class="bar" :class="{'dark-mode': darkMode}"></span>
+        <span class="bar" :class="{ 'dark-mode': darkMode }"></span>
+        <span class="bar" :class="{ 'dark-mode': darkMode }"></span>
+        <span class="bar" :class="{ 'dark-mode': darkMode }"></span>
       </div>
       <transition name="slideLeft">
-        <ul class="mobile-nav" v-show="mobileNav" :class="{'dark-mode': darkMode}">
-          <font-awesome-icon @click="toggleMobileNav" class="icon-close" :class="{'dark-mode': darkMode}" :icon="['fas', 'times']"></font-awesome-icon>
-          <router-link :to="{ name: 'Home' }" class="nav-link mt-3" :class="{ 'dark-mode': darkMode }">Home</router-link>
-          <router-link :to="{ name: 'Games' }" class="nav-link" :class="{ 'dark-mode': darkMode }">Games</router-link>
-          <router-link :to="{ name: 'News' }" class="nav-link" :class="{ 'dark-mode': darkMode }">News</router-link>
-          <button class="d-flex align-items-center icon-wrap" :class="{ 'dark-mode': darkMode }" @click="$emit('darkMode')" style="margin: 0 auto">
-            <font-awesome-icon class="icon sun" v-if="!darkMode" :icon="[ 'fas', 'sun' ]"></font-awesome-icon>
-            <font-awesome-icon class="icon moon" v-else :icon="[ 'fas', 'moon' ]"></font-awesome-icon>
+        <ul
+          class="mobile-nav"
+          v-show="mobileNav"
+          :class="{ 'dark-mode': darkMode }"
+        >
+          <font-awesome-icon
+            @click="toggleMobileNav"
+            class="icon-close"
+            :class="{ 'dark-mode': darkMode }"
+            :icon="['fas', 'times']"
+          ></font-awesome-icon>
+          <router-link
+            :to="{ name: 'Home' }"
+            class="nav-link mt-3"
+            :class="{ 'dark-mode': darkMode }"
+            >Home</router-link
+          >
+          <router-link
+            :to="{ name: 'Games' }"
+            class="nav-link"
+            :class="{ 'dark-mode': darkMode }"
+            >Games</router-link
+          >
+          <router-link
+            :to="{ name: 'News' }"
+            class="nav-link"
+            :class="{ 'dark-mode': darkMode }"
+            >News</router-link
+          >
+          <button
+            class="d-flex align-items-center icon-wrap"
+            :class="{ 'dark-mode': darkMode }"
+            @click="$emit('darkMode')"
+            style="margin: 0 auto"
+          >
+            <font-awesome-icon
+              class="icon sun"
+              v-if="!darkMode"
+              :icon="['fas', 'sun']"
+            ></font-awesome-icon>
+            <font-awesome-icon
+              class="icon moon"
+              v-else
+              :icon="['fas', 'moon']"
+            ></font-awesome-icon>
           </button>
         </ul>
       </transition>
@@ -86,8 +154,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
-@import "./src/assets/sass/_font.scss";
+@import "@/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_font.scss";
 
 .navbar {
   font-family: "Saira", sans-serif;
@@ -190,7 +258,7 @@ export default {
 
 .menu-toggle {
   cursor: pointer;
-  
+
   .bar {
     display: block;
     border-radius: 25px;
@@ -203,7 +271,7 @@ export default {
     &:nth-child(2) {
       width: 17.5px;
     }
-    
+
     &:last-child {
       width: 12.5px;
     }
@@ -222,7 +290,7 @@ export default {
   top: 0;
   left: 0;
   filter: saturate(50%);
-  background-color: rgba($color: $backgroundDark, $alpha: .5);
+  background-color: rgba($color: $backgroundDark, $alpha: 0.5);
   backdrop-filter: blur(2px);
   z-index: 99;
 }

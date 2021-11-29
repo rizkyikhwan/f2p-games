@@ -3,12 +3,11 @@
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_rootColor.scss";
 
 .loading {
   display: block;
@@ -25,6 +24,8 @@ export default {
 }
 
 @keyframes loading {
-  to{transform: rotateZ(720deg);}
+  to {
+    transform: rotateZ(720deg);
+  }
 }
 </style>

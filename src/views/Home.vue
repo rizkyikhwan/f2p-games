@@ -1,29 +1,29 @@
 <template>
   <main class="home">
     <Hero :darkMode="darkMode" />
-    <Newcomers :darkMode="darkMode" />
+    <RecentlyAdd :darkMode="darkMode" />
     <MostPlayedPc :darkMode="darkMode" />
     <MostPlayedBrowser :darkMode="darkMode" />
-    <LastNews :darkMode="darkMode" />
+    <WhatsNew :darkMode="darkMode" />
   </main>
 </template>
 
 <script>
 import Hero from "@/section/Home/Hero.vue";
-import Newcomers from "@/section/Home/Newcomers.vue";
+import RecentlyAdd from "@/section/Home/RecentlyAdd.vue";
 import MostPlayedPc from "@/section/Home/MostPlayedPc.vue";
 import MostPlayedBrowser from "@/section/Home/MostPlayedBrowser.vue";
-import LastNews from "@/section/Home/LastNews.vue";
+import WhatsNew from "@/section/Home/WhatsNew.vue";
 
 export default {
   name: "Home",
-  props: ['darkMode'],
+  props: ["darkMode"],
   components: {
     Hero,
-    Newcomers,
+    RecentlyAdd,
     MostPlayedPc,
     MostPlayedBrowser,
-    LastNews
+    WhatsNew,
   },
 };
 </script>

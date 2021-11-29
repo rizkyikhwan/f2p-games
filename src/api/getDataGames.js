@@ -1,43 +1,55 @@
-const URL = 'https://free-to-play-games-database.p.rapidapi.com/api/games';
-const URL_filter = 'https://free-to-play-games-database.p.rapidapi.com/api/filter';
-const URL_gameSpecific = 'https://free-to-play-games-database.p.rapidapi.com/api/game';
+const URL = "https://free-to-play-games-database.p.rapidapi.com/api/games";
+const URL_filter =
+  "https://free-to-play-games-database.p.rapidapi.com/api/filter";
+const URL_gameSpecific =
+  "https://free-to-play-games-database.p.rapidapi.com/api/game";
 const Headers = {
-  'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
-  'x-rapidapi-key': `${process.env.VUE_APP_API_KEY}`
+  "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
+  "x-rapidapi-key": `${process.env.VUE_APP_API_KEY}`,
 };
 
 const API_Newcomers = {
-  method: 'GET',
+  method: "GET",
   url: URL,
-  params: {'sort-by': 'release-date'},
-  headers: Headers
+  params: { "sort-by": "release-date" },
+  headers: Headers,
 };
 
 const API_MostPlayed = {
-  method: 'GET',
+  method: "GET",
   url: URL,
-  params: {'sort-by': 'popularity'},
-  headers: Headers
+  params: { "sort-by": "popularity" },
+  headers: Headers,
 };
 
 const API_MostPlayedPC = {
-  method: 'GET',
+  method: "GET",
   url: URL,
-  params: {platform: 'pc', 'sort-by': 'popularity'},
-  headers: Headers
+  params: { platform: "pc", "sort-by": "popularity" },
+  headers: Headers,
 };
 
 const API_MostPlayedBrowser = {
-  method: 'GET',
+  method: "GET",
   url: URL,
-  params: {platform: 'browser', 'sort-by': 'popularity'},
-  headers: Headers
+  params: { platform: "browser", "sort-by": "popularity" },
+  headers: Headers,
 };
 
 const API_AllGames = {
-  method: 'GET',
+  method: "GET",
   url: URL,
-  headers: Headers
+  headers: Headers,
 };
 
-export { API_Newcomers, API_MostPlayed, API_MostPlayedPC, API_MostPlayedBrowser, API_AllGames, URL, URL_filter, URL_gameSpecific, Headers };
+export {
+  API_Newcomers,
+  API_MostPlayed,
+  API_MostPlayedPC,
+  API_MostPlayedBrowser,
+  API_AllGames,
+  URL,
+  URL_filter,
+  URL_gameSpecific,
+  Headers,
+};

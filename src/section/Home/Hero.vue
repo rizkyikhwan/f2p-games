@@ -7,7 +7,8 @@
             <div class="justify-content-center align-self-center">
               <h1 class="title">Free games to play</h1>
               <p class="lead mb-4">
-                Search and find your best <span>Free-to-play</span> games on <span>PC</span> and <span>Browser</span> !
+                Search and find your best <span>Free-to-play</span> games on
+                <span>PC</span> and <span>Browser</span> !
               </p>
               <div class="row justify-content-center">
                 <div class="col">
@@ -15,7 +16,7 @@
                     :to="{ name: 'Games' }"
                     class="button"
                     :class="{ 'dark-mode': darkMode }"
-                    >See All Free Games</router-link
+                    >Browse Games</router-link
                   >
                 </div>
               </div>
@@ -34,8 +35,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
-@import "./src/assets/sass/_font.scss";
+@import "@/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_font.scss";
 
 #hero {
   font-family: "Roboto", sans-serif;

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{'dark-mode' : darkMode}">
+  <div id="app" :class="{ 'dark-mode': darkMode }">
     <Navbar @darkMode="toggleDarkMode" :darkMode="darkMode" />
     <transition name="fadeInOutTop" mode="out-in">
       <router-view :darkMode="darkMode" />
@@ -17,29 +17,28 @@ import BtnToTop from "@/components/BtnToTop.vue";
 export default {
   data() {
     return {
-      darkMode: false
-    }
+      darkMode: false,
+    };
   },
   components: {
     Navbar,
     Footer,
-    BtnToTop
+    BtnToTop,
   },
   methods: {
     toggleDarkMode() {
       this.darkMode = !this.darkMode;
-    }
+    },
   },
   watch: {
     darkMode() {
       localStorage.setItem("darkMode", JSON.stringify(this.darkMode));
-    }
+    },
   },
   created() {
     this.darkMode = JSON.parse(localStorage.getItem("darkMode"));
-  }
-}
+  },
+};
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

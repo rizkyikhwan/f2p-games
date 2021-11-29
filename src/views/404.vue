@@ -2,12 +2,10 @@
   <main class="not_found">
     <div class="container">
       <div class="wrap">
-      <div class="not__found">
-        <h1 class="not___found">
-          404
-        </h1>
-        <p class="text-center">Oops! Something is wrong.</p>
-      </div>
+        <div class="not__found">
+          <h1 class="not___found">404</h1>
+          <p class="text-center">Oops! Something is wrong.</p>
+        </div>
       </div>
     </div>
   </main>
@@ -18,13 +16,12 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/sass/_rootColor.scss";
+@import "@/assets/sass/_rootColor.scss";
 
 .not_found {
   font-family: "Montserrat", sans-serif;
   margin-top: 75px;
   min-height: 75vh;
-
 
   .wrap {
     top: 0;
@@ -45,6 +42,5 @@ export default {};
       }
     }
   }
-
 }
 </style>

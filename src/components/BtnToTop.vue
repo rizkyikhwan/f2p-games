@@ -1,22 +1,24 @@
 <template>
-<transition name="fade">
-  <div v-if="scrollY" @click="scrollToTop">
-    <button class="btn-to-top shadow-sm" :class="{'dark-mode': darkMode}">
-      <font-awesome-icon class="icon" :icon="['fas', 'angle-up']"></font-awesome-icon>
-    </button>
-  </div>
-</transition>
+  <transition name="fade">
+    <div v-if="scrollY" @click="scrollToTop">
+      <button class="btn-to-top shadow-sm" :class="{ 'dark-mode': darkMode }">
+        <font-awesome-icon
+          class="icon"
+          :icon="['fas', 'angle-up']"
+        ></font-awesome-icon>
+      </button>
+    </div>
+  </transition>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      scrollY: null
-    }
+      scrollY: null,
+    };
   },
-  props: ['darkMode'],
+  props: ["darkMode"],
   created() {
     window.addEventListener("scroll", this.scrollScreen);
   },
@@ -31,14 +33,24 @@ export default {
       }
     },
     scrollToTop() {
-      document.documentElement.scrollTop = 0;
-    }
-  }
-}
+      let currentScroll = document.documentElement.scrollTop,
+        int = setInterval(frame, 10);
+
+      function frame() {
+        if (0 > currentScroll) {
+          clearInterval(int);
+        } else {
+          currentScroll = currentScroll - 100;
+          document.documentElement.scrollTop = currentScroll;
+        }
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@import "./src/assets/sass/_rootColor.scss";
+@import "@/assets/sass/_rootColor.scss";
 
 .btn-to-top {
   position: fixed;
@@ -60,10 +72,6 @@ export default {
 
   &.dark-mode {
     background: rgba($color: $light, $alpha: 0.1);
-  }
-
-  &:focus {
-    animation: clicked .2s ease;
   }
 }
 

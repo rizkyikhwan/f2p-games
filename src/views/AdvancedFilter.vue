@@ -3,8 +3,12 @@
     <div class="container">
       <h4 class="title mb-3">Advanced Filter Search</h4>
       <div class="row">
-        <div class="col-lg-9 col-sm-8 order-1">
-          <div v-if="!filteredGames.length">{{ error }}</div>
+        <div class="col-lg-9 col-sm-8 order-1 mt-n4">
+          <div class="mt-3 mb-n2 d-block d-md-none">
+            <h4 class="title">Result</h4>
+            <div class="line"></div>
+          </div>
+          <div v-if="!filteredGames.length" class="mt-4 mb-5">{{ error }}</div>
           <transition-group
             appear
             tag="div"
@@ -26,7 +30,6 @@
                   params: {
                     id: game.id,
                     meta: game.title,
-                    title: convertToSlug(game.title),
                   },
                 }"
               >
@@ -36,33 +39,69 @@
           </transition-group>
         </div>
         <div class="col-lg-3 col-sm-4 order-sm-2">
-          <div class="box-filter" :class="{'dark-mode': darkMode}">
+          <div class="box-filter" :class="{ 'dark-mode': darkMode }">
             <!-- Platform -->
             <div class="box-platform">
               <label class="title-filter">Platform</label>
               <Divider />
               <div class="d-flex flex-column" @change="getGames">
-                <input type="radio" v-model="platform" name="select" id="platform-1" value="all" checked />
-                <input type="radio" v-model="platform" name="select" id="platform-2" value="pc" />
-                <input type="radio" v-model="platform" name="select" id="platform-3" value="browser" />
-                <label for="platform-1" class="platform-1" :class="{'dark-mode': darkMode}">
+                <input
+                  type="radio"
+                  v-model="platform"
+                  name="select"
+                  id="platform-1"
+                  value="all"
+                  checked
+                />
+                <input
+                  type="radio"
+                  v-model="platform"
+                  name="select"
+                  id="platform-2"
+                  value="pc"
+                />
+                <input
+                  type="radio"
+                  v-model="platform"
+                  name="select"
+                  id="platform-3"
+                  value="browser"
+                />
+                <label
+                  for="platform-1"
+                  class="platform-1"
+                  :class="{ 'dark-mode': darkMode }"
+                >
                   <span>All</span>
                 </label>
-                <label for="platform-2" class="platform-2" :class="{'dark-mode': darkMode}">
+                <label
+                  for="platform-2"
+                  class="platform-2"
+                  :class="{ 'dark-mode': darkMode }"
+                >
                   <span>PC</span>
                 </label>
-                <label for="platform-3" class="platform-3" :class="{'dark-mode': darkMode}">
+                <label
+                  for="platform-3"
+                  class="platform-3"
+                  :class="{ 'dark-mode': darkMode }"
+                >
                   <span>Browser</span>
                 </label>
               </div>
             </div>
-            <hr>
+            <hr />
 
             <!-- Sort-By -->
             <div class="form-group">
               <label class="title-filter">Sorted By</label>
               <Divider />
-              <select v-model="sorted" @change="getGames" class="form-select" :class="{'dark-mode': darkMode}">
+              <select
+                v-model="sorted"
+                @change="getGames"
+                class="form-select"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <option
                   v-for="(sortBy, index) in sortedBy"
                   :key="index"
@@ -72,13 +111,18 @@
                 </option>
               </select>
             </div>
-            <hr>
+            <hr />
 
             <!-- Genre -->
             <div class="form-group">
               <label class="title-filter">Genre</label>
               <Divider />
-              <select v-model="genre" @change="getGames" class="form-select" :class="{'dark-mode': darkMode}">
+              <select
+                v-model="genre"
+                @change="getGames"
+                class="form-select"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <option
                   v-for="(genreFilter, index) in genreFilters"
                   :key="index"
@@ -89,169 +133,458 @@
               </select>
             </div>
           </div>
-          
-          <div class="box-filter" :class="{'dark-mode': darkMode}">
+
+          <div class="box-filter" :class="{ 'dark-mode': darkMode }">
             <!-- Graphics -->
             <label class="title-filter">Graphics</label>
             <Divider />
             <div class="d-flex flex-column" @change="getGames">
-              <input type="checkbox" v-model="graphics_1" id="graphic-1" value="3d">
-              <input type="checkbox" v-model="graphics_2" id="graphic-2" value="2d">
-              <label for="graphic-1" class="graphic-1" :class="{'dark-mode': darkMode}">
+              <input
+                type="checkbox"
+                v-model="graphics_1"
+                id="graphic-1"
+                value="3d"
+              />
+              <input
+                type="checkbox"
+                v-model="graphics_2"
+                id="graphic-2"
+                value="2d"
+              />
+              <label
+                for="graphic-1"
+                class="graphic-1"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>3D Graphics</span>
               </label>
-              <label for="graphic-2" class="graphic-2" :class="{'dark-mode': darkMode}">
+              <label
+                for="graphic-2"
+                class="graphic-2"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>2D Graphics</span>
               </label>
             </div>
-            <hr>
+            <hr />
 
             <!-- Combat -->
             <label class="title-filter">Combat</label>
             <Divider />
             <div class="d-flex flex-column" @change="getGames">
-              <input type="checkbox" v-model="combat_1" id="combat-1" value="pve">
-              <input type="checkbox" v-model="combat_2" id="combat-2" value="pvp">
-              <label for="combat-1" class="combat-1" :class="{'dark-mode': darkMode}">
+              <input
+                type="checkbox"
+                v-model="combat_1"
+                id="combat-1"
+                value="pve"
+              />
+              <input
+                type="checkbox"
+                v-model="combat_2"
+                id="combat-2"
+                value="pvp"
+              />
+              <label
+                for="combat-1"
+                class="combat-1"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>PVE</span>
               </label>
-              <label for="combat-2" class="combat-2" :class="{'dark-mode': darkMode}">
+              <label
+                for="combat-2"
+                class="combat-2"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>PVP</span>
               </label>
             </div>
-            <hr>
+            <hr />
 
             <!-- Gameplay -->
             <label class="title-filter">Gameplay</label>
             <Divider />
             <div class="d-flex flex-column" @change="getGames">
-              <input type="radio" v-model="gameplay" id="gameplay-1" value="real-time" checked>
-              <input type="radio" v-model="gameplay" id="gameplay-2" value="turn-based">
-              <label for="gameplay-1" class="gameplay-1" :class="{'dark-mode': darkMode}">
+              <input
+                type="radio"
+                v-model="gameplay"
+                id="gameplay-1"
+                value="real-time"
+                checked
+              />
+              <input
+                type="radio"
+                v-model="gameplay"
+                id="gameplay-2"
+                value="turn-based"
+              />
+              <label
+                for="gameplay-1"
+                class="gameplay-1"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>Real Time</span>
               </label>
-              <label for="gameplay-2" class="gameplay-2" :class="{'dark-mode': darkMode}">
+              <label
+                for="gameplay-2"
+                class="gameplay-2"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>Turn Based</span>
               </label>
             </div>
-            <hr>
+            <hr />
 
             <!-- Setting -->
             <label class="title-filter">Setting</label>
             <Divider />
             <div class="d-flex flex-column" @change="getGames">
-              <input type="checkbox" v-model="setting_1" id="setting-1" value="anime">
-              <input type="checkbox" v-model="setting_2" id="setting-2" value="fantasy">
-              <input type="checkbox" v-model="setting_3" id="setting-3" value="horror">
-              <input type="checkbox" v-model="setting_4" id="setting-4" value="sci-fi">
-              <input type="checkbox" v-model="setting_5" id="setting-5" value="military">
-              <label for="setting-1" class="setting-1" :class="{'dark-mode': darkMode}">
+              <input
+                type="checkbox"
+                v-model="setting_1"
+                id="setting-1"
+                value="anime"
+              />
+              <input
+                type="checkbox"
+                v-model="setting_2"
+                id="setting-2"
+                value="fantasy"
+              />
+              <input
+                type="checkbox"
+                v-model="setting_3"
+                id="setting-3"
+                value="horror"
+              />
+              <input
+                type="checkbox"
+                v-model="setting_4"
+                id="setting-4"
+                value="sci-fi"
+              />
+              <input
+                type="checkbox"
+                v-model="setting_5"
+                id="setting-5"
+                value="military"
+              />
+              <label
+                for="setting-1"
+                class="setting-1"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>Anime</span>
               </label>
-              <label for="setting-2" class="setting-2" :class="{'dark-mode': darkMode}">
+              <label
+                for="setting-2"
+                class="setting-2"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>Fantasy</span>
               </label>
-              <label for="setting-3" class="setting-3" :class="{'dark-mode': darkMode}">
+              <label
+                for="setting-3"
+                class="setting-3"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>Horror</span>
               </label>
-              <label for="setting-4" class="setting-4" :class="{'dark-mode': darkMode}">
+              <label
+                for="setting-4"
+                class="setting-4"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>Sci-Fi</span>
               </label>
-              <label for="setting-5" class="setting-5" :class="{'dark-mode': darkMode}">
+              <label
+                for="setting-5"
+                class="setting-5"
+                :class="{ 'dark-mode': darkMode }"
+              >
                 <span>Military</span>
               </label>
             </div>
           </div>
 
           <!-- Tags -->
-          <div class="box-filter" :class="{'dark-mode': darkMode}">
+          <div class="box-filter" :class="{ 'dark-mode': darkMode }">
             <div class="box-tags">
               <label class="title-filter">Tags</label>
               <Divider />
               <div class="d-flex flex-column" @change="getGames">
                 <div class="wrap-tag">
-                  <input type="checkbox" v-model="tag_1" id="tag-1" value="mmofps" />
-                  <input type="checkbox" v-model="tag_2" id="tag-2" value="sandbox" />
-                  <input type="checkbox" v-model="tag_3" id="tag-3" value="open-world" />
-                  <input type="checkbox" v-model="tag_4" id="tag-4" value="survival" />
-                  <input type="checkbox" v-model="tag_5" id="tag-5" value="action-rpg" />
-                  <input type="checkbox" v-model="tag_6" id="tag-6" value="mmorts" />
-                  <input type="checkbox" v-model="tag_7" id="tag-7" value="pixel" />
-                  <input type="checkbox" v-model="tag_8" id="tag-8" value="mmotps" />
-                  <input type="checkbox" v-model="tag_9" id="tag-9" value="zombie" />
-                  <input type="checkbox" v-model="tag_10" id="tag-10" value="first-person" />
-                  <input type="checkbox" v-model="tag_11" id="tag-11" value="top-down" />
-                  <input type="checkbox" v-model="tag_12" id="tag-12" value="tank" />
-                  <input type="checkbox" v-model="tag_13" id="tag-13" value="space" />
-                  <input type="checkbox" v-model="tag_14" id="tag-14" value="sailing" />
-                  <input type="checkbox" v-model="tag_15" id="tag-15" value="side-scroller" />
-                  <input type="checkbox" v-model="tag_16" id="tag-16" value="superhero" />
-                  <input type="checkbox" v-model="tag_17" id="tag-17" value="permadeath" />
-                  <input type="checkbox" v-model="tag_18" id="tag-18" value="action" />
-                  <input type="checkbox" v-model="tag_19" id="tag-19" value="martial-arts" />
-                  <input type="checkbox" v-model="tag_20" id="tag-20" value="flight" />
-                  <input type="checkbox" v-model="tag_21" id="tag-21" value="low-spec" />
-                  <label for="tag-1" class="tag-1" :class="{'dark-mode': darkMode}">
+                  <input
+                    type="checkbox"
+                    v-model="tag_1"
+                    id="tag-1"
+                    value="mmofps"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_2"
+                    id="tag-2"
+                    value="sandbox"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_3"
+                    id="tag-3"
+                    value="open-world"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_4"
+                    id="tag-4"
+                    value="survival"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_5"
+                    id="tag-5"
+                    value="action-rpg"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_6"
+                    id="tag-6"
+                    value="mmorts"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_7"
+                    id="tag-7"
+                    value="pixel"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_8"
+                    id="tag-8"
+                    value="mmotps"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_9"
+                    id="tag-9"
+                    value="zombie"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_10"
+                    id="tag-10"
+                    value="first-person"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_11"
+                    id="tag-11"
+                    value="top-down"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_12"
+                    id="tag-12"
+                    value="tank"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_13"
+                    id="tag-13"
+                    value="space"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_14"
+                    id="tag-14"
+                    value="sailing"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_15"
+                    id="tag-15"
+                    value="side-scroller"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_16"
+                    id="tag-16"
+                    value="superhero"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_17"
+                    id="tag-17"
+                    value="permadeath"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_18"
+                    id="tag-18"
+                    value="action"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_19"
+                    id="tag-19"
+                    value="martial-arts"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_20"
+                    id="tag-20"
+                    value="flight"
+                  />
+                  <input
+                    type="checkbox"
+                    v-model="tag_21"
+                    id="tag-21"
+                    value="low-spec"
+                  />
+                  <label
+                    for="tag-1"
+                    class="tag-1"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>MMOFPS</span>
                   </label>
-                  <label for="tag-2" class="tag-2" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-2"
+                    class="tag-2"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Sandbox</span>
                   </label>
-                  <label for="tag-3" class="tag-3" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-3"
+                    class="tag-3"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Openworld</span>
                   </label>
-                  <label for="tag-4" class="tag-4" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-4"
+                    class="tag-4"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Survival</span>
                   </label>
-                  <label for="tag-5" class="tag-5" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-5"
+                    class="tag-5"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Action RPG</span>
                   </label>
-                  <label for="tag-6" class="tag-6" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-6"
+                    class="tag-6"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>MMORTS</span>
                   </label>
-                  <label for="tag-7" class="tag-7" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-7"
+                    class="tag-7"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Pixel</span>
                   </label>
-                  <label for="tag-8" class="tag-8" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-8"
+                    class="tag-8"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>MMOTPS</span>
                   </label>
-                  <label for="tag-9" class="tag-9" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-9"
+                    class="tag-9"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Zombie</span>
                   </label>
-                  <label for="tag-10" class="tag-10" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-10"
+                    class="tag-10"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>First-Person</span>
                   </label>
-                  <label for="tag-11" class="tag-11" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-11"
+                    class="tag-11"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Top-Down</span>
                   </label>
-                  <label for="tag-12" class="tag-12" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-12"
+                    class="tag-12"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Tank</span>
                   </label>
-                  <label for="tag-13" class="tag-13" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-13"
+                    class="tag-13"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Space</span>
                   </label>
-                  <label for="tag-14" class="tag-14" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-14"
+                    class="tag-14"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Sailing</span>
                   </label>
-                  <label for="tag-15" class="tag-15" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-15"
+                    class="tag-15"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Side Scroller</span>
                   </label>
-                  <label for="tag-16" class="tag-16" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-16"
+                    class="tag-16"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Superhero</span>
                   </label>
-                  <label for="tag-17" class="tag-17" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-17"
+                    class="tag-17"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Permadeath</span>
                   </label>
-                  <label for="tag-18" class="tag-18" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-18"
+                    class="tag-18"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Action</span>
                   </label>
-                  <label for="tag-19" class="tag-19" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-19"
+                    class="tag-19"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Martial Arts</span>
                   </label>
-                  <label for="tag-20" class="tag-20" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-20"
+                    class="tag-20"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Flight</span>
                   </label>
-                  <label for="tag-21" class="tag-21" :class="{'dark-mode': darkMode}">
+                  <label
+                    for="tag-21"
+                    class="tag-21"
+                    :class="{ 'dark-mode': darkMode }"
+                  >
                     <span>Low-Spec</span>
                   </label>
                 </div>
@@ -331,7 +664,7 @@ export default {
   },
   components: {
     GameCard,
-    Divider
+    Divider,
   },
   props: ["darkMode"],
   methods: {
@@ -339,12 +672,12 @@ export default {
       const API_games = {
         method: "GET",
         url: URL_filter,
-        params: { 
-          'sort-by': this.sorted,
-          platform: this.platform, 
+        params: {
+          "sort-by": this.sorted,
+          platform: this.platform,
           tag: [
-            this.genre, 
-            this.graphics_1 === true ? "3d" : "", 
+            this.genre,
+            this.graphics_1 === true ? "3d" : "",
             this.graphics_2 === true ? "2d" : "",
             this.combat_1 === true ? "pve" : "",
             this.combat_2 === true ? "pvp" : "",
@@ -375,12 +708,12 @@ export default {
             this.tag_19 === true ? "martial-arts" : "",
             this.tag_20 === true ? "flight" : "",
             this.tag_21 === true ? "low-spec" : "",
-            ] 
-          },
+          ],
+        },
         headers: Headers,
       };
       try {
-        const response = await axios.request(API_games)
+        const response = await axios.request(API_games);
         const data = response.data;
         this.filteredGames = data;
 
@@ -391,11 +724,6 @@ export default {
         this.error = err.message;
       }
     },
-    convertToSlug(Text) {
-      return Text.toLowerCase()
-        .replace(/ /g, "-")
-        .replace(/[^\w-]+/g, "");
-    },
   },
   mounted() {
     this.getGames();
@@ -404,10 +732,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/sass/_rootColor.scss";
+@import "@/assets/sass/_rootColor.scss";
 
 .advanced-filter {
-  margin-top: 100px;
+  padding-top: 100px;
 }
 
 .title {
@@ -417,7 +745,7 @@ export default {
 }
 
 .title-filter {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
 
@@ -427,7 +755,7 @@ export default {
   padding: 10px;
   margin-bottom: 2em;
   box-shadow: 0px 10px 15px 2px rgba(0, 0, 0, 0.12);
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 
   &.dark-mode {
     background: $bgCard;
@@ -446,7 +774,7 @@ export default {
     border: none;
     border-radius: 5px;
     box-shadow: 0px 10px 15px -7px rgba(0, 0, 0, 0.12);
-    transition: .2s ease-in-out;
+    transition: 0.2s ease-in-out;
 
     &.dark-mode {
       background-color: $backgroundDark2;
