@@ -55,6 +55,12 @@ body {
   }
 }
 
+@media (max-width: 992px) {
+  .video-container {
+    width: 100%;
+  }
+}
+
 .button {
   font-family: "Saira", sans-serif;
   color: $fontLight;

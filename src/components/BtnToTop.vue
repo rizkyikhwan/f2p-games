@@ -61,7 +61,7 @@ export default {
   border: 0;
   background: rgba($color: $backgroundDark, $alpha: 0.1);
   backdrop-filter: blur(2px);
-  z-index: 99;
+  z-index: 9999;
   transition: all 0.2s ease-in-out;
 
   .icon {

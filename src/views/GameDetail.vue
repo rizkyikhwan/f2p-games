@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-4 d-flex flex-column">
           <img
-            :src="`${gameDetail.thumbnail}`"
+            :src="gameDetail.thumbnail"
             :alt="gameDetail.title"
             class="img-fluid rounded shadow mb-3"
           />
@@ -23,6 +23,15 @@
           <p class="text-justify small text-muted">
             {{ gameDetail.short_description }}
           </p>
+          <span
+            class="link mb-4"
+            :class="{ 'dark-mode': darkMode }"
+            @click="goBack"
+            ><font-awesome-icon
+              :icon="['fas', 'arrow-left']"
+            ></font-awesome-icon>
+            Go Back
+          </span>
         </div>
         <div class="col-md-8">
           <h3 class="title">{{ gameDetail.title }}</h3>
@@ -121,7 +130,7 @@
             >
               <div class="wrap-img rounded">
                 <img
-                  :src="`${screenshot.image}`"
+                  :src="screenshot.image"
                   class="img-fluid rounded shadow-sm preview"
                   @click="showImg"
                 />
@@ -217,6 +226,9 @@ export default {
     closeShowImg() {
       const previewImg = document.querySelector("#preview-ss-overlay");
       previewImg.style.display = "none";
+    },
+    goBack() {
+      this.$router.go(-1);
     },
   },
   mounted() {
@@ -324,6 +336,19 @@ export default {
 
     &.dark-mode {
       background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .link {
+    color: $fontLight;
+
+    &.dark-mode {
+      color: $fontDark;
+    }
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
     }
   }
 }

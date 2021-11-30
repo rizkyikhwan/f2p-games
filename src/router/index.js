@@ -17,7 +17,7 @@ const routes = [
     name: "News",
     component: () => import("../views/News.vue"),
     meta: {
-      title: "Welcome to F2P Games",
+      title: "What's New",
     },
   },
   {
@@ -50,14 +50,6 @@ const routes = [
     component: () => import("../views/404.vue"),
     meta: {
       title: "404",
-    },
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: () => import("../views/About.vue"),
-    meta: {
-      title: "About",
     },
   },
   {

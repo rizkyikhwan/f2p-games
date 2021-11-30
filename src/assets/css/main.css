@@ -59,6 +59,12 @@ body {
   transition: 0.2s ease-in-out;
 }
 
+@media (max-width: 992px) {
+  .video-container {
+    width: 100%;
+  }
+}
+
 .button {
   font-family: "Saira", sans-serif;
   color: #002246;

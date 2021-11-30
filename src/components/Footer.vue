@@ -3,12 +3,6 @@
     <div class="container d-flex flex-column align-items-center">
       <img v-if="!darkMode" src="../assets/logo/logo-light.png" />
       <img v-else src="../assets/logo/logo-dark.png" />
-      <router-link
-        :to="{ name: 'About' }"
-        class="nav-link"
-        :class="{ 'dark-mode': darkMode }"
-        >About</router-link
-      >
       <span>© 2021 Rizky Ikhwan</span>
       <div class="pt-3">
         <a
@@ -111,14 +105,12 @@ export default {
 }
 
 @keyframes pulse {
-  0% {
+  0%,
+  100% {
     filter: drop-shadow(0 0 2px $navyBlue);
   }
   50% {
     filter: drop-shadow(0 0 6px $navyBlue);
-  }
-  100% {
-    filter: drop-shadow(0 0 2px $navyBlue);
   }
 }
 </style>

@@ -147,6 +147,7 @@ export default {
         box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         color: #fff;
+        transform: translateY(-5px);
       }
     }
   }
@@ -176,7 +177,8 @@ export default {
 @media (max-width: 576px) {
   #news {
     .wrap-responsive .wrap .title-body {
-      font-size: 12px;
+      font-size: 13px;
+      letter-spacing: 1px;
     }
   }
 }
