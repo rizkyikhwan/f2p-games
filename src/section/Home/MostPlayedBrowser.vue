@@ -114,7 +114,7 @@ export default {
       this.loading = true;
       try {
         const response = await axios.request(API_MostPlayedBrowser);
-        const data = response.data.slice(0, 10);
+        const data = await response.data.slice(0, 10);
         this.mostPlayed = data;
       } catch (error) {
         console.log(error);

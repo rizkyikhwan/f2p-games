@@ -714,7 +714,7 @@ export default {
       };
       try {
         const response = await axios.request(API_games);
-        const data = response.data;
+        const data = await response.data;
         this.filteredGames = data;
 
         if (!response.exists) {

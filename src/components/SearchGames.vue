@@ -70,7 +70,7 @@ export default {
     async getGames() {
       try {
         const response = await axios.request(API_AllGames);
-        const data = response.data;
+        const data = await response.data;
         this.resultGames = data;
 
         if (!response.exists) {

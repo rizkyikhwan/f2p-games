@@ -32,7 +32,7 @@ export default {
   },
   mounted() {
     const iframe = document.querySelector("iframe");
-    iframe.classList.add("video-container");
+    iframe.classList.add("container-fluid");
   },
   computed: {
     news() {

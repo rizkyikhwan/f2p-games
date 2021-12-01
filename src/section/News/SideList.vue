@@ -44,7 +44,7 @@ export default {
       this.loading = true;
       try {
         const response = await axios.request(API_Newcomers);
-        const data = response.data;
+        const data = await response.data;
         setTimeout(() => {
           const shuffled = data.sort(() => 0.5 - Math.random());
           let selected = shuffled.slice(0, 3);

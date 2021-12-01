@@ -34,7 +34,10 @@
           </div>
         </div>
       </transition-group>
-      <div class="d-flex justify-content-center my-5">
+      <div
+        class="d-flex justify-content-center my-5"
+        v-if="listNews.length < dataLength.length"
+      >
         <button
           v-if="!loading"
           @click="getNews"
@@ -59,6 +62,7 @@ export default {
   data() {
     return {
       listNews: [],
+      dataLength: [],
       limit: 6,
       loading: null,
     };
@@ -73,14 +77,16 @@ export default {
       try {
         this.loading = true;
         const response = await axios.request(API_News);
-        const data = response.data.slice(
+        const data = await response.data;
+        const dataResource = await data.slice(
           this.listNews.length,
           this.listNews.length + this.limit
         );
         setTimeout(() => {
-          this.listNews.push(...data);
+          this.listNews.push(...dataResource);
           this.loading = false;
         }, 250);
+        this.dataLength = data;
       } catch (error) {
         console.log(error);
       }

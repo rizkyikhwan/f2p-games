@@ -59,10 +59,9 @@ body {
   transition: 0.2s ease-in-out;
 }
 
-@media (max-width: 992px) {
-  .video-container {
-    width: 100%;
-  }
+.container-fluid {
+  padding: 0;
+  margin: 0;
 }
 
 .button {

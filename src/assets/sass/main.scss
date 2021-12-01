@@ -55,10 +55,9 @@ body {
   }
 }
 
-@media (max-width: 992px) {
-  .video-container {
-    width: 100%;
-  }
+.container-fluid {
+  padding: 0;
+  margin: 0;
 }
 
 .button {

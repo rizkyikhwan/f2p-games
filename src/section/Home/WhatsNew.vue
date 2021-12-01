@@ -82,7 +82,7 @@ export default {
     async getLastNews() {
       try {
         const response = await axios.request(API_News);
-        const data = response.data.slice(0, 4);
+        const data = await response.data.slice(0, 4);
         this.lastNews = data;
       } catch (error) {
         console.log(error);

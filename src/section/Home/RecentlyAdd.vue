@@ -145,7 +145,7 @@ export default {
       this.loading = true;
       try {
         const response = await axios.request(API_Newcomers);
-        const data = response.data.slice(0, 9);
+        const data = await response.data.slice(0, 9);
         this.newcomers = data;
       } catch (error) {
         console.log(error);
@@ -156,7 +156,7 @@ export default {
       this.loading = true;
       try {
         const response = await axios.request(API_MostPlayed);
-        const data = response.data.slice(0, 3);
+        const data = await response.data.slice(0, 3);
         this.mostPlayed = data;
       } catch (error) {
         console.log(error);

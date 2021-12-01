@@ -17,7 +17,10 @@
         </router-link>
       </div>
     </transition-group>
-    <div class="d-flex justify-content-center my-5">
+    <div
+      class="d-flex justify-content-center my-5"
+      v-if="games.length < dataLength.length"
+    >
       <button
         v-if="!loading"
         @click="getGames"
@@ -41,6 +44,7 @@ export default {
   data() {
     return {
       games: [],
+      dataLength: [],
       limit: 24,
       loading: null,
     };
@@ -60,14 +64,16 @@ export default {
       };
       try {
         const response = await axios.request(API_AllGames);
-        const data = response.data.slice(
+        const data = await response.data;
+        const dataResource = await data.slice(
           this.games.length,
           this.games.length + this.limit
         );
         setTimeout(() => {
-          this.games.push(...data);
+          this.games.push(...dataResource);
           this.loading = false;
         }, 250);
+        this.dataLength = data;
       } catch (error) {
         console.log(error);
       }

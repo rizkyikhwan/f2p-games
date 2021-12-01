@@ -2,7 +2,7 @@
   <main class="news">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 py-3">
           <ListNews :darkMode="darkMode" />
         </div>
         <div class="col-md-4 mt-5 d-none d-md-block">

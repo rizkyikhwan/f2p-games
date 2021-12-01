@@ -203,7 +203,7 @@ export default {
       this.loading = true;
       try {
         const response = await axios.request(API_specificGame);
-        const data = response.data;
+        const data = await response.data;
         setTimeout(() => {
           this.gameDetail = data;
           this.loading = false;
