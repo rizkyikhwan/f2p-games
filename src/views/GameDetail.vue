@@ -360,6 +360,10 @@ export default {
         }
       }
     }
+
+    .swiper .wrap-img .preview:hover{
+       transform: scale(1);
+    }
   }
 }
 

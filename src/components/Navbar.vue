@@ -4,6 +4,27 @@
     :class="{ 'dark-mode': darkMode }"
   >
     <div class="container">
+      <div v-show="mobile">
+      <button
+        class="d-flex align-items-center icon-wrap"
+        :class="{ 'dark-mode': darkMode }"
+        @click="$emit('darkMode')"
+        style="margin: 0 auto"
+      >
+        <font-awesome-icon
+          class="icon sun"
+          v-if="!darkMode"
+          :icon="['fas', 'sun']"
+        ></font-awesome-icon>
+        <font-awesome-icon
+          class="icon moon"
+          v-else
+          :icon="['fas', 'moon']"
+        ></font-awesome-icon>
+      </button>
+      </div>
+
+      <!-- Logo -->
       <div>
         <img
           v-if="!darkMode"
@@ -51,6 +72,7 @@
         ></font-awesome-icon>
       </button>
 
+      
       <!-- Mobile -->
       <div class="menu-toggle" v-show="mobile" @click="toggleMobileNav">
         <span class="bar" :class="{ 'dark-mode': darkMode }"></span>
@@ -62,6 +84,7 @@
           class="mobile-nav"
           v-show="mobileNav"
           :class="{ 'dark-mode': darkMode }"
+          @click="toggleMobileNav"
         >
           <font-awesome-icon
             @click="toggleMobileNav"
@@ -87,23 +110,6 @@
             :class="{ 'dark-mode': darkMode }"
             >News</router-link
           >
-          <button
-            class="d-flex align-items-center icon-wrap"
-            :class="{ 'dark-mode': darkMode }"
-            @click="$emit('darkMode')"
-            style="margin: 0 auto"
-          >
-            <font-awesome-icon
-              class="icon sun"
-              v-if="!darkMode"
-              :icon="['fas', 'sun']"
-            ></font-awesome-icon>
-            <font-awesome-icon
-              class="icon moon"
-              v-else
-              :icon="['fas', 'moon']"
-            ></font-awesome-icon>
-          </button>
         </ul>
       </transition>
       <transition name="overlay">
@@ -192,12 +198,12 @@ export default {
 
   .sun {
     color: $yellow;
-    filter: drop-shadow(0 0px 5px);
+    filter: drop-shadow(0 0px 5px $yellow);
   }
 
   .moon {
     color: $navyBlue;
-    filter: drop-shadow(0 0px 5px);
+    filter: drop-shadow(0 0px 5px $navyBlue);
   }
 }
 
@@ -207,7 +213,7 @@ export default {
   transition: 0.5s ease;
 
   &.dark-mode {
-    filter: drop-shadow(0 0px 6px);
+    filter: drop-shadow(0 0px 6px $navyBlue);
   }
 }
 
@@ -236,7 +242,7 @@ export default {
     color: $navyBlue;
     cursor: pointer;
     font-size: 24px;
-    filter: drop-shadow(0 0px 1px);
+    filter: drop-shadow(0 0px 1px #fff);
   }
 
   &.dark-mode {
@@ -289,9 +295,6 @@ export default {
 
 @media (max-width: 768px) {
   .icon-wrap {
-    position: absolute;
-    top: 22px;
-    right: 25px;
     background: $gray;
     transition: 0.2s ease-in-out;
 
