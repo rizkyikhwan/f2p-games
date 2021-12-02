@@ -12,7 +12,6 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import VueAwesomeSwiper from "vue-awesome-swiper";
 import { Swiper as SwiperClass, Navigation } from "swiper/swiper.esm.js";
 import getAwesomeSwiper from "vue-awesome-swiper/dist/exporter";
-import infiniteScroll from "vue-infinite-scroll";
 import "./assets/css/main.css";
 import "swiper/swiper-bundle.min.css";
 
@@ -24,7 +23,6 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
-Vue.use(infiniteScroll);
 Vue.use(VueAwesomeSwiper);
 Vue.use(getAwesomeSwiper(SwiperClass));
 
