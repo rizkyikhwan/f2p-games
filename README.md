@@ -1,24 +1,21 @@
-# f2p-games
+![banner](https://user-images.githubusercontent.com/79355239/144449193-42c5c60d-fdf6-4526-a094-ca455335af86.png)
 
-## Project setup
-```
-npm install
-```
+<h1 align="center">F2P-Games</h1>
+<p align="justify">
+F2P-Games merupakan sebuah website sederhana yang memberikan info-info tentang game gratis di PC dan Browser. Di website ini juga terdapat berita seputar dunia games yang sedang ramai diperbincangkan. Data games dan berita ini didapat dari API Public yang dibagikan secara gratis. Untuk lebih lengkap tentang API yang dipakai, ada dideskripsi di bawah ini.
+</p>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Tech & Dependencies
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- [VueJS](https://vuejs.org/)
+- [Vuex](https://vuex.vuejs.org/)
+- [Vue Router](https://router.vuejs.org/)
+- [Bootstrap / Bootstrap Vue](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+- [Axios](https://axios-http.com/docs/intro)
+- [SwiperJS](https://swiperjs.com/)
+- [Fontawesome](https://fontawesome.com/)
 
-### Lints and fixes files
-```
-npm run lint
-```
+### API
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- [Games](https://www.freetogame.com/api-doc)
+- [News](https://www.mmobomb.com/api)

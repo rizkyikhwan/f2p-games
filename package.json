@@ -19,7 +19,6 @@
     "swiper": "^6.7.0",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
-    "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.2.0",
     "vuex": "^3.6.2"
   },
