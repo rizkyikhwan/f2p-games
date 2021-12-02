@@ -102,6 +102,7 @@ export default {
 
     .btn-category {
       font-family: "Saira", sans-serif;
+      color: #000;
       border: 2px solid $navyBlue;
       filter: drop-shadow(0 0 2px $navyBlue);
       border-radius: 40px;

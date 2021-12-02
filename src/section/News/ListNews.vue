@@ -159,6 +159,26 @@ export default {
     .title-body {
       font-size: 14px;
     }
+
+    .wrap:hover {
+      background: none;
+      box-shadow: none;
+      transform: translateY(0);
+
+      &.dark-mode:hover {
+        background: none;
+      }
+    }
+
+    .button:hover {
+      color: $fontDark;
+      box-shadow: 2px 2px $blue, 3px 3px $blue, 4px 4px $blue;
+      transform: translateY(0);
+
+      &.dark-mode:hover {
+        color: $fontDark;
+      }
+    }
   }
 }
 </style>

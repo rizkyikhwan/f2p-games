@@ -125,4 +125,16 @@ export default {
     }
   }
 }
+
+@media (max-width: 576px) {
+#hero .button:hover {
+  color: $fontLight;
+  box-shadow: 2px 2px $blue, 3px 3px $blue, 4px 4px $blue;
+  transform: translateY(0);
+
+    &.dark-mode:hover {
+      color: $fontDark;
+    }
+  }
+}
 </style>

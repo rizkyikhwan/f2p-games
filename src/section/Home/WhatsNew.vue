@@ -153,10 +153,22 @@ export default {
 
 @media (max-width: 576px) {
   #news {
-    .wrap-responsive .wrap .title-body {
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
+    .wrap-responsive .wrap {
+      &:hover {
+        background: none;
+        box-shadow: none;
+        transform: translateY(0);
+      }
+
+      &.dark-mode:hover {
+        background: none;
+      }
+
+      .title-body {
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+    } 
   }
 }
 </style>

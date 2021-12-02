@@ -198,4 +198,11 @@ export default {
     border-bottom-right-radius: 0;
   }
 }
+
+@media (max-width: 576px) {
+  .card:hover {
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    transform: scale(1);
+  }
+}
 </style>
