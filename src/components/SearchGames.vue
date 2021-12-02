@@ -52,7 +52,7 @@
 <script>
 import GameCard from "@/components/GameCard.vue";
 import axios from "axios";
-import { API_AllGames } from "@/api/getDataGames.js";
+import { allGames } from "@/api/getDataGames.js";
 
 export default {
   data() {
@@ -69,7 +69,7 @@ export default {
   methods: {
     async getGames() {
       try {
-        const response = await axios.request(API_AllGames);
+        const response = await axios.request(allGames);
         const data = await response.data;
         this.resultGames = data;
 

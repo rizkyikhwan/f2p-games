@@ -73,7 +73,7 @@ import axios from "axios";
 import Divider from "@/components/Divider.vue";
 import GameCard from "@/components/GameCard.vue";
 import Loading from "@/components/Loading.vue";
-import { API_MostPlayedBrowser } from "@/api/getDataGames.js";
+import { mostPlayOnBrowser } from "@/api/getDataGames.js";
 
 export default {
   data() {
@@ -113,7 +113,7 @@ export default {
     async getMostPlayed() {
       this.loading = true;
       try {
-        const response = await axios.request(API_MostPlayedBrowser);
+        const response = await axios.request(mostPlayOnBrowser);
         const data = await response.data.slice(0, 10);
         this.mostPlayed = data;
       } catch (error) {
@@ -178,8 +178,6 @@ export default {
   .swiper-button-next {
     position: static;
     background: rgba(41, 41, 41, 0.1);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
     box-shadow: 0px 5px 10px -3px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 25px;

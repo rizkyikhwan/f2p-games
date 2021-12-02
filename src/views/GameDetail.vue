@@ -154,7 +154,7 @@
 import Loading from "@/components/Loading.vue";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import { URL_gameSpecific, Headers } from "@/api/getDataGames.js";
+import { gameSpecific_URL, Headers } from "@/api/getDataGames.js";
 import "swiper/swiper-bundle.min.css";
 
 export default {
@@ -194,20 +194,20 @@ export default {
   },
   methods: {
     async specifiGame() {
-      const API_specificGame = {
+      const gameSpecific = {
         method: "GET",
-        url: URL_gameSpecific,
+        url: gameSpecific_URL,
         params: { id: this.$route.params.id },
         headers: Headers,
       };
       this.loading = true;
       try {
-        const response = await axios.request(API_specificGame);
+        const response = await axios.request(gameSpecific);
         const data = await response.data;
         setTimeout(() => {
           this.gameDetail = data;
           this.loading = false;
-        }, 1500);
+        }, 500);
       } catch (error) {
         console.log(error);
       }
@@ -320,8 +320,6 @@ export default {
   .swiper-button-next {
     position: relative;
     background: rgba(41, 41, 41, 0.1);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
     box-shadow: 0px 5px 10px -3px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
     padding: 0 23px;
@@ -336,19 +334,6 @@ export default {
 
     &.dark-mode {
       background: rgba(255, 255, 255, 0.1);
-    }
-  }
-
-  .link {
-    color: $fontLight;
-
-    &.dark-mode {
-      color: $fontDark;
-    }
-
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
     }
   }
 }

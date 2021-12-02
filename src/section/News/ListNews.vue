@@ -1,6 +1,6 @@
 <template>
   <main class="news">
-    <h2 class="title">What's New</h2>
+    <h2 class="title">Latest News</h2>
     <Divider />
     <div class="container">
       <transition-group
@@ -10,6 +10,7 @@
       >
         <div
           class="wrap d-flex flex-row flex-nowrap col-lg-12 row py-2 px-1 my-2"
+          :class="{ 'dark-mode' : darkMode }"
           v-for="news in listNews"
           :key="news.id"
           @click="detailNews(news)"
@@ -17,15 +18,8 @@
           <div class="wrap-img col-sm-4 px-1 d-flex align-items-center">
             <img :src="`${news.thumbnail}`" class="img-fluid rounded shadow" />
           </div>
-          <div
-            class="
-              wrap-body
-              d-flex
-              flex-column
-              justify-content-center
-              col-sm
-              px-1
-            "
+          <div 
+            class="wrap-body d-flex flex-column justify-content-center col-sm px-1"
           >
             <h5 class="title-body mt-2">{{ news.title }}</h5>
             <p class="small text-muted description">
@@ -56,7 +50,7 @@
 import axios from "axios";
 import Divider from "@/components/Divider.vue";
 import Loading from "@/components/Loading.vue";
-import { API_News } from "@/api/getDataNews.js";
+import { baseURL } from "@/api/getDataNews.js";
 
 export default {
   data() {
@@ -76,7 +70,7 @@ export default {
     async getNews() {
       try {
         this.loading = true;
-        const response = await axios.request(API_News);
+        const response = await axios.request(baseURL);
         const data = await response.data;
         const dataResource = await data.slice(
           this.listNews.length,
@@ -115,15 +109,18 @@ export default {
   }
 
   .wrap {
+    border-radius: 10px;
     cursor: pointer;
     transition: 0.2s ease;
 
     &:hover {
-      background: $backgroundDarkDeep;
+      background: #fff;
       box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      color: #fff;
       transform: translateY(-5px);
+    }
+
+    &.dark-mode:hover {
+      background: $backgroundDarkDeep;
     }
   }
 

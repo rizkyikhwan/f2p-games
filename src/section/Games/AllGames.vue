@@ -38,7 +38,7 @@
 import axios from "axios";
 import GameCard from "@/components/GameCard.vue";
 import Loading from "@/components/Loading.vue";
-import { URL, Headers } from "@/api/getDataGames.js";
+import { api_url, Headers } from "@/api/getDataGames.js";
 
 export default {
   data() {
@@ -59,7 +59,7 @@ export default {
       this.loading = true;
       const API_AllGames = {
         method: "GET",
-        url: URL,
+        url: api_url,
         headers: Headers,
       };
       try {

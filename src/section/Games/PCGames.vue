@@ -38,7 +38,7 @@
 import axios from "axios";
 import GameCard from "@/components/GameCard.vue";
 import Loading from "@/components/Loading.vue";
-import { URL, Headers } from "@/api/getDataGames.js";
+import { mostPlayOnPC } from "@/api/getDataGames.js";
 
 export default {
   data() {
@@ -56,15 +56,9 @@ export default {
   },
   methods: {
     async getGames() {
-      const API_AllGames = {
-        method: "GET",
-        url: URL,
-        params: { platform: "pc", "sort-by": "popularity" },
-        headers: Headers,
-      };
       try {
         this.loading = true;
-        const response = await axios.request(API_AllGames);
+        const response = await axios.request(mostPlayOnPC);
         const data = await response.data;
         const dataResource = await data.slice(
           this.games.length,

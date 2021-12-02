@@ -1,55 +1,55 @@
-const URL = "https://free-to-play-games-database.p.rapidapi.com/api/games";
-const URL_filter =
+const api_url = "https://free-to-play-games-database.p.rapidapi.com/api/games";
+const filter_URL =
   "https://free-to-play-games-database.p.rapidapi.com/api/filter";
-const URL_gameSpecific =
+const gameSpecific_URL =
   "https://free-to-play-games-database.p.rapidapi.com/api/game";
 const Headers = {
   "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
   "x-rapidapi-key": `${process.env.VUE_APP_API_KEY}`,
 };
 
-const API_Newcomers = {
+const recentAdd = {
   method: "GET",
-  url: URL,
+  url: api_url,
   params: { "sort-by": "release-date" },
   headers: Headers,
 };
 
-const API_MostPlayed = {
+const mostPlay = {
   method: "GET",
-  url: URL,
+  url: api_url,
   params: { "sort-by": "popularity" },
   headers: Headers,
 };
 
-const API_MostPlayedPC = {
+const mostPlayOnPC = {
   method: "GET",
-  url: URL,
+  url: api_url,
   params: { platform: "pc", "sort-by": "popularity" },
   headers: Headers,
 };
 
-const API_MostPlayedBrowser = {
+const mostPlayOnBrowser = {
   method: "GET",
-  url: URL,
+  url: api_url,
   params: { platform: "browser", "sort-by": "popularity" },
   headers: Headers,
 };
 
-const API_AllGames = {
+const allGames = {
   method: "GET",
-  url: URL,
+  url: api_url,
   headers: Headers,
 };
 
 export {
-  API_Newcomers,
-  API_MostPlayed,
-  API_MostPlayedPC,
-  API_MostPlayedBrowser,
-  API_AllGames,
-  URL,
-  URL_filter,
-  URL_gameSpecific,
+  recentAdd,
+  mostPlay,
+  mostPlayOnPC,
+  mostPlayOnBrowser,
+  allGames,
+  api_url,
+  filter_URL,
+  gameSpecific_URL,
   Headers,
 };

@@ -23,7 +23,7 @@
                   },
                 }"
               >
-                <GameCardNewcomers :game="newcomer" :darkMode="darkMode" />
+                <GameCardRecent :game="newcomer" :darkMode="darkMode" />
               </router-link>
             </div>
           </div>
@@ -87,10 +87,10 @@
 <script>
 import Divider from "@/components/Divider.vue";
 import GameCard from "@/components/GameCard.vue";
-import GameCardNewcomers from "@/components/GameCardNewcomers.vue";
+import GameCardRecent from "@/components/GameCardRecent.vue";
 import SideGameCard from "@/components/SideGameCard.vue";
 import Loading from "@/components/Loading.vue";
-import { API_Newcomers, API_MostPlayed } from "@/api/getDataGames.js";
+import { recentAdd, mostPlay } from "@/api/getDataGames.js";
 import axios from "axios";
 
 export default {
@@ -124,7 +124,7 @@ export default {
   components: {
     Divider,
     GameCard,
-    GameCardNewcomers,
+    GameCardRecent,
     SideGameCard,
     Loading,
   },
@@ -144,7 +144,7 @@ export default {
     async getNewcomers() {
       this.loading = true;
       try {
-        const response = await axios.request(API_Newcomers);
+        const response = await axios.request(recentAdd);
         const data = await response.data.slice(0, 9);
         this.newcomers = data;
       } catch (error) {
@@ -155,7 +155,7 @@ export default {
     async getMostPlayed() {
       this.loading = true;
       try {
-        const response = await axios.request(API_MostPlayed);
+        const response = await axios.request(mostPlay);
         const data = await response.data.slice(0, 3);
         this.mostPlayed = data;
       } catch (error) {

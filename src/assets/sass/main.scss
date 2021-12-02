@@ -55,6 +55,47 @@ body {
   }
 }
 
+.link {
+  color: $fontLight;
+  transition: 0.2s ease-in-out;
+
+  &.dark-mode {
+    color: $fontDark;
+
+    &:hover {
+      color: $fontDark;
+    }
+  }
+
+  &:hover {
+    color: $fontLight;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.breadcrumb {
+  font-family: "Saira", sans-serif;
+}
+
+.breadcrumb-link {
+  color: $fontLight;
+  transition: 0.2s ease-in-out;
+
+  &.dark-mode {
+    color: $fontDark;
+
+    &:hover {
+      color: $fontDark;
+    }
+  }
+
+  &:hover {
+    color: $fontLight;
+    text-decoration: none;
+  }
+}
+
 .container-fluid {
   padding: 0;
   margin: 0;

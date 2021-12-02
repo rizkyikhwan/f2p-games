@@ -1,6 +1,16 @@
 <template>
   <main class="advanced-filter">
     <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent p-0">
+          <li class="breadcrumb-item">
+            <router-link :to="{name: 'Games'}" class="link" :class="{ 'dark-mode' : darkMode }">Games</router-link>
+          </li>
+          <li class="breadcrumb-item active font-weight-bolder">
+            Filter
+          </li>
+        </ol>
+      </nav>
       <h4 class="title mb-3">Advanced Filter Search</h4>
       <div class="row">
         <div class="col-lg-9 col-sm-8 order-1 mt-n4">
@@ -601,7 +611,7 @@
 import axios from "axios";
 import GameCard from "@/components/GameCard.vue";
 import Divider from "@/components/Divider.vue";
-import { URL_filter, Headers } from "@/api/getDataGames.js";
+import { filter_URL, Headers } from "@/api/getDataGames.js";
 
 export default {
   data() {
@@ -669,9 +679,9 @@ export default {
   props: ["darkMode"],
   methods: {
     async getGames() {
-      const API_games = {
+      const gamesFilter = {
         method: "GET",
-        url: URL_filter,
+        url: filter_URL,
         params: {
           "sort-by": this.sorted,
           platform: this.platform,
@@ -713,7 +723,7 @@ export default {
         headers: Headers,
       };
       try {
-        const response = await axios.request(API_games);
+        const response = await axios.request(gamesFilter);
         const data = await response.data;
         this.filteredGames = data;
 

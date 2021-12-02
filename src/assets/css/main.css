@@ -59,6 +59,49 @@ body {
   transition: 0.2s ease-in-out;
 }
 
+.link {
+  color: #002246;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.link.dark-mode {
+  color: #e8e8e8;
+}
+
+.link.dark-mode:hover {
+  color: #e8e8e8;
+}
+
+.link:hover {
+  color: #002246;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.breadcrumb {
+  font-family: "Saira", sans-serif;
+}
+
+.breadcrumb-link {
+  color: #002246;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.breadcrumb-link.dark-mode {
+  color: #e8e8e8;
+}
+
+.breadcrumb-link.dark-mode:hover {
+  color: #e8e8e8;
+}
+
+.breadcrumb-link:hover {
+  color: #002246;
+  text-decoration: none;
+}
+
 .container-fluid {
   padding: 0;
   margin: 0;

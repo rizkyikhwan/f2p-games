@@ -4,10 +4,10 @@ const Headers = {
   "x-rapidapi-key": `${process.env.VUE_APP_API_KEY}`,
 };
 
-const API_News = {
+const baseURL = {
   method: "GET",
   url: URL,
   headers: Headers,
 };
 
-export { API_News };
+export { baseURL };

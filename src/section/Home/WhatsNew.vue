@@ -22,35 +22,18 @@
         <div class="row group-news wrap-responsive">
           <div
             class="wrap d-flex flex-nowrap row mb-4 col-lg-6"
+            :class="{ 'dark-mode' : darkMode }"
             v-for="news in lastNews"
             :key="news.id"
             @click="detailNews(news)"
           >
-            <div
-              class="
-                wrap-img
-                col-sm-4
-                px-1
-                d-flex
-                justify-content-start
-                align-items-center
-              "
-            >
+            <div class="wrap-img col-sm-4 px-1 d-flex justify-content-start align-items-center">
               <img
                 :src="`${news.thumbnail}`"
                 class="img-fluid rounded shadow"
               />
             </div>
-            <div
-              class="
-                wrap-body
-                d-flex
-                flex-column
-                justify-content-center
-                col-sm
-                px-1
-              "
-            >
+            <div class="wrap-body d-flex flex-column justify-content-center col-sm px-1">
               <p class="title-body mt-2">{{ news.title }}</p>
               <p class="small text-muted description">
                 {{ news.short_description }}
@@ -65,7 +48,7 @@
 
 <script>
 import Divider from "@/components/Divider.vue";
-import { API_News } from "@/api/getDataNews.js";
+import { baseURL } from "@/api/getDataNews.js";
 import axios from "axios";
 
 export default {
@@ -81,7 +64,7 @@ export default {
   methods: {
     async getLastNews() {
       try {
-        const response = await axios.request(API_News);
+        const response = await axios.request(baseURL);
         const data = await response.data.slice(0, 4);
         this.lastNews = data;
       } catch (error) {
@@ -112,14 +95,6 @@ export default {
     font-size: 24px;
   }
 
-  .link {
-    color: $fontLight;
-
-    &.dark-mode {
-      color: $fontDark;
-    }
-  }
-
   .group-news {
     display: flex;
     justify-content: space-between;
@@ -143,11 +118,13 @@ export default {
       }
 
       &:hover {
-        background: $backgroundDarkDeep;
+        background: #fff;
         box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        color: #fff;
         transform: translateY(-5px);
+      }
+
+      &.dark-mode:hover {
+        background: $backgroundDarkDeep;
       }
     }
   }

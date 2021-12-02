@@ -53,7 +53,7 @@ const routes = [
     },
   },
   {
-    path: "/news-details",
+    path: "/news/news-details",
     name: "NewsDetail",
     component: () => import("../views/NewsDetail.vue"),
     meta: {

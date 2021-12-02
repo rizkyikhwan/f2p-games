@@ -1,14 +1,6 @@
 <template>
   <nav
-    class="
-      navbar
-      d-flex
-      align-items-center
-      justify-content-between
-      shadow
-      py-3
-      fixed-top
-    "
+    class="navbar d-flex align-items-center justify-content-between shadow py-3 fixed-top"
     :class="{ 'dark-mode': darkMode }"
   >
     <div class="container">

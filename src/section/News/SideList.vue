@@ -25,7 +25,7 @@
 import axios from "axios";
 import SideGameCard from "@/components/SideGameCard.vue";
 import Loading from "@/components/Loading.vue";
-import { API_Newcomers } from "@/api/getDataGames.js";
+import { allGames } from "@/api/getDataGames.js";
 
 export default {
   data() {
@@ -43,7 +43,7 @@ export default {
     async getRandomData() {
       this.loading = true;
       try {
-        const response = await axios.request(API_Newcomers);
+        const response = await axios.request(allGames);
         const data = await response.data;
         setTimeout(() => {
           const shuffled = data.sort(() => 0.5 - Math.random());

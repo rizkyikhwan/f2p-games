@@ -1,18 +1,32 @@
 <template>
-  <main class="not_found">
+  <main class="not_found d-flex flex-column justify-content-center">
     <div class="container">
-      <div class="wrap">
-        <div class="not__found">
-          <h1 class="not___found">404</h1>
-          <p class="text-center">Oops! Something is wrong.</p>
-        </div>
-      </div>
+      <h1 class="not__found text-center">404</h1>
+      <p class="text-center">
+        Oops! Something is wrong. <br>
+        <span
+          class="link"
+          :class="{ 'dark-mode' : darkMode }"
+          @click="goBack"
+          ><font-awesome-icon
+            :icon="['fas', 'arrow-left']"
+          ></font-awesome-icon>
+          Go Back
+        </span>
+      </p>
     </div>
   </main>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ['darkMode'],
+  methods: {
+    goBack() {
+      this.$router.go(-1)
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -20,27 +34,13 @@ export default {};
 
 .not_found {
   font-family: "Montserrat", sans-serif;
-  margin-top: 75px;
-  min-height: 75vh;
+  padding-top: 75px;
+  min-height: 90vh;
 
-  .wrap {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    .not__found {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      .not___found {
-        color: $navyBlue;
-        font-size: 10rem;
-        font-weight: 700;
-      }
-    }
+  .not__found {
+    color: $navyBlue;
+    font-size: 7.5rem;
+    font-weight: 700;
   }
 }
 </style>

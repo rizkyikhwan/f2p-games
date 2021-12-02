@@ -3,11 +3,11 @@
     <div class="container">
       <SearchGames :darkMode="darkMode" />
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
           <h4 class="title">All Free Games</h4>
           <Divider />
         </div>
-        <div id="btn-wrap" class="btn-wrap col-sm-6">
+        <div id="btn-wrap" class="btn-wrap col-md-6">
           <button class="btn-category mr-3 px-3 btn-active" @click="buttonAll">
             All
           </button>
@@ -74,10 +74,7 @@ export default {
     for (let i = 0; i < btnCategory.length; i++) {
       btnCategory[i].addEventListener("click", function () {
         const currentActive = document.getElementsByClassName("btn-active");
-        currentActive[0].className = currentActive[0].className.replace(
-          " btn-active",
-          ""
-        );
+        currentActive[0].className = currentActive[0].className.replace(" btn-active", "");
         this.className += " btn-active";
       });
     }
@@ -120,14 +117,28 @@ export default {
   }
 }
 
-@media (max-width: 576px) {
-  .games {
-    .btn-wrap {
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      margin: 7.5px 0;
-    }
+@media (max-width: 768px) {
+  .games .btn-wrap {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 7.5px 0;
+  }
+}
+
+@media (max-width: 367px) {
+.games .btn-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    margin: 7.5px 0;
+    padding: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .btn-wrap::-webkit-scrollbar {
+    display: none;
   }
 }
 </style>
