@@ -84,32 +84,27 @@
           class="mobile-nav"
           v-show="mobileNav"
           :class="{ 'dark-mode': darkMode }"
-          @click="toggleMobileNav"
         >
-          <font-awesome-icon
-            @click="toggleMobileNav"
-            class="icon-close"
-            :class="{ 'dark-mode': darkMode }"
-            :icon="['fas', 'times']"
-          ></font-awesome-icon>
-          <router-link
-            :to="{ name: 'Home' }"
-            class="nav-link mt-3"
-            :class="{ 'dark-mode': darkMode }"
-            >Home</router-link
-          >
-          <router-link
-            :to="{ name: 'Games' }"
-            class="nav-link"
-            :class="{ 'dark-mode': darkMode }"
-            >Games</router-link
-          >
-          <router-link
-            :to="{ name: 'News' }"
-            class="nav-link"
-            :class="{ 'dark-mode': darkMode }"
-            >News</router-link
-          >
+          <div @click="toggleMobileNav">
+            <router-link
+              :to="{ name: 'Home' }"
+              class="nav-link mt-3"
+              :class="{ 'dark-mode': darkMode }"
+              >Home</router-link
+            >
+            <router-link
+              :to="{ name: 'Games' }"
+              class="nav-link"
+              :class="{ 'dark-mode': darkMode }"
+              >Games</router-link
+            >
+            <router-link
+              :to="{ name: 'News' }"
+              class="nav-link"
+              :class="{ 'dark-mode': darkMode }"
+              >News</router-link
+            >
+          </div>
         </ul>
       </transition>
       <transition name="overlay">
