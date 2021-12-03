@@ -7,11 +7,11 @@
         <span
           class="link"
           :class="{ 'dark-mode' : darkMode }"
-          @click="goBack"
+          @click="goHome"
           ><font-awesome-icon
             :icon="['fas', 'arrow-left']"
           ></font-awesome-icon>
-          Go Back
+          Go Home
         </span>
       </p>
     </div>
@@ -22,8 +22,8 @@
 export default {
   props: ['darkMode'],
   methods: {
-    goBack() {
-      this.$router.go(-1)
+    goHome() {
+      this.$router.push({name: 'Home'})
     }
   }
 };
