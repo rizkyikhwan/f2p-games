@@ -67,7 +67,7 @@ export default {
     const iframe = document.querySelectorAll("p > iframe");
     for (let i = 0; i < iframe.length; i++) {
       if (iframe) {
-        iframe[i].classList.add("container-fluid", "mb-4");
+        iframe[i].classList.add("container-fluid", "mt-3");
       }
     }
 

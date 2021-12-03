@@ -153,9 +153,7 @@
 <script>
 import Loading from "@/components/Loading.vue";
 import axios from "axios";
-import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import { gameSpecific_URL, Headers } from "@/api/getDataGames.js";
-import "swiper/swiper-bundle.min.css";
 
 export default {
   data() {
@@ -188,8 +186,6 @@ export default {
   },
   props: ["dark-mode"],
   components: {
-    Swiper,
-    SwiperSlide,
     Loading,
   },
   methods: {
